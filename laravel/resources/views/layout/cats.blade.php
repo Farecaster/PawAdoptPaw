@@ -47,13 +47,16 @@
                             <a class="nav-link mx-lg-2" href="about us.html">About Us</a>
                         </li>
                         <li class="nav-item">
+                            <a href="login.html" class="login-button">LogIn</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link mx-lg-2" href="SignUp.html">Sign Up</a>
                         </li>
 
                     </ul>
                 </div>
             </div>
-            <a href="login.html" class="login-button">LogIn</a>
+
             <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

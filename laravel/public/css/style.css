@@ -39,7 +39,6 @@ a {
 }
 
 .login-container{
-    width: 400px;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.1);
     margin: 25px auto;
     border-radius: 10px;
