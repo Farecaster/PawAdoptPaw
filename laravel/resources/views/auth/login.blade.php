@@ -1,7 +1,6 @@
 @extends('layout.app')
 
 @section('content')
-    ;
     <section id="login" class="login section-padding">
         <div class="login-content">
             <h1 class="h2-content">Paw-Adopt-Paw</h1>
@@ -9,9 +8,16 @@
         </div>
 
         <div class="login-container">
-            <form>
-                <input type="text" placeholder="Username" required />
-                <input type="password" placeholder="Password" required />
+            <form action="{{ route('authenticate') }}" method="POST">
+                @csrf
+                <input type="email" name="email" placeholder="Username" value="{{ old('email') }}" required />
+                @error('email')
+                    <span>{{ $message }}</span>
+                @enderror
+                <input type="password" name="password" placeholder="Password" required />
+                @error('password')
+                    <span>{{ $message }}</span>
+                @enderror
                 <button type="submit" class="btn-login">Log In</button>
             </form>
             <p>Don't have an account? <a href="signup.html">Create Account</a></p>
