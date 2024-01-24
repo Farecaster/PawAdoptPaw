@@ -1,70 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <link rel="stylesheet" href="stylesheet1.css" />
-    <!--bootstrap css-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-
-<body>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a href="#" class="navbar-brand">
-                <img src="assets/logo.png" alt="" class="d-inline-block align-top" />
-            </a>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <img src="assets/logo.png" alt="" class="d-inline-block align-top" />
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link bg-success rounded px-3 text-light" aria-current="page"
-                                href="{{ route('homepage') }}">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('petprofile') }}" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="true">
-                                Pets
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{ route('dogs') }}">Dogs</a></li>
-                                <li><a class="dropdown-item" href="{{ route('cats') }}">Cats</a></li>
-                                <li><a class="dropdown-item" href="{{ route('petprofile') }}">All</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="{{ route('hta') }}">How to Adopt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="{{ route('about') }}">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="{{ route('signup') }}">Sign Up</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <a href="{{ route('login') }}" class="login-button">LogIn</a>
-            <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-    <!--End Navbar-->
-    <!--Hero-->
+@extends('layout.app')
+@section('content')
     <div id="carouselExampleCaptions" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -100,13 +35,11 @@
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -287,8 +220,8 @@
                     <form>
                         <div class="mb-3">
                             <label for="adopterName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="adopterName"
-                                placeholder="Enter your name" required>
+                            <input type="text" class="form-control" id="adopterName" placeholder="Enter your name"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="adopterEmail" class="form-label">Address</label>
@@ -301,13 +234,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="adopterEmail" class="form-label">Phone number</label>
-                            <input type="text" class="form-control" id="adopterNumber" placeholder="+639"
-                                required>
+                            <input type="text" class="form-control" id="adopterNumber" placeholder="+639" required>
                         </div>
                         <div class="mb-3">
                             <label for="adopterEmail" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="adopterEmail"
-                                placeholder="Enter your email" required>
+                            <input type="email" class="form-control" id="adopterEmail" placeholder="Enter your email"
+                                required>
                         </div>
                         <div class="mb-3">
                             <label for="adopterEmail" class="form-label">Date of Birth</label>
@@ -348,13 +280,4 @@
                 </div>
             </div>
         </div>
-
-
-
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
-</body>
-
-</html>
+    @endsection

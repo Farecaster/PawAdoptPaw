@@ -1,42 +1,20 @@
+@extends('layout.app')
 
-@extends('layout.app');
-
-@section('content');
-<section id="login" class="login section-padding">
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-header bg-success text-white">
-                        <h3 class="text-center">Sign Up</h3>
-                    </div>
-                    <div class="card-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" id="username" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="password" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" id="confirmPassword" required>
-                            </div>
-                            <button type="submit" class="btn btn-success">Sign Up</button>
-                        </form>
-                        <p class="mt-3" style="text-align: center;">Already have an account? <a
-                                href="{{ route('login') }}">Log In</a></p>
-                    </div>
-                </div>
-            </div>
+@section('content')
+    ;
+    <section id="login" class="login section-padding">
+        <div class="login-content">
+            <h1 class="h2-content">Paw-Adopt-Paw</h1>
+            <h2 class="login-quote">Connect your Pets around the world</h2>
         </div>
-    </div>
-</section>
 
+        <div class="login-container">
+            <form>
+                <input type="text" placeholder="Username" required />
+                <input type="password" placeholder="Password" required />
+                <button type="submit" class="btn-login">Log In</button>
+            </form>
+            <p>Don't have an account? <a href="signup.html">Create Account</a></p>
+        </div>
+    </section>
 @endsection

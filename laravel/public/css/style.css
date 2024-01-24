@@ -39,6 +39,7 @@ a {
 }
 
 .login-container{
+    max-width: 400px;
     box-shadow: 0 0 5px 3px rgba(0,0,0,0.1);
     margin: 25px auto;
     border-radius: 10px;
@@ -170,7 +171,7 @@ input{
 }
 
 .hero-section{
-    background: url('{{ asset('assets/ss-bg.jpg') }}') no-repeat center;
+    background: url('{{ asset("assets/ss-bg.jpg") }}') no-repeat center;
     background-size: cover;
     width: 100%;
 }
