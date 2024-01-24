@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,17 @@ Route::get('/',  function () {
     return view('homepage');
 })->name('homepage');
 
+Route::get('/test',  function () {
+    return view('test');
+})->name('test');
+
+Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/signup', [AuthController::class, 'signupStore'])->name('signup.store');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 Route::get('/hta',  function () {
     return view('hta');
@@ -28,13 +40,6 @@ Route::get('/about',  function () {
     return view('about');
 })->name('about');
 
-Route::get('/signup',  function () {
-    return view('signup');
-})->name('signup');
-
-Route::get('/login',  function () {
-    return view('login');
-})->name('login');
 
 Route::get('/petprofile',  function () {
     return view('petprofile');
