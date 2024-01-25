@@ -13,14 +13,18 @@
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="v{{ route('petprofile') }}">Pet Profile</a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link bg-success rounded px-3 text-light" href="{{ route('petprofile') }}"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pet Profile
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('dogs') }}">Dogs</a></li>
+                            <li><a class="dropdown-item" href="{{ route('cats') }}">Cats</a></li>
+                            <li><a class="dropdown-item" href="{{ route('petprofile') }}">All</a></li>
+                        </ul>
                     </li>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('dogs') }}">Dogs</a></li>
-                        <li><a class="dropdown-item" href="{{ route('cats') }}">Cats</a></li>
-                        <li><a class="dropdown-item" href="{{ route('petprofile') }}">All</a></li>
-                    </ul>
                     <li class="nav-item">
                         <a class="nav-link mx-lg-2" href="{{ route('hta') }}">How to Adopt</a>
                     </li>

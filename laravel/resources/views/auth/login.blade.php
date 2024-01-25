@@ -10,7 +10,7 @@
         <div class="login-container">
             <form action="{{ route('authenticate') }}" method="POST">
                 @csrf
-                <input type="email" name="email" placeholder="Username" value="{{ old('email') }}" required />
+                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required />
                 @error('email')
                     <span>{{ $message }}</span>
                 @enderror

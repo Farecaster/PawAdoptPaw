@@ -20,10 +20,7 @@ Route::get('/',  function () {
     return view('homepage');
 })->name('homepage');
 
-Route::get('/test',  function () {
-    return view('test');
-})->name('test');
-
+// Authentication //
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/signup', [AuthController::class, 'signupStore'])->name('signup.store');
 
