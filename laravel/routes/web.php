@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',  function () {
     return view('homepage');
-})->name('homepage');
+})->name('homepage')->middleware('auth');
 
 // Authentication //
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
@@ -38,13 +38,13 @@ Route::get('/about',  function () {
 })->name('about');
 
 
-Route::get('/petprofile',  function () {
+Route::get('/pets',  function () {
     return view('petprofile');
 })->name('petprofile');
 
-Route::get('/dogs',  function () {
+Route::get('/pets/dogs',  function () {
     return view('dogs');
 })->name('dogs');
-Route::get('/cats',  function () {
+Route::get('/pets/cats',  function () {
     return view('cats');
 })->name('cats');

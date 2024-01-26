@@ -1,22 +1,24 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a href="#" class="navbar-brand">
-            <img src="assets/logo.png" alt="" class="d-inline-block align-top" />
+            <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
         </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <img src="assets/logo.png" alt="" class="d-inline-block align-top" />
+                <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" aria-current="page" href="{{ route('homepage') }}">Home</a>
+                        <a class="nav-link {{ Request::is('/') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link bg-success rounded px-3 text-light" href="{{ route('petprofile') }}"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="{{ route('petprofile') }}" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             Pet Profile
                         </a>
                         <ul class="dropdown-menu">
@@ -26,18 +28,22 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{{ route('hta') }}">How to Adopt</a>
+                        <a class="nav-link {{ Request::is('hta') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="{{ route('hta') }}">How to Adopt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-lg-2" href="{{ route('about') }}">About Us</a>
+                        <a class="nav-link {{ Request::is('about') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="{{ route('about') }}">About Us</a>
                     </li>
                     @guest
                         <li class="nav-item">
-                            <a class="nav-link bg-success rounded px-3 text-light" href="{{ route('signup') }}">Sign
+                            <a class="nav-link  {{ Request::is('signup') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('signup') }}">Sign
                                 Up</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('login') }}" class="login-button">LogIn</a>
+                            <a href="{{ route('login') }}"
+                                class="nav-link {{ Request::is('login') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}">LogIn</a>
                         </li>
                     @endguest
                     @auth
