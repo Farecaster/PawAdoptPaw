@@ -17,17 +17,20 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                            href="{{ route('petprofile') }}" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Pet Profile
+                            href="{{ route('pets') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pets
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('dogs') }}">Dogs</a></li>
                             <li><a class="dropdown-item" href="{{ route('cats') }}">Cats</a></li>
-                            <li><a class="dropdown-item" href="{{ route('petprofile') }}">All</a></li>
+                            <li><a class="dropdown-item" href="{{ route('pets') }}">All</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ Request::is('post-for-adoption') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="{{ route('post-for-adoption') }}">Post for Adoption</a>
+                    </li>
+                    <li clas <li class="nav-item">
                         <a class="nav-link {{ Request::is('hta') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                             href="{{ route('hta') }}">How to Adopt</a>
                     </li>
@@ -48,7 +51,16 @@
                     @endguest
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link mx-lg-2" href="{{ route('about') }}">{{ Auth::user()->name }}</a>
+                            <a class="nav-link {{ Request::is('r') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('incoming.requests') }}">Incoming Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('my.requests') }}">Your requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mx-lg-2"
+                                href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
                         </li>
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST">
