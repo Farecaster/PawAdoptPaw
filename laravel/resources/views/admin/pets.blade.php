@@ -13,7 +13,7 @@
                         <th>ID</th>
                         <th>Name</th>
                         <th>Breed</th>
-                        <th>Profile</th>
+                        <th>Pet Profile</th>
                         <th>Ban</th>
 
                     </tr>
@@ -27,7 +27,7 @@
                             <td><a href="{{ route('admin.post', ['id' => $pet->id]) }}">{{ $pet->name }}<i
                                         class="bi bi-arrow-up-right"></i></a></td>
                             <td>
-                                <form action="{{ route('pet.delete', ['pet' => pet->id]) }}" method="POST">
+                                <form action="{{ route('pet.delete', ['pet' => $pet->id]) }}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <input type="submit" class="btn btn-white" value="Delete this post">

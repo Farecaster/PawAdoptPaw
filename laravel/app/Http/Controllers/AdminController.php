@@ -56,20 +56,17 @@ class AdminController extends Controller
     }
     public function pets()
     {
-        $pets = Pet::query();
-
-        $pets = $pets->whereDoesntHave('adoptionRequests', function ($query) {
+        $pets = Pet::whereDoesntHave('adoptionRequests', function ($query) {
             $query->whereIn('status', ['accepted', 'done']);
-        });
+        })->get();
+
         return view('admin.pets', ['pets' => $pets]);
     }
     public function Adoptedpets()
     {
-        $pets = Pet::query();
-
-        $pets = $pets->where('adoptionRequests', function ($query) {
+        $pets = Pet::with('adoptionRequests')->whereHas('adoptionRequests', function ($query) {
             $query->where('status', 'done');
-        });
+        })->get();
         return view('admin.adopted-pets', ['pets' => $pets]);
     }
 
@@ -91,7 +88,8 @@ class AdminController extends Controller
             'pet' => $id
         ]);
     }
-    public function unban(User $id){
+    public function unban(User $id)
+    {
 
         $id->update(['is_banned' => false]);
         return redirect()->back();

@@ -143,9 +143,19 @@ class AdoptionRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AdoptionRequest $adoptionRequest)
+    public function update(Request $request, AdoptionRequest $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'contact_number' => 'required|numeric',
+            'veterinary_information' => 'required|accepted',
+            'adoption_agreement' => 'required|accepted',
+            'additional_comment' => 'required',
+        ]);
+        $id->update($data);
+        return redirect(route('my.requests'));
     }
     public function acceptRequest(Request $request, AdoptionRequest $id)
     {

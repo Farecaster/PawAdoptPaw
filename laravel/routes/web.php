@@ -59,6 +59,7 @@ Route::post('/pets/{pet}/adopt', [AdoptionRequestController::class, 'store'])->n
 
 Route::get('/my-requests', [AdoptionRequestController::class, 'myRequest'])->name('my.requests');
 Route::get('/my-requests/{id}/edit', [AdoptionRequestController::class, 'myRequestEdit'])->name('my.requests.edit');
+Route::put('/my-requests/{id}', [AdoptionRequestController::class, 'update'])->name('my.requests.update');
 Route::delete('/my-requests/{id}', [AdoptionRequestController::class, 'myRequestDestroy'])->name('my.requests.delete');
 
 Route::get('/incoming-requests', [AdoptionRequestController::class, 'incomingRequest'])->name('incoming.requests');

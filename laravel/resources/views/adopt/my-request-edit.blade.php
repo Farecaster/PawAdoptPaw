@@ -3,7 +3,7 @@
 @section('content')
     <div class="container d-flex justify-content-center postform">
 
-        <form id="adoptionForm" action="" method="POST">
+        <form id="adoptionForm" action="{{ route('my.requests.update', ['id' => $requests]) }}" method="POST">
             @csrf
             @method('put')
             <div class="mb-3">
