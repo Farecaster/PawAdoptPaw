@@ -1,9 +1,8 @@
 @extends('layout.app')
-
 @section('content')
     <div class="container user-profile">
-        @if ($incomingRequests->isNotEmpty())
-            <h1 class="text-center">Incoming Request</h1>
+        @if ($onGoingRequests->isNotEmpty())
+            <h1 class="text-center">On Going Request</h1>
 
 
             <div class="table-responsive">
@@ -14,15 +13,15 @@
                             <th>Requester Name</th>
                             <th>Address</th>
                             <th>City</th>
-                            <th>Contact Number</th>
                             <th>Details</th>
+                            <th>Done</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        @foreach ($incomingRequests as $request)
+                        @foreach ($onGoingRequests as $request)
                             <tr class="text-center">
-                                <td><img src="{{ $request->pet->img }}" alt="pet" width="100px">
+                                <td><img src="{{ asset($request->pet->img) }}" alt="pet" width="100px">
                                     <div>
                                         <a
                                             href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a>
@@ -31,9 +30,15 @@
                                 <td>{{ $request->name }}</td>
                                 <td>{{ $request->address }}</td>
                                 <td>{{ $request->city }}</td>
-                                <td>{{ $request->contact_number }}</td>
-                                <td><a href="{{ route('incoming.requests.details', ['id' => $request->id]) }}">View
+                                <td><a href="{{ route('ongoing.requests.details', ['id' => $request->id]) }}">View
                                         Details</a></td>
+                                <td>
+                                    <form action="{{ route('done.request', ['id' => $request->id]) }}" method="POST">
+                                        @csrf
+                                        @method('put')
+                                        <button class="btn btn-success">Done</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

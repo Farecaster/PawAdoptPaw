@@ -11,16 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('adoption_requests', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address');
-            $table->string('city');
-            $table->string('contact_number');
-            $table->string('veterinary_information');
-            $table->string('adoption_agreement');
-            $table->text('additional_comment');
-            $table->string('status')->default('pending');
+            $table->string('reason');
             $table->unsignedBigInteger('user_id'); //user id of the requester
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('pet_id');
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('adoption_requests');
+        Schema::dropIfExists('reports');
     }
 };

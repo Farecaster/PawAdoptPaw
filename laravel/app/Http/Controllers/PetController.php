@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\Report;
+use App\Models\reportedPost;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -19,22 +22,39 @@ class PetController extends Controller
         if (request()->has('search')) {
             $pets = $pets->where('breed', 'like', '%' . request()->get('search', '') . '%');
         }
+
+        // Exclude pets with accepted adoption requests
+        $pets = $pets->whereDoesntHave('adoptionRequests', function ($query) {
+            $query->whereIn('status', ['accepted', 'done']);
+        });
+
+
         return view('pet.pets', [
-            'pets' => $pets->paginate(2)
+            'pets' => $pets->paginate(10)
         ]);
     }
     public function showdogs()
     {
-        $dogs = Pet::where('species', 'dog')->paginate(10);
+        $pets = Pet::where('species', 'dog')
+            // Exclude pets with accepted adoption requests
+            ->whereDoesntHave('adoptionRequests', function ($query) {
+                $query->whereIn('status', ['accepted', 'done']);
+            })->paginate(10);
+
         return view('pet.dogs', [
-            'dogs' => $dogs
+            'dogs' => $pets
         ]);
     }
     public function showcats()
     {
-        $cats = Pet::where('species', 'cat')->paginate(10);
-        return view('pet.cats', [
-            'cats' => $cats
+        $pets = Pet::where('species', 'cat')
+            // Exclude pets with accepted adoption requests
+            ->whereDoesntHave('adoptionRequests', function ($query) {
+                $query->whereIn('status', ['accepted', 'done']);
+            })->paginate(10);
+
+        return view('pet.dogs', [
+            'dogs' => $pets
         ]);
     }
 
@@ -49,6 +69,21 @@ class PetController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    public function report(Request $request, Pet $pet)
+    {
+        $data = $request->validate([
+            'reason' => 'required|max:255'
+        ]);
+
+        $data['user_id'] = auth()->id();
+        $data['pet_id'] = $pet->id;
+        Report::create($data);
+        return redirect(route('pets'));
+    }
+
+
+
+
     public function store(Request $request)
     {
         $data = $request->validate([
@@ -100,6 +135,10 @@ class PetController extends Controller
         if (auth()->id() !== $pet->user->id) {
             abort(404);
         }
+        if ($pet->adoptionRequests()->whereIn('status', ['accepted', 'done'])->exists()) {
+            abort(404);
+        }
+
         return view('pet.edit', ['pet' => $pet]);
     }
 
@@ -150,13 +189,21 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        if (auth()->id() !== $pet->user->id) {
-            abort(404);
+        if (Gate::allows('admin') || auth()->id() === $pet->user->id) {
+            if (File::exists($pet->img)) {
+                File::delete($pet->img);
+            }
+            $pet->delete();
+
+            if (Gate::allows('admin')) {
+                // Redirect to the admin dashboard for admins
+                return redirect(route('admin.index'));
+            } else {
+                // Redirect to the pets index page for non-admins
+                return redirect(route('pets'));
+            }
         }
-        if (File::exists($pet->img)) {
-            File::delete($pet->img);
-        }
-        $pet->delete();
-        return redirect(route('pets'));
+
+        abort(403, 'Unauthorized');
     }
 }

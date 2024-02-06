@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_banned',
     ];
 
     /**
@@ -41,6 +42,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_admin' => 'boolean',
     ];
 
     public function pets()
@@ -50,5 +52,9 @@ class User extends Authenticatable
     public function adoptionRequests()
     {
         return $this->hasMany(AdoptionRequest::class);
+    }
+    public function Reports()
+    {
+        return $this->hasMany(Report::class);
     }
 }

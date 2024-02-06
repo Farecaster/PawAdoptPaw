@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container user-profile">
         @if ($adoptionRequests->isNotEmpty())
             <h1 class="text-center">Adoption Request</h1>
 
@@ -9,24 +9,34 @@
             <div class="table-responsive">
                 <table class="table table-bordered mx-auto">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Pet Requested</th>
                             <th>Name</th>
                             <th>Address</th>
-                            <th>City</th>
-                            <th>Contact Number</th>
-                            <th>Details</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @foreach ($adoptionRequests as $request)
-                            <tr>
-                                <td><img src="{{ $request->pet->img }}" alt="pet" width="100px"></td>
+                            <tr class="text-center">
+                                <td><img src="{{ $request->pet->img }}" alt="pet" width="100px">
+                                    <div>
+                                        <a
+                                            href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a>
+                                    </div>
+                                </td>
                                 <td>{{ $request->name }}</td>
                                 <td>{{ $request->address }}</td>
-                                <td>{{ $request->city }}</td>
-                                <td>{{ $request->contact_number }}</td>
+                                <td><a href="{{ route('my.requests.edit', ['id' => $request->id]) }}">Edit</a></td>
+                                <td>
+                                    <form action="{{ route('my.requests.delete', ['id' => $request->id]) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </td>
                                 <!-- Add more columns as needed -->
 
                             </tr>

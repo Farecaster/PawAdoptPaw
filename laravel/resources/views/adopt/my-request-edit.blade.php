@@ -3,27 +3,28 @@
 @section('content')
     <div class="container d-flex justify-content-center postform">
 
-        <form id="adoptionForm" action="{{ route('pet.adopt.store', ['pet' => $pet]) }}" method="POST">
+        <form id="adoptionForm" action="" method="POST">
             @csrf
+            @method('put')
             <div class="mb-3">
                 <label for="contactName" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="contactName" name="name" placeholder="Enter your name"
-                    required value="{{ old('name') }}">
+                    required value="{{ $requests->name }}">
             </div>
             <div class="mb-3">
                 <label for="contactAddress" class="form-label">Address</label>
                 <input type="text" class="form-control" id="contactAddress" name="address"
-                    placeholder="Enter your address" required value="{{ old('address') }}">
+                    placeholder="Enter your address" required value="{{ $requests->address }}"">
             </div>
             <div class="mb-3">
                 <label for="contactCity" class="form-label">City</label>
                 <input type="text" class="form-control" id="contactCity" name="city" placeholder="City" required
-                    value="{{ old('city') }}">
+                    value="{{ $requests->city }}">
             </div>
             <div class="mb-3">
                 <label for="contactNumber" class="form-label">Contact number</label>
                 <input type="text" class="form-control" id="contactNumber" name="contact_number" placeholder="+639"
-                    required value="{{ old('contact_number') }}">
+                    required value="{{ $requests->contact_number }}">
             </div>
             <div class="mb-3">
                 <label class="form-label">Veterinary Information:<br>Are you committed
@@ -44,7 +45,7 @@
             <div class="mb-3">
                 <label for="additionalComments" class="form-label">Why do you want to adopt a pet?</label>
                 <textarea class="form-control" id="additionalComments" name="additional_comment" rows="4"
-                    placeholder="Any additional comments or questions">{{ old('additional_comment') }}</textarea>
+                    placeholder="Any additional comments or questions">{{ $requests->additional_comment }}</textarea>
             </div>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" class="btn btn-primary" id="submitAdoptionRequest">Submit Request</button>

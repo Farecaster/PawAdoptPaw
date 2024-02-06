@@ -26,10 +26,7 @@
                             <li><a class="dropdown-item" href="{{ route('pets') }}">All</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('post-for-adoption') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                            href="{{ route('post-for-adoption') }}">Post for Adoption</a>
-                    </li>
+
                     <li clas <li class="nav-item">
                         <a class="nav-link {{ Request::is('hta') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                             href="{{ route('hta') }}">How to Adopt</a>
@@ -51,12 +48,24 @@
                     @endguest
                     @auth
                         <li class="nav-item">
+                            <a class="nav-link {{ Request::is('post-for-adoption') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('post-for-adoption') }}">Post for Adoption</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ Request::is('r') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="{{ route('incoming.requests') }}">Incoming Requests</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('my.requests') }}">Your requests</a>
+                                href="{{ route('my.requests') }}">My requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('ongoing.requests.owner') }}">On going requests(pet owner)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('history') }}">History</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link mx-lg-2"
@@ -65,7 +74,7 @@
                         <li class="nav-item">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
-                                <button type="submit">Logout</button>
+                                <button type="submit" class="btn btn-danger">Logout</button>
                             </form>
                         </li>
                     @endauth

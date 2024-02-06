@@ -27,4 +27,13 @@ class Pet extends Model
     {
         return $this->hasMany(AdoptionRequest::class);
     }
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    public function isAdopted()
+    {
+        return $this->adoptionRequests()->whereIn('status', ['accepted', 'done'])->exists();
+    }
 }
