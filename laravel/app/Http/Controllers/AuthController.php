@@ -37,20 +37,36 @@ class AuthController extends Controller
     }
     public function authenticate(Request $request)
     {
-
         $validated = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required|min:8',
         ]);
 
         if (Auth::attempt($validated)) {
+            // Check if the authenticated user is banned
+            if (Auth::user()->is_banned) {
+                Auth::logout(); // Log out the banned user
+                return redirect(route('login'))->withErrors([
+                    'email' => 'Your account has been banned.',
+                ]);
+            }
+
             request()->session()->regenerate();
-            return redirect(route('homepage'))->with('success', 'log in successfully!');
+
+            // Check if the authenticated user is an admin
+            if (Auth::user()->is_admin) {
+                return redirect(route('admin.index'))->with('success', 'Logged in successfully as admin!');
+            }
+
+            return redirect(route('homepage'))->with('success', 'Logged in successfully!');
         }
+
         return redirect(route('login'))->withErrors([
-            'email' => 'No matching user found with the provided email and password'
+            'email' => 'No matching user found with the provided email and password',
         ]);
     }
+
+
     public function logout()
     {
         auth()->logout();

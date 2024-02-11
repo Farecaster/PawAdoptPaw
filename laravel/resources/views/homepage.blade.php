@@ -11,7 +11,7 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="assets/uno.jpg" class="d-block w-100" alt="...">
+                <img src="{{ asset('assets/uno.jpg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5>Transform Lives: Adopt a Pet Today!</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/dos.jpg" class="d-block w-100" alt="...">
+                <img src="{{ asset('assets/dos.jpg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5>Find Your Furry Friend: Adopt, Don't Shop!</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="assets/tre.jpg" class="d-block w-100" alt="...">
+                <img src="{{ asset('assets/tre.jpg') }}" class="d-block w-100" alt="...">
                 <div class="carousel-caption">
                     <h5>Welcome Unconditional Love into Your Home: Adopt a Shelter Pet.</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
@@ -62,7 +62,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="assets/boxer.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('assets/boxer.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Duke</h5>
                             <p class="card-text">Meet Duke, a playful and friendly Boxer.
@@ -76,7 +76,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="assets/shihtzu.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('assets/shihtzu.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Bella</h5>
                             <p class="card-text">Meet Bella, a sweet and affectionate Shih Tzu.
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="assets/siamese.jpg" class="card-img-top" alt="...">
+                        <img src="{{ asset('assets/siamese.jpg') }}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Chloe</h5>
                             <p class="card-text">Meet Chloe, a vocal and affectionate Siamese cat.
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <div class="about-img">
-                        <img src="assets/quatro.jpg" class="img-fluid" alt="...">
+                        <img src="{{ asset('assets/quatro.jpg') }}" class="img-fluid" alt="...">
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">
@@ -157,57 +157,6 @@
         </div>
     </section>
     <!--end pp section-->
-
-    <footer class="footer bg-dark text-light py-5 bottom mt-5">
-        <div class="container">
-            <div class="row justify-content-center gy-3">
-                <div class="col-9 col-lg-6 paw-adopt-paw">
-                    <p class="display-5 text-warning text-center text-lg-start">
-                        PAW ADOPT PAW
-                    </p>
-                    <small class="text-white-50">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Perspiciatis a cumque recusandae impedit magnam provident fugiat,
-                        sequi eligendi. Sapiente impedit nemo obcaecati quo minima officia
-                        quasi unde soluta sint numquam.</small>
-                </div>
-                <div class="col-9 col-lg-6">
-                    <p class="display-5 text-warning text-center text-lg-start">
-                        P.A.W
-                    </p>
-                    <small class="text-white-50">P.A.W stands for all pets are amazing Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit.</small>
-                </div>
-            </div>
-        </div>
-        <div class="container mt-5">
-            <div class="row justify-content-center justify-content-lg-start">
-                <div class="d-none d-lg-inline col-9 col-lg-6">
-                    <p class="text-white">
-                        Copyright 2024 all rights reserved by:
-                        <span class="text-warning">P.A.W</span>
-                    </p>
-                </div>
-                <div class="d-lg-none col-sm-6 text-center">
-                    <p class="text-white text-size">
-                        Copyright 2024 all rights reserved by:
-                        <span class="text-warning">P.A.W</span>
-                    </p>
-                </div>
-                <div class="col-9 col-lg-6 text-center">
-                    <p>
-                        <a href="" class="no-text-decoration text-light">
-                            <i class="bi bi-instagram"></i></a>
-                        <a href="" class="no-text-decoration text-light ms-4">
-                            <i class="bi bi-facebook"></i></a>
-                        <a href="" class="no-text-decoration text-light ms-4">
-                            <i class="bi bi-twitter-x"></i></a>
-                        <a href="" class="no-text-decoration text-light ms-4">
-                            <i class="bi bi-envelope-paper-heart"></i></a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
     <div class="modal fade" id="adoptModal" tabindex="-1" aria-labelledby="adoptModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -280,4 +229,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

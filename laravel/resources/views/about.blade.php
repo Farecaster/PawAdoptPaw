@@ -1,7 +1,7 @@
-@extends('layout.app');
+@extends('layout.app')
 
 <!--Pet profile section-->
-@section('content');
+@section('content')
 <section id="about" class="about section-padding">
     <div class="container">
         <div class="row">
