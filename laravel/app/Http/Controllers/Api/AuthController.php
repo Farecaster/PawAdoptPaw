@@ -46,14 +46,23 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
+    
+        // Attempt to authenticate the user
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+    
+            // Check if the user is banned
+            if ($user->is_banned) {
+                // If the user is banned, return an error response
+                return response()->json(['error' => 'Your account has been banned.'], 403);
+            }
+    
+            // If the user is not banned, generate token and return it
             $token = $user->createToken('myapptoken')->plainTextToken;
-
             return response()->json(['token' => $token], 200);
         }
-
+    
+        // If authentication fails, return an error response
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorrect.'],
         ]);
