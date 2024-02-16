@@ -16,8 +16,7 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                            href="{{ route('pets') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="petsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Pets
                         </a>
                         <ul class="dropdown-menu">
@@ -27,7 +26,7 @@
                         </ul>
                     </li>
 
-                    <li clas <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::is('hta') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                             href="{{ route('hta') }}">How to Adopt</a>
                     </li>
@@ -47,35 +46,34 @@
                         </li>
                     @endguest
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('post-for-adoption') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('post-for-adoption') }}">Post for Adoption</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('r') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('incoming.requests') }}">Incoming Requests</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('my.requests') }}">My requests</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('ongoing.requests.owner') }}">On going requests(pet owner)</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{ Request::is('requests*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Requests</a>
+                            <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+                                <li><a class="dropdown-item {{ Request::is('incoming-requests') ? 'active' : '' }}" href="{{ route('incoming.requests') }}">Incoming Requests</a></li>
+                                <li><a class="dropdown-item {{ Request::is('my-requests') ? 'active' : '' }}" href="{{ route('my.requests') }}">My Requests</a></li>
+                                @auth
+                                    <li><a class="dropdown-item {{ Request::is('ongoing-requests-owner') ? 'active' : '' }}" href="{{ route('ongoing.requests.owner') }}">Ongoing Requests (Pet Owner)</a></li>
+                                @endauth
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="{{ route('history') }}">History</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link mx-lg-2"
-                                href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">{{ Auth::user()->name }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="btn btn-danger">Logout</button>
-                            </form>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person"></i> <!-- Bootstrap person icon -->
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">Profile</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
                     @endauth
                 </ul>
