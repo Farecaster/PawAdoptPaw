@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="container d-flex justify-content-center postform">
-
         <form id="adoptionForm" action="{{ route('pet.adopt.store', ['pet' => $pet]) }}" method="POST">
             @csrf
             <div class="mb-3">

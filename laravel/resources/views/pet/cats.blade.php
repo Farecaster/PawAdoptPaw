@@ -10,18 +10,19 @@
             @if ($cats->isEmpty())
                 <h1>No pets Available</h1>
             @else
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-3">
+                <div class="row row-cols-1 row-cols-md-3 g-3">
                     @foreach ($cats as $cat)
-                        <div class="col">
+                        <div class="col mb-4">
                             <a href="{{ route('pet.show', ['pet' => $cat]) }}" class="text-decoration-none">
-                                <div class="card">
+                                <div class="card h-100">
                                     <img src="{{ asset($cat->img) }}" class="card-img-top" alt="...">
-                                    <div class="card-body">
+                                    <div class="card-body" style="height: 150px;"> <!-- Set a fixed height for the card body -->
                                         <h5 class="card-title">{{ $cat->name }}</h5>
                                         <p class="card-text">
-                                            {{ \Illuminate\Support\Str::limit($cat->description, 100, $end = '...') }}</p>
+                                            {{ \Illuminate\Support\Str::limit($cat->description, 100, $end = '...') }}
+                                        </p>
                                     </div>
-                                    <div class="card-footer d-flex justify-content-center">
+                                    <div class="card-footer text-center">
                                         <button class="btn btn-primary">Click for more</button>
                                     </div>
                                 </div>
@@ -32,5 +33,5 @@
             @endif
         </div>
     </section>
-    <div class="container">{{ $cats->links() }}</div>
+    <div class="container mt-4">{{ $cats->links() }}</div>
 @endsection

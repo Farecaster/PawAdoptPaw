@@ -18,9 +18,6 @@ a {
     text-decoration: none;
 }
 
-
-
-/* Login CSS*/
 .login-content{
     text-align: center;
     margin-top: 100px;
@@ -44,7 +41,7 @@ a {
     margin: 25px auto;
     border-radius: 10px;
     padding: 15px;
-    border: 1px solid  #198754;
+    border: 1px solid  #4ca771;
 }
 
 input{
@@ -55,7 +52,7 @@ input{
     padding: 5px;
     margin-top: 10px;
     font-size: 15px;
-    border: 1px solid  #198754;
+    border: 1px solid  #4ca771;
 }
 
 
@@ -68,9 +65,9 @@ input{
     font-size: 15px;
     color: white;
     border-radius: 10px;
-    border: 1px solid  #198754;
+    border: 1px solid  #4ca771;
     font-weight: bold;
-    background-color: #198754;
+    background-color: #4ca771;
     cursor: pointer;
     transition: 0.5s;
 }
@@ -132,13 +129,13 @@ input{
 }
 .navbar-brand {
     font-weight: 500;
-    color: #198754;
+    color: #4ca771;
     font-size: 24px;
     transition: 0.3s color;
 }
 
 .login-button {
-    background-color: #198754;
+    background-color: #4ca771;
     color: #fff;
     font-size: 14px;
     padding: 8px 20px;
@@ -148,7 +145,7 @@ input{
 }
 
 .login-button:hover{
-    background-color: #00b383;
+    background-color: #C0E6BA;
 }
 
 .navbar-toggler {
@@ -162,7 +159,7 @@ input{
 }
 
 .nav-link{
-    color: #666777;
+    color: #013237;
     font-weight: 500;
 }
 
@@ -241,13 +238,20 @@ input{
 .card-img-top{
     border-radius: 30px;
     padding: 10px;
+    height: 60%;
 }
-.card{
+.card {
     border-radius: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
-.card-body{
+.card-body {
+    flex: 1;
     padding: 25px;
-    margin-top: -20px;
+}
+.card-footer {
+    text-align: center;
 }
 .btn-primary:hover{
     background-color: #000
@@ -264,10 +268,12 @@ input{
     background-color: white;
     border: none;
 }
-.user-profile{
-    margin-top: 200px;
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -280,6 +286,7 @@ header, footer {
     text-align: center;
     padding: 10px;
 }
+.footer{}
 
 main {
     padding: 20px;
@@ -299,34 +306,155 @@ main {
     height: auto;
 }
 
+.header-wrapper header {
+    width: 100%;
+    background-image: url('../assets/uno.jpg');
+    min-height: calc(100px + 9vw);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
+.header-wrapper .cols-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 50px;
+}
 
-@media only screen and(min-width:768px) and (max-width:991px) {
-    .carousel-caption{
+.header-wrapper .cols-container .left-col {
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-wrapper .cols-container .left-col .img-container {
+    position: relative;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-wrapper .cols-container .left-col .img-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.18);
+}
+
+.header-wrapper .cols-container .left-col .h1 {
+    margin-top: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    margin-top: 5px;
+}
+
+.header-wrapper .cols-container .left-col .h4 {
+    font-size: 0.9rem;
+    color: #818181;
+    margin: 0;
+}
+.header-wrapper .cols-container .right-col nav ul{
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    justify-content: space-between;
+}
+.header-wrapper .cols-container .right-col nav ul {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.header-wrapper .cols-container .left-col ul.nav li a {
+    text-transform: uppercase;
+    color: #818181;
+}
+
+.header-wrapper .cols-container .left-col ul.nav li:nth-child(1) a {
+    color: #1d1d1d;
+    font-weight: 600;
+}
+
+.header-wrapper .container .row .col {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+.header-wrapper .container .row .col .card {
+    max-width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .carousel-caption {
         bottom: 370px;
     }
-    .carousel-caption p{
+    .carousel-caption p {
         width: 100%;
     }
 }
 
-@media only screen and(max-width:768px){
-    .navbar{
+@media only screen and (max-width: 768px) {
+    .navbar {
         text-align: center;
     }
-    .carousel-caption{
+    .carousel-caption {
         bottom: 125px;
     }
-    .carousel-caption h5{
+    .carousel-caption h5 {
         font-size: 17px;
     }
-    .carousel-caption a{
+    .carousel-caption a {
         padding: 10px 15px;
     }
-    .carousel-caption p{
+    .carousel-caption p {
         width: 100%;
         line-height: 1.6;
         font-size: 12px;
     }
 }
+
+@media (min-width: 868px) {
+    .header-wrapper .cols-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 90%;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+    }
+    .header-wrapper .cols-container .left-col {
+        padding: 25px 0;
+    }
+    .header-wrapper .cols-container .right-col nav ul {
+        flex-direction: row;
+        gap: 30px;
+    }
+    .header-wrapper .cols-container .right-col .pets {
+        height: 365px;
+        overflow: auto;
+        padding: 0 0 30px;
+    }
+}
+
+@media (min-width: 1017px) {
+    .header-wrapper .cols-container .left-col {
+        margin: 0;
+        margin-right: auto;
+    }
+    .header-wrapper .cols-container .right-col nav {
+        flex-direction: row;
+    }
+}
+
 
