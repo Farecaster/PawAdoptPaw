@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AdoptionRequestController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PetController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/history', [AdoptionRequestController::class, 'history']);
     
     
+    Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
 
 
 });
