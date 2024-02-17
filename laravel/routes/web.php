@@ -36,6 +36,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/post-for-adoption', [PetController::class, 'create'])->name('post-for-adoption');
     Route::post('/post-for-adoption', [PetController::class, 'store'])->name('post-for-adoption.store');
 
+    //pets
+    Route::get('/pets/dogs', [PetController::class, 'showdogs'])->name('dogs');
+    Route::get('/pets/cats', [PetController::class, 'showcats'])->name('cats');
+    Route::get('/pets', [PetController::class, 'index'])->name('pets');
+    
     Route::get('/pets/{pet}', [PetController::class, 'show'])->name('pet.show');
     Route::post('/pets/{pet}', [PetController::class, 'report'])->name('pet.report');
     Route::get('/pets/{pet}/edit', [PetController::class, 'edit'])->name('pet.edit');
@@ -72,10 +77,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', [AuthController::class, 'authenticate'])->name('authenticate');
 });
 
-//pets
-Route::get('/pets/dogs', [PetController::class, 'showdogs'])->name('dogs');
-Route::get('/pets/cats', [PetController::class, 'showcats'])->name('cats');
-Route::get('/pets', [PetController::class, 'index'])->name('pets');
+
 
 Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
     // Admin-only routes here
