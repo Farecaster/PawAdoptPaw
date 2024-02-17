@@ -1,4 +1,4 @@
-<footer class="bg-dark text-light py-5 mt-5">
+<footer class="bg-dark text-light py-5 mt-5 flex">
     <div class="container">
         <div class="row justify-content-center gy-3">
             <div class="col-12 col-lg-6 paw-adopt-paw">

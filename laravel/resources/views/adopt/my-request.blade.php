@@ -32,7 +32,8 @@
                                     <td>{{ $request->address }}</td>
                                     <td><a href="{{ route('my.requests.edit', ['id' => $request->id]) }}">Edit</a></td>
                                     <td>
-                                        <form action="{{ route('my.requests.delete', ['id' => $request->id]) }}" method="POST">
+                                        <form action="{{ route('my.requests.delete', ['id' => $request->id]) }}"
+                                            method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">Delete</button>
@@ -44,7 +45,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
+                </div>        
             @else
                 <p class="text-center user-profile">No adoption requests available.</p>
             @endif

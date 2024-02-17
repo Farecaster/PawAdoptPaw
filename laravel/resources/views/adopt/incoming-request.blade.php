@@ -2,9 +2,8 @@
 @section('content')
     <section id="petprofile" class="incoming section-padding">
         <div class="container user-profile mt-5">
-            @if ($incomingRequests->isNotEmpty())                <h1 class="text-center">Incoming Request</h1>
-
-
+            @if ($incomingRequests->isNotEmpty())
+                <h1 class="text-center">Incoming Request</h1>
                 <div class="table-responsive">
                     <table class="table table-bordered mx-auto">
                         <thead>
