@@ -31,7 +31,7 @@ Route::get('/about',  function () {
 })->name('about');
 
 // Authentication //
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'not_banned']], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/post-for-adoption', [PetController::class, 'create'])->name('post-for-adoption');
     Route::post('/post-for-adoption', [PetController::class, 'store'])->name('post-for-adoption.store');
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/pets/dogs', [PetController::class, 'showdogs'])->name('dogs');
     Route::get('/pets/cats', [PetController::class, 'showcats'])->name('cats');
     Route::get('/pets', [PetController::class, 'index'])->name('pets');
-    
+
     Route::get('/pets/{pet}', [PetController::class, 'show'])->name('pet.show');
     Route::post('/pets/{pet}', [PetController::class, 'report'])->name('pet.report');
     Route::get('/pets/{pet}/edit', [PetController::class, 'edit'])->name('pet.edit');
@@ -61,14 +61,18 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('/incoming-requests/{id}/reject', [AdoptionRequestController::class, 'rejectRequest'])->name('reject.request');
     Route::get('/incoming-requests/details/{id}', [AdoptionRequestController::class, 'showIncomingRequestDetails'])->name('incoming.requests.details');
     //on going
-    Route::get('/on-going-requests/owner', [AdoptionRequestController::class, 'onGoingRequestOwner'])->name('ongoing.requests.owner');
+    Route::get('/on-going-requests', [AdoptionRequestController::class, 'onGoingRequestOwner'])->name('on-going.requests');
+    Route::get('/pending-request', [AdoptionRequestController::class, 'pendingRequest'])->name('pending.request');
 
     Route::put('/on-going-requests/{id}/done', [AdoptionRequestController::class, 'doneRequest'])->name('done.request');
     Route::get('/on-going-requests/details/{id}', [AdoptionRequestController::class, 'onGoingRequestDetails'])->name('ongoing.requests.details');
+    Route::get('/requests/details/{id}', [AdoptionRequestController::class, 'pendingRequestDetails'])->name('pending.requests.details');
+
     //history
     Route::get('/history', [AdoptionRequestController::class, 'history'])->name('history');
 
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
 });
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/signup', [AuthController::class, 'signup'])->name('signup');

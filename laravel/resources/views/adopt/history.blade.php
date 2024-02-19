@@ -19,7 +19,8 @@
                         @endif
 
                         <a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a>.
-                        <a href="{{ route('ongoing.requests.details', ['id' => $request->id]) }}">View Details</a>
+                        <a href="{{ route('pending.requests.details', ['id' => $request->id]) }}">View
+                            Details</a>
                     </div>
                 @endforeach
             @else

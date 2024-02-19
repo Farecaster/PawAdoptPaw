@@ -14,6 +14,7 @@ class Pet extends Model
         'age',
         'species',
         'breed',
+        'region',
         'description',
         'img',
         'user_id'

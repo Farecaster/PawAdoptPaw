@@ -27,12 +27,7 @@
                     <span class="text-warning">P.A.W</span>
                 </p>
             </div>
-            <div class="col-12 col-sm-6 text-center d-lg-none">
-                <p class="text-white">
-                    Copyright 2024 all rights reserved by:
-                    <span class="text-warning">P.A.W</span>
-                </p>
-            </div>
+
             <div class="col-12 col-lg-6 text-center">
                 <p>
                     <a href="#" class="no-text-decoration text-light">

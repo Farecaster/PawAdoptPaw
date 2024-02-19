@@ -28,8 +28,12 @@ class AdminController extends Controller
             $query->where('status', 'done');
         })->count();
 
-        $reports = Report::whereDoesntHave('user', function ($query) {
-            $query->where('is_admin', '1');
+        $reports = Report::whereHas('user', function ($quer) {
+            $quer->where('is_admin', '0');
+        })->whereHas('pet',function($quer){
+            $quer->whereHas('user',function($quer){
+                $quer->where('is_admin', '0');
+            });
         })->get();
 
         $banned = User::where('is_banned', '1')->count();

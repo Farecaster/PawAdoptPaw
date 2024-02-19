@@ -41,6 +41,17 @@ class AdoptionRequestController extends Controller
 
         return view('adopt.on-going-request', ['onGoingRequests' => $onGoingRequests]);
     }
+    public function pendingRequest()
+    {
+        $onGoingRequests = AdoptionRequest::with('pet')
+            ->whereHas('user', function ($query) {
+                $query->where('id', Auth::id());
+            })
+            ->whereIn('status', ['accepted','rejected'])
+            ->get();
+
+        return view('adopt.pending-request', ['onGoingRequests' => $onGoingRequests]);
+    }
     public function history()
     {
         //owner logic
@@ -127,6 +138,13 @@ class AdoptionRequestController extends Controller
             abort(404);
         }
         return view('adopt.on-going-request-details', ['onGoingRequest' => $id]);
+    }
+    public function pendingRequestDetails(AdoptionRequest $id)
+    {
+        if (auth()->id() !== $id->user->id) {
+            abort(404);
+        }
+        return view('adopt.pending-request-details', ['onGoingRequest' => $id]);
     }
 
     /**

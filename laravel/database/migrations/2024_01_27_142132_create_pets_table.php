@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('age');
             $table->enum('species', ['dog', 'cat']);
             $table->string('breed');
+            $table->string('region');
             $table->text('description');
             $table->string('img');
             $table->unsignedBigInteger('user_id');
