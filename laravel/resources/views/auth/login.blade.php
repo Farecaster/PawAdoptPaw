@@ -20,7 +20,7 @@
                 @enderror
                 <button type="submit" class="btn-login">Log In</button>
             </form>
-            <p>Don't have an account? <a href="signup.html">Create Account</a></p>
+            <p>Don't have an account? <a href="{{ route('signup') }}">Create Account</a></p>
         </div>
     </section>
 @endsection

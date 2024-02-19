@@ -17,7 +17,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 //PRIVATE ROUTES
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','not_banned']], function () {
 
 
     //AUTH CONTROLLER
@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
 
 //AR CONTROLLER
-Route::group(['middleware' => ['auth:sanctum']], function () {
+Route::group(['middleware' => ['auth:sanctum','not_banned']], function () {
     Route::get('/pets/{pet}/adopt', [AdoptionRequestController::class, 'create']);
     Route::post('/pets/{pet}/adopt', [AdoptionRequestController::class, 'store']);
     
@@ -60,6 +60,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     
     
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
 
 
 });

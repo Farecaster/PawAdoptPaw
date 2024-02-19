@@ -75,10 +75,11 @@ class PetController extends Controller
     {
         // Validate the request data
         $data = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
             'species' => 'required|in:dog,cat',
-            'breed' => 'required|string|max:255',
+            'breed' => 'required|string|max:35',
+            'region' => 'required|string|max:35',
             'description' => 'required|string',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
         ]);
@@ -119,10 +120,10 @@ class PetController extends Controller
 
         // Validate the request data
         $data = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
             'species' => 'required|in:dog,cat',
-            'breed' => 'required|string|max:255',
+            'breed' => 'required|string|max:35',
             'description' => 'required|string',
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
         ]);

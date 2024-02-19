@@ -9,14 +9,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto d-flex align-items-center">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('/') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                             aria-current="page" href="{{ route('homepage') }}">Home</a>
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="petsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle {{ Request::is('pets*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="#" id="petsDropdown" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                             Pets
                         </a>
                         <ul class="dropdown-menu">
@@ -46,27 +48,56 @@
                         </li>
                     @endguest
                     @auth
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ Request::is('requests*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Requests</a>
+                        <li
+                            class="nav-item dropdown {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Give Up a Pet</a>
                             <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
-                                <li><a class="dropdown-item {{ Request::is('incoming-requests') ? 'active' : '' }}" href="{{ route('incoming.requests') }}">Incoming Requests</a></li>
-                                <li><a class="dropdown-item {{ Request::is('my-requests') ? 'active' : '' }}" href="{{ route('my.requests') }}">My Requests</a></li>
-                                @auth
-                                    <li><a class="dropdown-item {{ Request::is('ongoing-requests-owner') ? 'active' : '' }}" href="{{ route('ongoing.requests.owner') }}">Ongoing Requests (Pet Owner)</a></li>
-                                @endauth
+                                <li><a class="dropdown-item {{ Request::is('post-for-adoption*') ? 'active' : '' }}"
+                                        href="{{ route('post-for-adoption') }}">Post For Adoption</a></li>
+                                <li><a class="dropdown-item {{ Request::is('incoming-requests*') ? 'active' : '' }}"
+                                        href="{{ route('incoming.requests') }}">Incoming Requests</a></li>
+                                <li><a class="dropdown-item {{ Request::is('on-going-requests') ? 'active' : '' }}"
+                                        href="{{ route('on-going.requests') }}">Your Accepted Requests</a></li>
                             </ul>
                         </li>
+                        <li
+                            class="nav-item dropdown {{ Request::is('my-requests*') || Request::is('pending-request*') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle {{ Request::is('my-requests*') || Request::is('pending-request*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Adopt A Pet</a>
+                            <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+                                <li><a class="dropdown-item {{ Request::is('my-requests*') ? 'active' : '' }}"
+                                        href="{{ route('my.requests') }}">My Requests</a></li>
+                                <li><a class="dropdown-item {{ Request::is('pending-request*') ? 'active' : '' }}"
+                                        href="{{ route('pending.request') }}">Adoption Status</a></li>
+                            </ul>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('requests') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="{{ route('history') }}">History</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person"></i> <!-- Bootstrap person icon -->
+                            <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'bg-success rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                @if (Auth::user()->img == null)
+                                    <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
+                                @else
+                                    <img src="{{ asset(Auth::user()->img) }}" alt="User Image"
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
+                                @endif
+                                <!-- Bootstrap person icon -->
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">Profile</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
@@ -80,8 +111,8 @@
             </div>
         </div>
 
-        <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-            aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <button class="navbar-toggler pe-0" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
