@@ -12,9 +12,20 @@ class AdoptionRequestController extends Controller
     public function myRequest()
     {
         $user = Auth::user();
-        $adoptionRequests = $user->adoptionRequests()->where('status', 'pending')->get();
-        return response()->json($adoptionRequests);
+        $adoptionRequests = $user->adoptionRequests()
+            ->where('status', 'pending')
+            ->get();
+
+        // Collect pet for each adoption request
+        $adoptionRequests->map(function ($request) {
+            return $request->pet;
+        });
+
+        return response()->json(
+            $adoptionRequests
+        );
     }
+
 
     public function incomingRequest()
     {
@@ -96,7 +107,7 @@ class AdoptionRequestController extends Controller
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
-        return response()->json(['request' => $id]);
+        return response()->json($id);
     }
 
     public function update(Request $request, AdoptionRequest $id)
