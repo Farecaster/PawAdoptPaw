@@ -31,15 +31,28 @@
                                         {{ old('species') == '' ? 'selected' : '' }}>
                                         {{ $pet->species }}</option>
                                     @if ($pet->species == 'Dog')
-                                        <option value="cat" {{ old('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
+                                        <option value="Cat" {{ old('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
                                     @else
-                                        <option value="dog" {{ old('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
+                                        <option value="Dog" {{ old('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
                                     @endif
                                 </select>
                             </div>
                             <div>
                                 <label for="">Breed:</label>
                                 <input type="text" name="breed" required value="{{ $pet->breed }}">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="gender">Gender:</label>
+                                <select id="gender" name="gender" class="form-control" required>
+                                    <option value="{{ $pet->species == 'Male' ? 'Male' : 'Female' }}"
+                                        {{ old('species') == '' ? 'selected' : '' }}>
+                                        {{ $pet->gender }}</option>
+                                    @if ($pet->gender == 'Male')
+                                        <option value="Female" {{ old('species') == 'Female' ? 'selected' : '' }}>Female</option>
+                                    @else
+                                        <option value="Male" {{ old('species') == 'Male' ? 'selected' : '' }}>Male</option>
+                                    @endif
+                                </select>
                             </div>
                             <div class="col-sm-6">
                                 <label for="region">Region:</label>

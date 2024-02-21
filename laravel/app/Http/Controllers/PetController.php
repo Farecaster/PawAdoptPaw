@@ -30,7 +30,7 @@ class PetController extends Controller
 
 
         return view('pet.pets', [
-            'pets' => $pets->paginate(10)
+            'pets' => $pets->paginate(12)
         ]);
     }
     public function showdogs()
@@ -39,7 +39,7 @@ class PetController extends Controller
             // Exclude pets with accepted adoption requests
             ->whereDoesntHave('adoptionRequests', function ($query) {
                 $query->whereIn('status', ['accepted', 'done']);
-            })->paginate(10);
+            })->paginate(12);
 
         return view('pet.dogs', [
             'dogs' => $pets
@@ -51,7 +51,7 @@ class PetController extends Controller
             // Exclude pets with accepted adoption requests
             ->whereDoesntHave('adoptionRequests', function ($query) {
                 $query->whereIn('status', ['accepted', 'done']);
-            })->paginate(10);
+            })->paginate(12);
 
         return view('pet.dogs', [
             'dogs' => $pets
@@ -89,11 +89,12 @@ class PetController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
-            'species' => 'required|in:dog,cat',
+            'species' => 'required',
             'breed' => 'required|string|max:35',
+            'gender' => 'required|string|max:35',
             'region' => 'required|string|max:35',
             'description' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif', // Assuming it's an image upload
         ]);
 
 
@@ -154,10 +155,12 @@ class PetController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
-            'species' => 'required|in:dog,cat',
+            'species' => 'required',
             'breed' => 'required|string|max:35',
+            'gender' => 'required|string|max:35',
+            'region' => 'required|string|max:35',
             'description' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif', // Assuming it's an image upload
         ]);
 
 
@@ -179,6 +182,8 @@ class PetController extends Controller
             'age' => $request->age,
             'species' => $request->species,
             'breed' => $request->breed,
+            'gender' => $request->gender,
+            'region' => $request->region,
             'description' => $request->description,
             'img' => 'storage/' . $path,
         ]);
