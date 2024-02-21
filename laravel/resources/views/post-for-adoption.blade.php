@@ -151,3 +151,56 @@
         </form>
     </div>
 @endsection
+
+
+
+{{-- @extends('layout.app')
+
+@section('content')
+    <section id="login" class="login section-padding">
+        
+        <div class="login-content">
+            <h1 class="h2-content text-black">POST ADOPTION FORM</h1>
+        </div>
+
+        <div class="login-container">
+            <form action="{{ route('post-for-adoption.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-3">
+                    <input type="text" name="pet_name" placeholder="Pet Name" id="pet_name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="age" placeholder="Age" id="age" required>
+                </div>
+                <div class="mb-3">
+                    <select name="species" id="species" required>
+                        <option value="">Select Species</option>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="breed" placeholder="Breed" id="breed" required>
+                </div>
+                <div class="mb-3">
+                    <select name="region" id="region" required>
+                        <option value="">Select Region</option>
+                        <!-- Add options for regions here -->
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="description" placeholder="Description" id="description" required>
+                </div>
+                <div class="mb-3">
+                    <input type="file" name="image" id="image" required>
+                </div>
+                <button type="submit" class="btn-login">Submit</button>
+            </form>
+            <div class="signup-link">
+                <a href="{{ route('login') }}">
+                    <p>Already have an account?</p>
+                </a>
+            </div>
+        </div>
+    </section>
+@endsection --}}

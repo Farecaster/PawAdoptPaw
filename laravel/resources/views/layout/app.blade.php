@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('csss/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
     <title>@yield('title', 'PawAdoptPaw')</title>
+    <link rel="icon" href="assets/logo.png" type="image/x-icon">
 </head>
 
 <body>

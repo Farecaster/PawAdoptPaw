@@ -1,11 +1,73 @@
 @extends('layout.app')
 @section('content')
     <section id="login" class="login section-padding">
+        <div class="doggy">
+            <img src="assets/cutepussy.jpg" class="img-fluid" alt="cutepussy Image">
+        </div>
+
+        <div class="login-content">
+            <h1 class="h2-content text-black">Paw-Adopt-Paw</h1>
+            <h2 class="login-quote">Connect Pets Around the World!</h2>
+        </div>
+
+        <div class="login-container">
+            <form action="{{ route('signup.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <input type="text" name="name" placeholder="Username" id="username" value="{{ old('name') }}"
+                        required>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+
+                    <input type="email" name="email" placeholder="Email" id="email" value="{{ old('email') }}"
+                        required>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+
+                    <input type="password" name="password" placeholder="Password" id="password" required>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="mb-3">
+
+                    <input type="password" name="password_confirmation" placeholder="Confirm password" id="confirmPassword"
+                        required>
+                    @error('password_confirmation')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <button type="submit" class="btn-login">Sign Up</button>
+            </form>
+            <div class="signup-link">
+                <a href="{{ route('login') }}">
+                    <p>Already have an account?</p>
+                </a>
+            </div>
+        </div>
+    </section>
+@endsection
+
+
+
+
+{{-- @extends('layout.app')
+@section('content')
+    <section id="login" class="login section-padding">
+        <div class="cutepussy">
+            <img src="assets/cutepussy.jpg" class="img-fluid" alt="cutepussy Image">
+        </div>
         <div class="container">
             <div class="row mt-5">
                 <div class="col-md-6 offset-md-3">
-                    <div class="card">
-                        <div class="card-header bg-success text-white">
+                       <div class="card">
+                        <div class="card-header bg-black text-white">
                             <h3 class="text-center">Sign Up</h3>
                         </div>
                         <div class="card-body">
@@ -52,4 +114,4 @@
             </div>
         </div>
     </section>
-@endsection
+@endsection --}}
