@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Pet;
 use App\Models\Report;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -19,6 +20,14 @@ class PetController extends Controller
         })
             ->where('user_id', '!=', $currentUser->id)
             ->get();
+
+        return response()->json($pets);
+    }
+    public function userAvailablePets(User $id)
+    {
+        $pets = $id->pets()->where('user_id', $id->id)->whereDoesntHave('adoptionRequests', function ($query) {
+            $query->whereIn('status',  ['accepted', 'done']);
+        })->get();
 
         return response()->json($pets);
     }
@@ -77,11 +86,12 @@ class PetController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
-            'species' => 'required|in:dog,cat',
+            'species' => 'required',
             'breed' => 'required|string|max:35',
+            'gender' => 'required|string|max:35',
             'region' => 'required|string|max:35',
             'description' => 'required|string',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|', // Assuming it's an image upload
         ]);
 
         // Store the image file
@@ -99,7 +109,7 @@ class PetController extends Controller
         Pet::create($data);
 
         // Return a JSON response indicating success
-        return response()->json(['message' => 'Pet created successfully'], 201);
+        return response()->json(['message' => 'Pet created successfully']);
     }
 
     public function show(Pet $pet)
@@ -122,10 +132,12 @@ class PetController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:35',
             'age' => 'required|integer|min:1',
-            'species' => 'required|in:dog,cat',
+            'species' => 'required',
             'breed' => 'required|string|max:35',
+            'gender' => 'required|string|max:35',
+            'region' => 'required|string|max:35',
             'description' => 'required|string',
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Assuming it's an image upload
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Assuming it's an image upload
         ]);
 
         // Handle image upload
@@ -157,7 +169,7 @@ class PetController extends Controller
             if ($pet->img && File::exists(public_path($pet->img))) {
                 File::delete(public_path($pet->img));
             }
-            
+
             // Delete the pet record
             $pet->delete();
 
@@ -168,5 +180,4 @@ class PetController extends Controller
         // Return an error response with a status code of 403 (Forbidden)
         return response()->json(['error' => 'Unauthorized'], 403);
     }
-    
 }

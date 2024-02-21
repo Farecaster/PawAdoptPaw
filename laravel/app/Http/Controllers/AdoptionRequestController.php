@@ -47,7 +47,7 @@ class AdoptionRequestController extends Controller
             ->whereHas('user', function ($query) {
                 $query->where('id', Auth::id());
             })
-            ->whereIn('status', ['accepted','rejected'])
+            ->whereIn('status', ['accepted', 'rejected'])
             ->get();
 
         return view('adopt.pending-request', ['onGoingRequests' => $onGoingRequests]);
@@ -191,7 +191,7 @@ class AdoptionRequestController extends Controller
         $id->update([
             'status' => 'accepted',
         ]);
-        return redirect(route('ongoing.requests.owner'));
+        return redirect(route('on-going.requests'));
     }
     public function rejectRequest(Request $request, AdoptionRequest $id)
     {

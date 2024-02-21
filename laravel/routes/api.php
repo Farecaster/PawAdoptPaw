@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth:sanctum','not_banned']], function () {
 
     //PET CONTROLLER
     Route::get('/pets', [PetController::class, 'index']);
+    Route::get('/pets/user/{id}', [PetController::class, 'userAvailablePets']);
     Route::get('/pets/dogs', [PetController::class, 'showdogs']);
     Route::get('/pets/cats', [PetController::class, 'showcats']);
     Route::post('/pets/{pet}', [PetController::class, 'report']);
@@ -59,6 +60,7 @@ Route::group(['middleware' => ['auth:sanctum','not_banned']], function () {
     Route::get('/history', [AdoptionRequestController::class, 'history']);
     
     
+    Route::get('/users/current', [UserController::class, 'getCurrentUserId']);
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
 
