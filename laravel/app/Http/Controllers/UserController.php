@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function show(User $id)
     {
-        $pets = $id->pets()->paginate(10); // Fix: Call paginate() before get()
+        $pets = $id->pets()->paginate(12); // Fix: Call paginate() before get()
 
         return view('user.profile', [
             'user' => $id,
@@ -75,7 +75,7 @@ class UserController extends Controller
                 File::delete($id->img);
             }
         }
-        
+
         $data['img'] = 'storage/' . $path;
         $id->update($data);
         return redirect()->back();

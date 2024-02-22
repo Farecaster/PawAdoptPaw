@@ -15,6 +15,7 @@
                                 <h1 class="card-title">{{ $pet->name }}</h1>
                                 <h6 class="card-subtitle text-body-secondary">Breed: {{ $pet->breed }}</h6>
                                 <h6 class="card-subtitle text-body-secondary">Age: {{ $pet->age }} years old</h6>
+                                <h6 class="card-subtitle text-body-secondary">Gender: {{ $pet->gender }}</h6>
                                 <h6 class="card-subtitle text-body-secondary">Specie: {{ $pet->species }}</h6>
                                 <h6 class="card-subtitle text-body-secondary">Region: {{ $pet->region }}</h6>
                                 <p class="card-text">{{ $pet->description }}</p>

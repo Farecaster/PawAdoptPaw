@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('age');
-            $table->enum('species', ['dog', 'cat']);
+            $table->string('species');
             $table->string('breed');
+            $table->string('gender');
             $table->string('region');
             $table->text('description');
             $table->string('img');

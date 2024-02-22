@@ -36,14 +36,22 @@
                         <label for="species">Species:</label>
                         <select id="species" name="species" class="form-control" required>
                             <option value="" {{ old('species') == '' ? 'selected' : '' }}>Choose...</option>
-                            <option value="dog" {{ old('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
-                            <option value="cat" {{ old('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
+                            <option value="Dog" {{ old('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
+                            <option value="Cat" {{ old('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
                         </select>
                     </div>
                     <div class="col-sm-6">
                         <label for="breed">Breed:</label>
                         <input type="text" id="breed" name="breed" class="form-control" required
                             value="{{ old('breed') }}">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="gender">Gender:</label>
+                        <select id="gender" name="gender" class="form-control" required>
+                            <option value="" {{ old('species') == '' ? 'selected' : '' }}>Choose...</option>
+                            <option value="Male" {{ old('species') == 'Male' ? 'selected' : '' }}>Male</option>
+                            <option value="Female" {{ old('species') == 'Female' ? 'selected' : '' }}>Female</option>
+                        </select>
                     </div>
                     <div class="col-sm-6">
                         <label for="region">Region:</label>
