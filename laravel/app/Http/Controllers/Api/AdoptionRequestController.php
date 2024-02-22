@@ -38,6 +38,24 @@ class AdoptionRequestController extends Controller
 
         return response()->json($incomingRequests);
     }
+    public function showIncomingRequestDetails(AdoptionRequest $id)
+    {
+
+        // Check if the authenticated user is the owner of the pet
+        if (auth()->id() !== $id->pet->user_id) {
+            return response()->json([
+                "message" => "unauthorized"
+            ]);
+        }
+        if ($id->status !== 'pending') {
+            return response()->json([
+                "message" => "not found"
+            ]);
+        }
+
+        // Display the details of the incoming adoption request
+        return response()->json($id);
+    }
 
     public function onGoingRequestOwner()
     {
@@ -50,6 +68,15 @@ class AdoptionRequestController extends Controller
 
         return response()->json($onGoingRequests);
     }
+    public function onGoingRequestDetails(AdoptionRequest $id)
+    {
+        if (auth()->id() !== $id->pet->user_id) {
+            return response()->json([
+                'message' => "unathenticated"
+            ]);
+        }
+        return response()->json($id);
+    }
 
     public function history()
     {
@@ -59,11 +86,36 @@ class AdoptionRequestController extends Controller
             })
             ->whereIn('status', ['rejected', 'done'])
             ->get();
-
-        $historyAdopter = AdoptionRequest::where('user_id', auth()->id())->whereIn('status', ['rejected', 'done'])->get();
-
-        return response()->json(['historyOwner' => $historyOwner, 'historyAdopter' => $historyAdopter]);
+    
+        $historyAdopter = AdoptionRequest::where('user_id', auth()->id())
+            ->whereIn('status', ['rejected', 'done'])
+            ->get();
+    
+        $history = [];
+    
+        foreach ($historyOwner as $request) {
+            $statusMessage = $request->status == 'done' ? 'successfully adopted' : 'adoption request rejected';
+            $history[] = [
+                'status' => $statusMessage,
+                'pet_name' => $request->pet->name,
+                'pet_img' => $request->pet->img,
+                'details_url' => route('pending.requests.details', ['id' => $request->id])
+            ];
+        }
+    
+        foreach ($historyAdopter as $request) {
+            $statusMessage = $request->status == 'done' ? 'successfully adopted' : 'adoption request rejected';
+            $history[] = [
+                'status' => $statusMessage,
+                'pet_name' => $request->pet->name,
+                'pet_img' => $request->pet->img,
+                'details_url' => route('pending.requests.details', ['id' => $request->id])
+            ];
+        }
+    
+        return response()->json($history);
     }
+    
 
     public function create($pet)
     {

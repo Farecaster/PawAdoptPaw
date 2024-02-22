@@ -141,9 +141,7 @@ class AdoptionRequestController extends Controller
     }
     public function pendingRequestDetails(AdoptionRequest $id)
     {
-        if (auth()->id() !== $id->user->id) {
-            abort(404);
-        }
+
         return view('adopt.pending-request-details', ['onGoingRequest' => $id]);
     }
 
