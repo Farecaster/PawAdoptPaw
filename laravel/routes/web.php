@@ -29,7 +29,7 @@ Route::get('/hta',  function () {
 Route::get('/about',  function () {
     return view('about');
 })->name('about');
-
+Route::get('/requests/details/{id}', [AdoptionRequestController::class, 'pendingRequestDetails'])->name('pending.requests.details');
 // Authentication //
 Route::group(['middleware' => ['auth', 'not_banned']], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth', 'not_banned']], function () {
 
     Route::put('/on-going-requests/{id}/done', [AdoptionRequestController::class, 'doneRequest'])->name('done.request');
     Route::get('/on-going-requests/details/{id}', [AdoptionRequestController::class, 'onGoingRequestDetails'])->name('ongoing.requests.details');
-    Route::get('/requests/details/{id}', [AdoptionRequestController::class, 'pendingRequestDetails'])->name('pending.requests.details');
+
 
     //history
     Route::get('/history', [AdoptionRequestController::class, 'history'])->name('history');
