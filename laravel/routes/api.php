@@ -53,7 +53,8 @@ Route::group(['middleware' => ['auth:sanctum','not_banned']], function () {
     Route::get('/incoming-requests/details/{id}', [AdoptionRequestController::class, 'showIncomingRequestDetails']);
     //on going
     Route::get('/on-going-requests', [AdoptionRequestController::class, 'onGoingRequestOwner']);
-    
+    Route::get('/pending-request', [AdoptionRequestController::class, 'pendingRequest']);
+
     Route::put('/on-going-requests/{id}/done', [AdoptionRequestController::class, 'doneRequest']);
     Route::get('/on-going-requests/details/{id}', [AdoptionRequestController::class, 'onGoingRequestDetails']);
     //history

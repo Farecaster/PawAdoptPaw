@@ -57,6 +57,17 @@ class AdoptionRequestController extends Controller
         return response()->json($id);
     }
 
+    public function pendingRequest()
+    {
+        $onGoingRequests = AdoptionRequest::with('pet')
+            ->whereHas('user', function ($query) {
+                $query->where('id', Auth::id());
+            })
+            ->whereIn('status', ['accepted', 'rejected'])
+            ->get();
+
+        return response()->json($onGoingRequests);
+    }
     public function onGoingRequestOwner()
     {
         $onGoingRequests = AdoptionRequest::with('pet')
