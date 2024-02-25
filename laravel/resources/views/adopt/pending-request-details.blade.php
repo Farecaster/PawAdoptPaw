@@ -1,31 +1,28 @@
 @extends('layout.app')
-@section('content')
-    <div class="container text-center user-profile">
-        <div class="request-details">
-            <div class="pet-info">
-                {{-- @dd($incomingRequest->pet->img); --}}
-                <img src="{{ asset($onGoingRequest->pet->img) }}" alt="Pet Image" class="img-fluid thumbnail">
-                <div class="pet-details">
-                    <h2>{{ $onGoingRequest->pet->name }}</h2>
-                    <p>Breed: {{ $onGoingRequest->pet->breed }}</p>
-                    <!-- Add more pet details as needed -->
-                </div>
-            </div>
 
-            <div class="user-info mt-4">
-                <h2>User Information</h2>
-                <p><strong>Name:</strong> {{ $onGoingRequest->name }}</p>
-                <p><strong>Address:</strong> {{ $onGoingRequest->address }}</p>
-                <p><strong>City:</strong> {{ $onGoingRequest->city }}</p>
-                <p><strong>Contact Number:</strong> {{ $onGoingRequest->contact_number }}</p>
-                <p><strong>Additional Comment:</strong></p>
-                <div class="additional-comment overflow-auto" style="max-height: 150px;">
-                    {{ $onGoingRequest->additional_comment }}
+@section('content')
+    <div class="container py-4" style="min-height: 100vh; margin-top: 20vh;">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ asset($onGoingRequest->pet->img) }}" alt="Pet Image" class="img-fluid">
                 </div>
-                <div class="actions mt-4">
-                    <a href="{{ route('user.profile', ['id' => $onGoingRequest->pet->user_id]) }}"
-                        class="btn btn-primary">View
-                        Profile</a>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $onGoingRequest->pet->name }}</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Breed:</strong> {{ $onGoingRequest->pet->breed }}</li>
+                            <li><strong>User Name:</strong> {{ $onGoingRequest->name }}</li>
+                            <li><strong>Address:</strong> {{ $onGoingRequest->address }}</li>
+                            <li><strong>City:</strong> {{ $onGoingRequest->city }}</li>
+                            <li><strong>Contact Number:</strong> {{ $onGoingRequest->contact_number }}</li>
+                            <li><strong>Additional Comment:</strong> {{ $onGoingRequest->additional_comment }}</li>
+                        </ul>
+                        <div>
+                            <a href="{{ route('user.profile', ['id' => $onGoingRequest->pet->user_id]) }}"
+                                class="btn btn-primary">View Profile</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

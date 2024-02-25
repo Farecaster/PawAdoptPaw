@@ -11,7 +11,7 @@
                         @if ($user->img == null)
                             <img src="{{ asset('assets/no_img.jpg') }}" alt="Profile Image">
                         @else
-                        <img src="{{ asset($user->img) }}" alt="Profile Image">
+                            <img src="{{ asset($user->img) }}" alt="Profile Image">
                         @endif
                         <span>
                             @auth

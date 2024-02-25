@@ -6,50 +6,35 @@
             @if ($adoptionRequests->isNotEmpty())
                 <h1 class="text-center">Adoption Request</h1>
 
-
-                <div class="table-responsive">
-                    <table class="table table-bordered mx-auto">
-                        <thead>
-                            <tr class="text-center">
-                                <th>Pet Requested</th>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach ($adoptionRequests as $request)
-                                <tr class="text-center">
-                                    <td><img src="{{ $request->pet->img }}" alt="pet" width="100px">
-                                        <div>
-                                            <a
-                                                href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a>
-                                        </div>
-                                    </td>
-                                    <td>{{ $request->name }}</td>
-                                    <td>{{ $request->address }}</td>
-                                    <td><a href="{{ route('my.requests.edit', ['id' => $request->id]) }}">Edit</a></td>
-                                    <td>
-                                        <form action="{{ route('my.requests.delete', ['id' => $request->id]) }}"
-                                            method="POST">
+                <div class="row">
+                    @foreach ($adoptionRequests as $request)
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                <img src="{{ $request->pet->img }}" class="card-img-top" alt="pet">
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a></h5>
+                                    <p class="card-text"><strong>Name:</strong> {{ $request->name }}</p>
+                                    <p class="card-text"><strong>Address:</strong> {{ $request->address }}</p>
+                                    <div class="text-center">
+                                        <a href="{{ route('my.requests.edit', ['id' => $request->id]) }}" class="btn btn-primary">Edit</a>
+                                        <form action="{{ route('my.requests.delete', ['id' => $request->id]) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">Delete</button>
                                         </form>
-                                    </td>
-                                    <!-- Add more columns as needed -->
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             @else
-                <p class="text-center user-profile">No adoption requests available.</p>
+                <div class="text-center my-5">
+                    <h2 class="text-muted">No adoption requests available.</h2>
+                    <p class="text-muted">Explore our available pets and find your perfect match:</p>
+                    <a href="{{ route('pets') }}" class="btn btn-primary btn-lg mt-3">Browse Available Pets</a>
+                </div>
             @endif
         </div>
     </section>
-
 @endsection
