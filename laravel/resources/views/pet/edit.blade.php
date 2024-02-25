@@ -1,70 +1,72 @@
 @extends('layout.app')
+
 @section('content')
-    <div class="container d-flex justify-content-center postform">
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-8">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit Pet</div>
+
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <form action="{{ route('pet.update', ['pet' => $pet]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
-                            <h1>Edit</h1>
-                            <div>
-                                <label for="">Name:</label>
-                                <input type="text" name="name" required value="{{ $pet->name }}">
+
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"
+                                    value="{{ $pet->name }}" required>
                             </div>
-                            <div>
-                                <label for="">Age:</label>
-                                <input type="text" name="age" required value="{{ $pet->age }}">
+
+                            <div class="form-group">
+                                <label for="age">Age:</label>
+                                <input type="text" class="form-control" id="age" name="age"
+                                    value="{{ $pet->age }}" required>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="form-group">
                                 <label for="species">Species:</label>
-                                <select id="species" name="species" class="form-control" required>
-                                    <option value="{{ $pet->species == 'dog' ? 'Dog' : 'Cat' }}"
-                                        {{ old('species') == '' ? 'selected' : '' }}>
-                                        {{ $pet->species }}</option>
-                                    @if ($pet->species == 'Dog')
-                                        <option value="Cat" {{ old('species') == 'Cat' ? 'selected' : '' }}>Cat</option>
-                                    @else
-                                        <option value="Dog" {{ old('species') == 'Dog' ? 'selected' : '' }}>Dog</option>
-                                    @endif
+                                <select class="form-control" id="species" name="species" required>
+                                    <option value="Dog" {{ $pet->species == 'Dog' ? 'selected' : '' }}>Dog</option>
+                                    <option value="Cat" {{ $pet->species == 'Cat' ? 'selected' : '' }}>Cat</option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="">Breed:</label>
-                                <input type="text" name="breed" required value="{{ $pet->breed }}">
+
+                            <div class="form-group">
+                                <label for="breed">Breed:</label>
+                                <input type="text" class="form-control" id="breed" name="breed"
+                                    value="{{ $pet->breed }}" required>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="form-group">
                                 <label for="gender">Gender:</label>
-                                <select id="gender" name="gender" class="form-control" required>
-                                    <option value="{{ $pet->species == 'Male' ? 'Male' : 'Female' }}"
-                                        {{ old('species') == '' ? 'selected' : '' }}>
-                                        {{ $pet->gender }}</option>
-                                    @if ($pet->gender == 'Male')
-                                        <option value="Female" {{ old('species') == 'Female' ? 'selected' : '' }}>Female</option>
-                                    @else
-                                        <option value="Male" {{ old('species') == 'Male' ? 'selected' : '' }}>Male</option>
-                                    @endif
+                                <select class="form-control" id="gender" name="gender" required>
+                                    <option value="Male" {{ $pet->gender == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ $pet->gender == 'Female' ? 'selected' : '' }}>Female</option>
                                 </select>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="form-group">
                                 <label for="region">Region:</label>
-                                <select id="region" name="region" class="form-control" required>
-                                    <option value="{{ $pet->region }}" {{ old('region') == '' ? 'selected' : '' }}>
-                                        {{ $pet->region }}</option>
+                                <select class="form-control" id="region" name="region" required>
+                                    <option value="" {{ old('region') == '' ? 'selected' : '' }}>Choose...</option>
                                     <option value="Abra" {{ old('region') == 'Abra' ? 'selected' : '' }}>Abra</option>
                                     <option value="Agusan del Norte"
                                         {{ old('region') == 'Agusan del Norte' ? 'selected' : '' }}>Agusan del Norte
                                     </option>
                                     <option value="Agusan del Sur"
-                                        {{ old('region') == 'Agusan del Sur' ? 'selected' : '' }}>Agusan del Sur</option>
+                                        {{ old('region') == 'Agusan del Sur' ? 'selected' : '' }}>
+                                        Agusan del Sur</option>
                                     <option value="Aklan" {{ old('region') == 'Aklan' ? 'selected' : '' }}>Aklan</option>
                                     <option value="Albay" {{ old('region') == 'Albay' ? 'selected' : '' }}>Albay</option>
                                     <option value="Antique" {{ old('region') == 'Antique' ? 'selected' : '' }}>Antique
@@ -93,7 +95,8 @@
                                     <option value="Cagayan" {{ old('region') == 'Cagayan' ? 'selected' : '' }}>Cagayan
                                     </option>
                                     <option value="Camarines Norte"
-                                        {{ old('region') == 'Camarines Norte' ? 'selected' : '' }}>Camarines Norte</option>
+                                        {{ old('region') == 'Camarines Norte' ? 'selected' : '' }}>
+                                        Camarines Norte</option>
                                     <option value="Camarines Sur" {{ old('region') == 'Camarines Sur' ? 'selected' : '' }}>
                                         Camarines Sur</option>
                                     <option value="Camiguin" {{ old('region') == 'Camiguin' ? 'selected' : '' }}>Camiguin
@@ -110,16 +113,19 @@
                                     <option value="Cotabato" {{ old('region') == 'Cotabato' ? 'selected' : '' }}>Cotabato
                                     </option>
                                     <option value="Davao del Norte"
-                                        {{ old('region') == 'Davao del Norte' ? 'selected' : '' }}>Davao del Norte</option>
+                                        {{ old('region') == 'Davao del Norte' ? 'selected' : '' }}>
+                                        Davao del Norte</option>
                                     <option value="Davao del Sur" {{ old('region') == 'Davao del Sur' ? 'selected' : '' }}>
                                         Davao del Sur</option>
                                     <option value="Davao Occidental"
                                         {{ old('region') == 'Davao Occidental' ? 'selected' : '' }}>Davao Occidental
                                     </option>
                                     <option value="Davao Oriental"
-                                        {{ old('region') == 'Davao Oriental' ? 'selected' : '' }}>Davao Oriental</option>
+                                        {{ old('region') == 'Davao Oriental' ? 'selected' : '' }}>
+                                        Davao Oriental</option>
                                     <option value="Dinagat Islands"
-                                        {{ old('region') == 'Dinagat Islands' ? 'selected' : '' }}>Dinagat Islands</option>
+                                        {{ old('region') == 'Dinagat Islands' ? 'selected' : '' }}>
+                                        Dinagat Islands</option>
                                     <option value="Eastern Samar" {{ old('region') == 'Eastern Samar' ? 'selected' : '' }}>
                                         Eastern Samar</option>
                                     <option value="Guimaras" {{ old('region') == 'Guimaras' ? 'selected' : '' }}>Guimaras
@@ -141,7 +147,8 @@
                                     <option value="Laguna" {{ old('region') == 'Laguna' ? 'selected' : '' }}>Laguna
                                     </option>
                                     <option value="Lanao del Norte"
-                                        {{ old('region') == 'Lanao del Norte' ? 'selected' : '' }}>Lanao del Norte</option>
+                                        {{ old('region') == 'Lanao del Norte' ? 'selected' : '' }}>
+                                        Lanao del Norte</option>
                                     <option value="Lanao del Sur" {{ old('region') == 'Lanao del Sur' ? 'selected' : '' }}>
                                         Lanao del Sur</option>
                                     <option value="Leyte" {{ old('region') == 'Leyte' ? 'selected' : '' }}>Leyte</option>
@@ -168,10 +175,12 @@
                                     <option value="Negros Oriental"
                                         {{ old('region') == 'Negros Oriental' ? 'selected' : '' }}>Negros Oriental</option>
                                     <option value="Northern Samar"
-                                        {{ old('region') == 'Northern Samar' ? 'selected' : '' }}>Northern Samar</option>
+                                        {{ old('region') == 'Northern Samar' ? 'selected' : '' }}>
+                                        Northern Samar</option>
                                     <option value="Nueva Ecija" {{ old('region') == 'Nueva Ecija' ? 'selected' : '' }}>
                                         Nueva Ecija</option>
-                                    <option value="Nueva Vizcaya" {{ old('region') == 'Nueva Vizcaya' ? 'selected' : '' }}>
+                                    <option value="Nueva Vizcaya"
+                                        {{ old('region') == 'Nueva Vizcaya' ? 'selected' : '' }}>
                                         Nueva Vizcaya</option>
                                     <option value="Occidental Mindoro"
                                         {{ old('region') == 'Occidental Mindoro' ? 'selected' : '' }}>Occidental Mindoro
@@ -200,11 +209,14 @@
                                     <option value="Sorsogon" {{ old('region') == 'Sorsogon' ? 'selected' : '' }}>Sorsogon
                                     </option>
                                     <option value="South Cotabato"
-                                        {{ old('region') == 'South Cotabato' ? 'selected' : '' }}>South Cotabato</option>
+                                        {{ old('region') == 'South Cotabato' ? 'selected' : '' }}>
+                                        South Cotabato</option>
                                     <option value="Southern Leyte"
-                                        {{ old('region') == 'Southern Leyte' ? 'selected' : '' }}>Southern Leyte</option>
+                                        {{ old('region') == 'Southern Leyte' ? 'selected' : '' }}>
+                                        Southern Leyte</option>
                                     <option value="Sultan Kudarat"
-                                        {{ old('region') == 'Sultan Kudarat' ? 'selected' : '' }}>Sultan Kudarat</option>
+                                        {{ old('region') == 'Sultan Kudarat' ? 'selected' : '' }}>
+                                        Sultan Kudarat</option>
                                     <option value="Sulu" {{ old('region') == 'Sulu' ? 'selected' : '' }}>Sulu</option>
                                     <option value="Surigao del Norte"
                                         {{ old('region') == 'Surigao del Norte' ? 'selected' : '' }}>Surigao del Norte
@@ -228,20 +240,27 @@
                                     </option>
                                 </select>
                             </div>
-                            <div>
-                                <label for="">Description:</label>
-                                <input type="text" name="description" required value="{{ $pet->description }}">
+
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <input type="text" class="form-control" id="description" name="description"
+                                    value="{{ $pet->description }}" required>
                             </div>
-                            <div>
-                                <label for="">Image:</label>
-                                <input type="file" name="img" required value="{{ $pet->img }}">
+
+                            <div class="form-group">
+                                <label for="img">Image:</label>
+                                <input type="file" class="form-control-file" id="img" name="img" required>
                             </div>
-                            <input type="submit" value="Update">
+
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card">
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">Preview</div>
+                    <div class="card-body">
                         <img src="{{ asset($pet->img) }}" alt="" class="img-thumbnail">
                     </div>
                 </div>
