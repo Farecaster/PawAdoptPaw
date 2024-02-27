@@ -4,16 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @notifyCss
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('csss/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>@yield('title', 'PawAdoptPaw')</title>
     <link rel="icon" href="assets/logo.png" type="image/x-icon">
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 </head>
 
 <body>
+
     <!--Navbar-->
     @include('shared.nav')
     @yield('content')
@@ -37,10 +38,9 @@
                 cluster: 'ap1'
             });
 
-            var channel = pusher.subscribe('user.1');
+            var channel = pusher.subscribe('user');
 
-            channel.bind('my-event', function(data) {
-
+            channel.bind('my-event' + <?= auth()->id() ?>, function(data) {
                 // Update the notification count in the bell icon
                 var notificationCount = parseInt($('.bi-bell').attr('data-count'));
                 $('.bi-bell').attr('data-count', notificationCount + 1);
@@ -76,6 +76,8 @@
             });
         });
     </script>
+    <x-notify::notify />
+    @notifyJs
 </body>
 
 </html>

@@ -114,10 +114,11 @@ class AdoptionRequestController extends Controller
         $pet = Pet::findOrFail($pet);
         $owner = $pet->user()->first();
         $notifurl = route('incoming.requests');
-        $owner->notify(new NotificationsAdoptionRequest($pet->name,$notifurl));
-        event(new AdoptionRequestEvent($pet->name,$notifurl,$owner->id));
+        $owner->notify(new NotificationsAdoptionRequest($pet->name, $notifurl));
+        event(new AdoptionRequestEvent($pet->name, $notifurl, $owner->id));
 
         AdoptionRequest::create($data);
+        notify()->success('', 'Requested Successfully');
         return redirect(route('pets'));
     }
 
@@ -179,6 +180,7 @@ class AdoptionRequestController extends Controller
             'additional_comment' => 'required',
         ]);
         $id->update($data);
+        notify()->success('', 'Updated Successfully');
         return redirect(route('my.requests'));
     }
     public function acceptRequest(Request $request, AdoptionRequest $id)
@@ -197,6 +199,7 @@ class AdoptionRequestController extends Controller
         $id->update([
             'status' => 'accepted',
         ]);
+        notify()->success('', 'Accepted Successfully');
         return redirect(route('on-going.requests'));
     }
     public function rejectRequest(Request $request, AdoptionRequest $id)
@@ -210,6 +213,7 @@ class AdoptionRequestController extends Controller
         $id->update([
             'status' => 'rejected',
         ]);
+        notify()->error('', 'Rejected Successfully');
         return redirect(route('history'));
     }
     public function doneRequest(Request $request, AdoptionRequest $id)
@@ -223,6 +227,7 @@ class AdoptionRequestController extends Controller
         $id->update([
             'status' => 'done',
         ]);
+        notify()->success('', 'Done Request Successfully');
         return redirect(route('history'));
     }
 
@@ -235,6 +240,7 @@ class AdoptionRequestController extends Controller
             abort(404);
         }
         $id->delete();
+        notify()->success('', 'Deleted Successfully');
         return redirect(route('my.requests'));
     }
 }

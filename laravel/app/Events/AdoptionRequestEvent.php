@@ -37,10 +37,10 @@ class AdoptionRequestEvent implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('user.' . $this->petOwnerId);
+        return new Channel('user');
     }
     public function broadcastAs()
     {
-        return 'my-event';
+        return 'my-event' . $this->petOwnerId;
     }
 }

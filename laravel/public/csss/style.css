@@ -193,7 +193,8 @@ input{
 }
 
 .nav-link:hover, .nav-link.active{
-    color: #000;
+    color: #111;
+   
 }
 
 .hero-section{
@@ -586,3 +587,15 @@ main {
     height: 100%;
 }
 
+.notification-scrollable {
+    max-height: 200px; /* Adjust the max height as needed */
+    overflow: auto;
+}
+
+#laravel-notify{
+    z-index: 9999;
+}
+  
+.notify{
+ margin-top: 49px;
+}

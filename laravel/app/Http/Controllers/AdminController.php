@@ -30,8 +30,8 @@ class AdminController extends Controller
 
         $reports = Report::whereHas('user', function ($quer) {
             $quer->where('is_admin', '0');
-        })->whereHas('pet',function($quer){
-            $quer->whereHas('user',function($quer){
+        })->whereHas('pet', function ($quer) {
+            $quer->whereHas('user', function ($quer) {
                 $quer->where('is_admin', '0');
             });
         })->get();
@@ -96,6 +96,7 @@ class AdminController extends Controller
     {
 
         $id->update(['is_banned' => false]);
+        notify()->success('', 'User successfully unban');
         return redirect()->back();
     }
     public function ban(User $id)
@@ -126,7 +127,7 @@ class AdminController extends Controller
         // Log a message to check if the user's is_banned status is updated
         Log::info('Updating user is_banned status for user ID: ' . $id->id);
         $id->update(['is_banned' => true]);
-
+        notify()->success('', 'User successfully banned');
         return redirect()->back();
     }
 }
