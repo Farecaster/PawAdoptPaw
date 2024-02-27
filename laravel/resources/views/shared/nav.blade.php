@@ -80,10 +80,41 @@
                     @auth
 
 
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('requests') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
-                                href="{{ route('history') }}">HISTORY</a>
-                        </li>
+                        <!-- Notification dropdown -->
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown dropdown-notifications">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="bi bi-bell" data-count="{{ count(auth()->user()->notifications) }}">
+                                        <span
+                                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger count-badge">
+                                            {{ count(auth()->user()->notifications) }}
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    </i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-container dropdown-menu-end">
+                                    <li class="dropdown-toolbar">
+                                        <div class="dropdown-toolbar-actions">
+                                            <a href="#">Mark all as read</a>
+                                        </div>
+                                        <h6 class="dropdown-toolbar-title">Notifications (<span
+                                                class="notif-count">{{ count(auth()->user()->notifications) }}</span>)</h6>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <ul class="notification-dropdown-menu">
+                                        @forelse (auth()->user()->unreadNotifications as $item)
+                                            <li> <strong>{{ $item->data['pet_name'] }}</strong> has receive and adoption
+                                                request</li>
+                                        @empty
+                                        @endforelse
+                                    </ul>
+                                    <li class="divider"></li>
+                                    <li class="dropdown-footer text-center">
+                                        <a href="#">View All</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"

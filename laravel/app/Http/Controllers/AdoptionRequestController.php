@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AdoptionRequestEvent;
 use App\Models\AdoptionRequest;
 use App\Models\Pet;
 use App\Models\User;
+use App\Notifications\AdoptionRequest as NotificationsAdoptionRequest;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -108,6 +110,12 @@ class AdoptionRequestController extends Controller
 
         $data['user_id'] = $userId;
         $data['pet_id'] = $pet;
+
+        $pet = Pet::findOrFail($pet);
+        $owner = $pet->user()->first();
+        $notifurl = route('incoming.requests');
+        $owner->notify(new NotificationsAdoptionRequest($pet->name,$notifurl));
+        event(new AdoptionRequestEvent($pet->name,$notifurl,$owner->id));
 
         AdoptionRequest::create($data);
         return redirect(route('pets'));
