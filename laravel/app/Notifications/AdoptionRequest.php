@@ -31,7 +31,7 @@ class AdoptionRequest extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database', 'broadcast'];
+        return ['database'];
     }
 
     // /**
@@ -55,7 +55,7 @@ class AdoptionRequest extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'pet_name' => $this->petName . " has received an adoption request.",
+            'pet_name' => $this->petName,
             'notification_url' => $this->notificationUrl
         ];
     }

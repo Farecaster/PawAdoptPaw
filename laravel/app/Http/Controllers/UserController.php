@@ -78,6 +78,7 @@ class UserController extends Controller
 
         $data['img'] = 'storage/' . $path;
         $id->update($data);
+        notify()->success('','Profile Updated Successfully');
         return redirect()->back();
     }
 
