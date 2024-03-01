@@ -212,7 +212,7 @@ input{
     height: 2px;
     background-color: #ffd803;
 
-
+}
 
 .hero-section{
     background: url('{{ asset("assets/ss-bg.jpg") }}') no-repeat center;
@@ -639,6 +639,18 @@ main {
     }
     .header-wrapper .cols-container .right-col nav {
         flex-direction: row;
-    }
-    
+    } 
+}
 
+.notification-scrollable {
+    max-height: 200px; /* Adjust the max height as needed */
+    overflow: auto;
+}
+
+#laravel-notify{
+    z-index: 9999;
+}
+  
+.notify{
+ margin-top: 49px;
+}
