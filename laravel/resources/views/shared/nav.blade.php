@@ -12,8 +12,8 @@
                 <ul class="navbar-nav ms-auto d-flex align-items-center">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('/') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
-                            style="{{ Request::is('/') ? 'background-color: #272343;' : '' }}"
-                            aria-current="page" href="{{ route('homepage') }}">HOME</a>
+                            style="{{ Request::is('/') ? 'background-color: #272343;' : '' }}" aria-current="page"
+                            href="{{ route('homepage') }}">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('about') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
@@ -65,9 +65,8 @@
                     @endauth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ Request::is('pets*') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
-                            style="{{ Request::is('pets*') ? 'background-color: #272343;' : '' }}"
-                            href="#" id="petsDropdown" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                            style="{{ Request::is('pets*') ? 'background-color: #272343;' : '' }}" href="#"
+                            id="petsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             PETS
                         </a>
                         <ul class="dropdown-menu">
@@ -97,12 +96,10 @@
                         </li>
 
                         <!-- Notification dropdown -->
-
                         <ul class="nav navbar-nav navbar-right p-2">
                             <li class="dropdown dropdown-notifications">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="bi bi-bell" data-count="{{ count(auth()->user()->unreadNotifications) }}">
-
                                         <span
                                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger count-badge">
                                             {{ count(auth()->user()->unreadNotifications) }}
@@ -117,7 +114,8 @@
                                                 all as read</a>
                                         </div>
                                         <h6 class="dropdown-toolbar-title">Notifications (<span
-                                                class="notif-count">{{ count(auth()->user()->notifications) }}</span>)</h6>
+                                                class="notif-count">{{ count(auth()->user()->notifications) }}</span>)
+                                        </h6>
                                     </li>
                                     <li class="divider"></li>
                                     <ul class="notification-dropdown-menu me-4">
@@ -135,20 +133,17 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
-                                style="{{ Request::is('user*') ? 'background-color: #272343;' : '' }}"
-
+                        </ul>
+                        <li class="nav-item dropdown d-flex align-items-center p-2">
+                            <a class="nav-link{{ Request::is('user*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 @if (Auth::user()->img == null)
                                     <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
-                                        style="width: 30px; height: 30px; border-radius: 40%;">
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
                                 @else
                                     <img src="{{ asset(Auth::user()->img) }}" alt="User Image"
-                                        style="width: 30px; height: 30px; border-radius: 40%;">
+                                        style="width: 40px; height: 40px; border-radius: 50%;">
                                 @endif
                                 <!-- Bootstrap person icon -->
                             </a><span class="dropdown-toggle ms-2" id="navbarDropdown" role="button"
