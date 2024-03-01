@@ -31,7 +31,7 @@ class AdoptionRequest extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     // /**
@@ -55,11 +55,22 @@ class AdoptionRequest extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'pet_name' => $this->petName,
+            'message' => $this->petName . ' has
+            receive an adoption
+            request.',
             'notification_url' => $this->notificationUrl
         ];
     }
 
+    public function toMail(): MailMessage
+    {
+        return (new MailMessage)
+            ->subject(auth()->user()->name . ' has requested your pet') // Custom subject line
+            ->greeting('Hello!') // Custom greeting
+            ->line(auth()->user()->name . 'has sent a request to your pet ' . $this->petName)
+            ->action('Pending Requests', url('/pending-request')) // Button with custom text and URL
+            ->line('Thank you for using our application!'); // Last line of content
+    }
 
     /**
      * Get the array representation of the notification.

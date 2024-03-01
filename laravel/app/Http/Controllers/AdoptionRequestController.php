@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AcceptRequestEvent;
 use App\Events\AdoptionRequestEvent;
+use App\Events\DoneRequestEvent;
+use App\Events\RejectRequestEvent;
 use App\Models\AdoptionRequest;
 use App\Models\Pet;
 use App\Models\User;
+use App\Notifications\AcceptRequest;
 use App\Notifications\AdoptionRequest as NotificationsAdoptionRequest;
+use App\Notifications\DoneRequest;
+use App\Notifications\RejectRequest;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class AdoptionRequestController extends Controller
 {
@@ -200,6 +207,11 @@ class AdoptionRequestController extends Controller
             'status' => 'accepted',
         ]);
         notify()->success('', 'Accepted Successfully');
+
+        $requester = $id->user()->first();
+        $requester->notify(new AcceptRequest(route('pending.request')));
+        event(new AcceptRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+
         return redirect(route('on-going.requests'));
     }
     public function rejectRequest(Request $request, AdoptionRequest $id)
@@ -214,6 +226,11 @@ class AdoptionRequestController extends Controller
             'status' => 'rejected',
         ]);
         notify()->error('', 'Rejected Successfully');
+
+        $requester = $id->user()->first();
+        $requester->notify(new RejectRequest(route('pending.request')));
+        event(new RejectRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+
         return redirect(route('history'));
     }
     public function doneRequest(Request $request, AdoptionRequest $id)
@@ -227,7 +244,13 @@ class AdoptionRequestController extends Controller
         $id->update([
             'status' => 'done',
         ]);
-        notify()->success('', 'Done Request Successfully');
+
+        $requester = $id->user()->first();
+        $requester->notify(new DoneRequest($id->pet->name, route('history'), $id->user->name));
+        event(new DoneRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+        // Notification::send($id->user()->first(), new DoneRequest($id->pet->name, route('history'), $id->user->name));
+        
+        notify()->success('', 'Pet Adopted Successfully');
         return redirect(route('history'));
     }
 

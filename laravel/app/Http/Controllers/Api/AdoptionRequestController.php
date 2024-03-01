@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\AcceptRequestEvent;
+use App\Events\AdoptionRequestEvent;
+use App\Events\DoneRequestEvent;
+use App\Events\RejectRequestEvent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AdoptionRequest;
+use App\Models\Pet;
+use App\Notifications\AcceptRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Notifications\AdoptionRequest as NotificationsAdoptionRequest;
+use App\Notifications\DoneRequest;
+use App\Notifications\RejectRequest;
 
 class AdoptionRequestController extends Controller
 {
@@ -97,13 +106,13 @@ class AdoptionRequestController extends Controller
             })
             ->whereIn('status', ['rejected', 'done'])
             ->get();
-    
+
         $historyAdopter = AdoptionRequest::where('user_id', auth()->id())
             ->whereIn('status', ['rejected', 'done'])
             ->get();
-    
+
         $history = [];
-    
+
         foreach ($historyOwner as $request) {
             $statusMessage = $request->status == 'done' ? 'successfully adopted' : 'adoption request rejected';
             $history[] = [
@@ -113,7 +122,7 @@ class AdoptionRequestController extends Controller
                 'details_url' => route('pending.requests.details', ['id' => $request->id])
             ];
         }
-    
+
         foreach ($historyAdopter as $request) {
             $statusMessage = $request->status == 'done' ? 'successfully adopted' : 'adoption request rejected';
             $history[] = [
@@ -123,10 +132,10 @@ class AdoptionRequestController extends Controller
                 'details_url' => route('pending.requests.details', ['id' => $request->id])
             ];
         }
-    
+
         return response()->json($history);
     }
-    
+
 
     public function create($pet)
     {
@@ -159,6 +168,12 @@ class AdoptionRequestController extends Controller
 
         $data['user_id'] = auth()->id();
         $data['pet_id'] = $pet;
+
+        $pet = Pet::findOrFail($pet);
+        $owner = $pet->user()->first();
+        $notifurl = route('incoming.requests');
+        $owner->notify(new NotificationsAdoptionRequest($pet->name, $notifurl));
+        event(new AdoptionRequestEvent($pet->name, $notifurl, $owner->id));
 
         AdoptionRequest::create($data);
         return response()->json(['message' => 'Adoption request created successfully'], 201);
@@ -201,6 +216,11 @@ class AdoptionRequestController extends Controller
             ->update(['status' => 'rejected']);
 
         $id->update(['status' => 'accepted']);
+
+        $requester = $id->user()->first();
+        $requester->notify(new AcceptRequest(route('pending.request')));
+        event(new AcceptRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+
         return response()->json(['message' => 'Adoption request accepted successfully']);
     }
 
@@ -211,6 +231,11 @@ class AdoptionRequestController extends Controller
         }
 
         $id->update(['status' => 'rejected']);
+
+        $requester = $id->user()->first();
+        $requester->notify(new RejectRequest(route('pending.request')));
+        event(new RejectRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+
         return response()->json(['message' => 'Adoption request rejected successfully']);
     }
 
@@ -221,6 +246,11 @@ class AdoptionRequestController extends Controller
         }
 
         $id->update(['status' => 'done']);
+
+        $requester = $id->user()->first();
+        $requester->notify(new DoneRequest($id->pet->name, route('history'), $id->user->name));
+        event(new DoneRequestEvent($id->pet->user->name, route('pending.request'), $id->user->id));
+        
         return response()->json(['message' => 'Adoption request marked as done successfully']);
     }
 

@@ -5,8 +5,10 @@ use App\Http\Controllers\AdoptionRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PetController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Notifications\DoneRequest;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Notification;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',  function () {
+    // $user = User::first();
+    // Notification::send($user, new DoneRequest('fds'));
     return view('homepage');
 })->name('homepage');
 
@@ -73,6 +77,8 @@ Route::group(['middleware' => ['auth', 'not_banned']], function () {
 
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
+
+    Route::get('/mark-all-as-read', [UserController::class, 'markAsRead'])->name('markAsRead');
 });
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
