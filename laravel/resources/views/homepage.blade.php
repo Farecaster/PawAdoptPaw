@@ -1,37 +1,34 @@
 @extends('layout.app')
 @section('content')
-    <div id="carouselExampleCaptions" class="carousel slide">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{ asset('assets/uno.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-md-block">
                     <h5>Transform Lives: Adopt a Pet Today!</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
-                    <p><a href="pet-profile.html" class="btn bg-success mt3">Browse Adoptable Pets</a></p>
+                    <p><a href="pet-profile.html" class="btn mt3" style="background-color: #ffd803; color: #272343;">Browse Adoptable Pets</a></p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('assets/dos.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-md-block">
                     <h5>Find Your Furry Friend: Adopt, Don't Shop!</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
-                    <p><a href="#" class="btn bg-success mt3">Browse Adoptable Pets</a></p>
+                    <p><a href="#" class="btn mt3" style="background-color: #ffd803; color: #272343;">Browse Adoptable Pets</a></p>
                 </div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('assets/tre.jpg') }}" class="d-block w-100" alt="...">
-                <div class="carousel-caption">
+                <div class="carousel-caption d-none d-md-block">
                     <h5>Welcome Unconditional Love into Your Home: Adopt a Shelter Pet.</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
-                    <p><a href="#" class="btn bg-success mt3">Browse Adoptable Pets</a></p>
+                    <p><a href="#" class="btn mt3" style="background-color: #ffd803; color: #272343;">Browse Adoptable Pets</a></p>
                 </div>
             </div>
         </div>
@@ -65,7 +62,7 @@
                                 He's great with children and enjoys socializing with other dogs at the park.
                                 Duke is energetic and needs regular exercise. He's house-trained and loves to
                                 be the center of attention.</p>
-                            <button class="btn bg-success text-dark" data-bs-toggle="modal"
+                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
                                 data-bs-target="#adoptModal">Adopt Me</button>
                         </div>
                     </div>
@@ -79,7 +76,7 @@
                                 She enjoys cuddling on the couch and is great with families.
                                 Bella is low-energy and prefers short walks. She's house-trained and
                                 has a calm demeanor, making her a great companion.</p>
-                            <button class="btn bg-success text-dark" data-bs-toggle="modal"
+                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
                                 data-bs-target="#adoptModal">Adopt Me</button>
                         </div>
                     </div>
@@ -93,7 +90,7 @@
                                 She loves to be the center of attention and enjoys sitting on laps.
                                 Chloe is litter-trained and has a beautiful coat with striking blue eyes.
                                 She's social and enjoys interactive play.</p>
-                            <button class="btn bg-success text-dark" data-bs-toggle="modal"
+                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
                                 data-bs-target="#adoptModal">Adopt Me</button>
                         </div>
                     </div>
@@ -102,7 +99,7 @@
         </div>
     </section>
     <!--How to adopt section-->
-    <section id="htp" class="htp-section-padding">
+    <section id="htp" class="htp">
         <div class="container shadow">
             <div class="row">
                 <div class="col-md-12">
@@ -113,14 +110,14 @@
                             seamless and joyful as possible. Your decision to adopt a pet is a
                             wonderful journey, and we're here to guide you every step of the way.</p>
                         <h3>Ready to Welcome a New Friend?</h3>
-                        <a href="hta.html" class="btn bg-success mt3">Click here</a>
+                        <a href="hta.html" class="btn mt3" style="background-color: #bae8e8; color: #272343;">Click here</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--Pet profile section-->
-    <section id="about" class="about section-padding">
+    <section id="about" class="about" style="background-color: #f2f4f6">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

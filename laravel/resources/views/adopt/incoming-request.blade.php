@@ -17,14 +17,14 @@
                                     style="height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title"><a
-                                            href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a>
+                                            href="{{ route('pet.show', ['pet' => $request->pet->id]) }}"  style="color: #e3f6f5;">{{ $request->pet->name }}</a>
                                     </h5>
                                     <p class="card-text"><strong>Requester Name:</strong> {{ $request->name }}</p>
                                     <p class="card-text"><strong>Address:</strong> {{ $request->address }}</p>
                                     <p class="card-text"><strong>City:</strong> {{ $request->city }}</p>
                                     <p class="card-text"><strong>Contact Number:</strong> {{ $request->contact_number }}</p>
                                     <a href="{{ route('incoming.requests.details', ['id' => $request->id]) }}"
-                                        class="btn btn-primary">View Details</a>
+                                        class="btn" style="background-color: #e3f6f5; color: #272343;">View Details</a>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                     <h2 class="text-muted">No adopter requests available.</h2>
                     <p class="text-muted">By opening your heart and home to a new furry friend, you're not just giving them
                         a home, but you're also creating space for another animal in need to find love and care.</p>
-                    <a href="{{ route('post-for-adoption.store') }}" class="btn btn-primary btn-lg mt-3">Find Your Pet a New
+                    <a href="{{ route('post-for-adoption.store') }}" class="btn btn-lg mt-3" style="background-color: #272343; color: #fffffe;">Find Your Pet a New
                         Home now!</a>
                 </div>
             @endif

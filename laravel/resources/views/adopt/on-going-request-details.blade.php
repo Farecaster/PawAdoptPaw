@@ -6,7 +6,7 @@
             <div class="col-md-10"> <!-- Increased the width to col-md-10 -->
                 <div class="card shadow" style="min-height: inherit;">
                     <!-- Added min-height: inherit; to override the parent container's height -->
-                    <div class="card-header bg-primary text-white text-center">
+                    <div class="card-header text-white text-center">
                         <h4>User Profile</h4>
                     </div>
 
@@ -29,7 +29,7 @@
                                     <p><strong>City:</strong> {{ $onGoingRequest->city }}</p>
                                     <p><strong>Contact Number:</strong> {{ $onGoingRequest->contact_number }}</p>
                                     <p><strong>Additional Comment:</strong></p>
-                                    <div class="additional-comment overflow-auto" style="max-height: 150px;">
+                                    <div class="additional-comment overflow-auto" style="max-height: 150px; color: #fffffe;">
                                         {{ $onGoingRequest->additional_comment }}
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                             <div class="col-md-6">
                                 <div class="actions text-center">
                                     <a href="{{ route('user.profile', ['id' => $onGoingRequest->user_id]) }}"
-                                        class="btn btn-outline-primary btn-block mb-2">View Profile</a>
+                                        class="btn btn-outline btn-block mb-2" style="background-color: #bae8e8; color: #272343;">View Profile</a>
 
                                     @if ($onGoingRequest->status !== 'done' && $onGoingRequest->status !== 'rejected')
                                         <form action="{{ route('done.request', ['id' => $onGoingRequest->id]) }}"

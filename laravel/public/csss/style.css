@@ -5,12 +5,12 @@ html {
     height: 100%;
 }
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #f2f4f6;
      
 }
 footer {
@@ -127,11 +127,17 @@ input{
     color: #666;
     margin-bottom: 15px;
 }
+.card-header{
+    color:#fffffe;
+}
+.form-group1{
+    color: #fffffe;
+}
 
 .card-text {
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: #fffffe;
     margin-bottom: 20px;
 }
 
@@ -145,20 +151,15 @@ input{
     margin-bottom: 10px;
 }
 
-
-
-
-
 .navbar {
-    background: linear-gradient(to top, #c79081 0%, #dfa579 100%);
+    background:	#fffffe;
     height: 70px;
-  
-   
-
+    display: flex;
+    justify-content: space-between;
 }
 .navbar-brand {
     font-weight: 500;
-    color: #4ca771;
+    color: #f5ebe0;
     font-size: 24px;
     transition: 0.3s color;
 }
@@ -188,14 +189,30 @@ input{
 }
 
 .nav-link{
-    color: black;
+    color: #2d312b;
     font-weight: 500;
 }
 
-.nav-link:hover, .nav-link.active{
-    color: #111;
-   
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffd803;
+    position: relative;
+    background-color: transparent;
 }
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 2px;
+    background-color: #ffd803;
+
+
 
 .hero-section{
     background: url('{{ asset("assets/ss-bg.jpg") }}') no-repeat center;
@@ -229,8 +246,6 @@ input{
 
 .section-padding{
     padding: 100px 0;
-    min-height: 80vh;
-    /* min-height: 80vh; */
 }
 .carousel-item{
     height: 100vh;
@@ -251,7 +266,6 @@ input{
     margin: auto;
     font-size: 18px;
     line-height: 1.9;
-
 }
 .carousel-inner::before{
     content: '';
@@ -277,11 +291,25 @@ input{
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #272343;
+}
+.card h5{
+    color: #bae8e8;
+}
+.card p{
+    color: #fffffe;
+}
+.pet .card-body h6.white-text {
+    color: white;
 }
 .card-body {
     flex: 1;
     padding: 25px;
 }
+.card-body h6{
+    color: #fffffe;
+}
+.card
 .card-footer {
     text-align: center;
 
@@ -297,9 +325,18 @@ input{
 .pet-profile{
     margin-top: 100px;
 }
-.custom-btn {
-    background-color: white;
-    border: none;
+.user-profile .mb-0 a {
+    color: #fffffe; /* Default link color */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.user-profile .mb-0 a:hover {
+    text-decoration: underline; /* Add underline on hover */
+    color: #ffd803; /* Hover link color */
+}
+.btn-custom {
+    color: #fffffe;
 }
 /* .user-profile {
     display: flex;
@@ -316,7 +353,7 @@ body {
 }
 
 header, footer {
-    background: linear-gradient(87.4deg, rgb(255, 241, 165) 1.9%, rgb(200, 125, 76) 49.7%, rgb(83, 54, 54) 100.5%);
+    background: #272343;
     color: #fff;
     text-align: center;
     padding: 10px;
@@ -387,12 +424,14 @@ main {
     font-weight: 600;
     font-size: 22px;
     margin-top: 5px;
+    color:#272343;
 }
 
 .header-wrapper .cols-container .left-col .h4 {
     font-size: 0.9rem;
     color: #818181;
     margin: 0;
+    color: #272343;
 }
 .header-wrapper .cols-container .right-col nav ul{
     display: flex;
@@ -427,71 +466,16 @@ main {
     height: 100%;
     object-fit: cover;
 }
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .carousel-caption {
-        bottom: 370px;
-    }
-    .carousel-caption p {
-        width: 100%;
-    }
+#htp.htp-section{
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
-
-@media only screen and (max-width: 768px) {
-    .navbar {
-        text-align: center;
-    }
-    .carousel-caption {
-        bottom: 125px;
-    }
-    .carousel-caption h5 {
-        font-size: 17px;
-    }
-    .carousel-caption a {
-        padding: 10px 15px;
-    }
-    .carousel-caption p {
-        width: 100%;
-        line-height: 1.6;
-        font-size: 12px;
-    }
+.htp h1{
+    color:#020826;
 }
-
-@media (min-width: 868px) {
-    .header-wrapper .cols-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 90%;
-        justify-content: space-between;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 50px;
-    }
-    .header-wrapper .cols-container .left-col {
-        padding: 25px 0;
-    }
-    .header-wrapper .cols-container .right-col nav ul {
-        flex-direction: row;
-        gap: 30px;
-    }
-    .header-wrapper .cols-container .right-col .pets {
-        height: 365px;
-        overflow: auto;
-        padding: 0 0 30px;
-    }
+.htp p{
+    color: #716040;
 }
-
-@media (min-width: 1017px) {
-    .header-wrapper .cols-container .left-col {
-        margin: 0;
-        margin-right: auto;
-    }
-    .header-wrapper .cols-container .right-col nav {
-        flex-direction: row;
-    }
-    
-}
-
 
 
 /* LOGIN FORM BACKGROUND */
@@ -518,14 +502,21 @@ main {
 }
 
 
-
-
+#about .about{
+    padding-bottom: 40px;
+}
+.about section h1{
+    color: #fffffe;
+}
 .about-img img {
     margin-top: -15px; /* Adjust this value to move the image up or down */
 }
 
 .about-img1 img {
     margin-top: px; /* Adjust this value to move the image up or down */
+}
+.about h1, h2{
+    color: #272343;
 }
 
 
@@ -587,15 +578,67 @@ main {
     height: 100%;
 }
 
-.notification-scrollable {
-    max-height: 200px; /* Adjust the max height as needed */
-    overflow: auto;
+
+@media only screen and(min-width:768px) and (max-width:991px) {
+    .carousel-caption{
+        bottom: 370px;
+    }
+    .carousel-caption p{
+        width: 100%;
+    }
 }
 
-#laravel-notify{
-    z-index: 9999;
+@media only screen and (max-width: 768px) {
+    .navbar {
+        text-align: center;
+    }
+    .carousel-caption {
+        bottom: 125px;
+    }
+    .carousel-caption h5 {
+        font-size: 17px;
+    }
+    .carousel-caption a {
+        padding: 10px 15px;
+    }
+    .carousel-caption p {
+        width: 100%;
+        line-height: 1.6;
+        font-size: 12px;
+    }
 }
-  
-.notify{
- margin-top: 49px;
+
+@media (min-width: 868px) {
+    .header-wrapper .cols-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 90%;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 50px;
+    }
+    .header-wrapper .cols-container .left-col {
+        padding: 25px 0;
+    }
+    .header-wrapper .cols-container .right-col nav ul {
+        flex-direction: row;
+        gap: 30px;
+    }
+    .header-wrapper .cols-container .right-col .pets {
+        height: 365px;
+        overflow: auto;
+        padding: 0 0 30px;
+    }
 }
+
+@media (min-width: 1017px) {
+    .header-wrapper .cols-container .left-col {
+        margin: 0;
+        margin-right: auto;
+    }
+    .header-wrapper .cols-container .right-col nav {
+        flex-direction: row;
+    }
+    
+

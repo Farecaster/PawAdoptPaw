@@ -1,6 +1,6 @@
 @include('admin.shared.header')
 @include('admin.shared.nav')
-<div class="card mb-4">
+<div class="card mb-4 mt-5">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Current Users
