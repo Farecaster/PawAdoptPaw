@@ -78,7 +78,10 @@
                         </li>
                     @endguest
                     @auth
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('history') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('history') }}">HISTORY</a>
+                        </li>
 
                         <!-- Notification dropdown -->
                         <ul class="nav navbar-nav navbar-right p-2">
@@ -95,18 +98,19 @@
                                 <ul class="dropdown-menu dropdown-container dropdown-menu-end notification-scrollable">
                                     <li class="dropdown-toolbar text-center">
                                         <div class="dropdown-toolbar-actions">
-                                            <a href="#">Mark all as read</a>
+                                            <a href="{{ route('markAsRead') }}">Mark
+                                                all as read</a>
                                         </div>
                                         <h6 class="dropdown-toolbar-title">Notifications (<span
                                                 class="notif-count">{{ count(auth()->user()->notifications) }}</span>)</h6>
                                     </li>
                                     <li class="divider"></li>
-                                    <ul class="notification-dropdown-menu">
+                                    <ul class="notification-dropdown-menu me-4">
                                         @forelse (auth()->user()->unreadNotifications as $item)
-                                            <li> <a href="{{ $item->data['notification_url'] }}"><strong>{{ $item->data['pet_name'] }}</strong>
-                                                    has
-                                                    receive and adoption
-                                                    request.</a></li>
+                                            <li> <a href="{{ $item->data['notification_url'] }}"><strong
+                                                        class="text-dark fst-italic fw-normal">{{ $item->data['message'] }}</strong>
+                                                </a></li>
+                                            <hr>
                                         @empty
                                         @endforelse
                                     </ul>

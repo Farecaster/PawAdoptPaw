@@ -55,20 +55,86 @@
                 var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
                 var newNotificationHtml = `
                     <li class="notification active">
-                        <div class="media">
-                            <div class="media-left">
-                                <div class="media-object">
-                                    <img src="https://api.adorable.io/avatars/71/${avatar}.png" class="img-circle" alt="50x50" style="width: 50px; height: 50px;">
-                                </div>
-                            </div>
-                            <div class="media-body">
-                                <strong class="notification-title">${data.pet_name}</strong>
-                                <div class="notification-meta">
-                                    <small class="timestamp">receive an adoption request</small>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        <a href=" ${data . notification_url}"><strong
+                                                        class="text-success fst-italic fw-normal">${data.pet_name} " has receive adoption request"</strong>
+                                                </a></li>
+                                                <hr/>
+          
+                `;
+
+                // Append new notification to the top of the list
+                notifications.prepend(newNotificationHtml);
+            });
+            channel.bind('accept-event' + <?= auth()->id() ?>, function(data) {
+                // Update the notification count in the bell icon
+                var notificationCount = parseInt($('.bi-bell').attr('data-count'));
+                $('.bi-bell').attr('data-count', notificationCount + 1);
+                $('.count-badge').text(notificationCount + 1);
+                $('.notif-count').text(notificationCount + 1)
+                // Increment notification count
+                notificationsCount++;
+                notificationsCountElem.attr('data-count', notificationsCount);
+                notificationsWrapper.find('.notif-count').text(notificationsCount);
+
+                // Construct new notification HTML
+                var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+                var newNotificationHtml = `
+                    <li class="notification active">
+                        <a href=" ${data . notification_url}"><strong
+                                                        class="text-success fst-italic fw-normal">${data.owner_name}</strong>
+                                                </a></li>
+                                                <hr/>
+          
+                `;
+
+                // Append new notification to the top of the list
+                notifications.prepend(newNotificationHtml);
+            });
+            channel.bind('reject-event' + <?= auth()->id() ?>, function(data) {
+                // Update the notification count in the bell icon
+                var notificationCount = parseInt($('.bi-bell').attr('data-count'));
+                $('.bi-bell').attr('data-count', notificationCount + 1);
+                $('.count-badge').text(notificationCount + 1);
+                $('.notif-count').text(notificationCount + 1)
+                // Increment notification count
+                notificationsCount++;
+                notificationsCountElem.attr('data-count', notificationsCount);
+                notificationsWrapper.find('.notif-count').text(notificationsCount);
+
+                // Construct new notification HTML
+                var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+                var newNotificationHtml = `
+                    <li class="notification active">
+                        <a href=" ${data . notification_url}"><strong
+                                                        class="text-success fst-italic fw-normal">${data.owner_name}</strong>
+                                                </a></li>
+                                                <hr/>
+          
+                `;
+
+                // Append new notification to the top of the list
+                notifications.prepend(newNotificationHtml);
+            });
+            channel.bind('done-event' + <?= auth()->id() ?>, function(data) {
+                // Update the notification count in the bell icon
+                var notificationCount = parseInt($('.bi-bell').attr('data-count'));
+                $('.bi-bell').attr('data-count', notificationCount + 1);
+                $('.count-badge').text(notificationCount + 1);
+                $('.notif-count').text(notificationCount + 1)
+                // Increment notification count
+                notificationsCount++;
+                notificationsCountElem.attr('data-count', notificationsCount);
+                notificationsWrapper.find('.notif-count').text(notificationsCount);
+
+                // Construct new notification HTML
+                var avatar = Math.floor(Math.random() * (71 - 20 + 1)) + 20;
+                var newNotificationHtml = `
+                    <li class="notification active">
+                        <a href=" ${data . notification_url}"><strong
+                                                        class="text-success fst-italic fw-normal">${data.pet_name}</strong>
+                                                </a></li>
+                                                <hr/>
+          
                 `;
 
                 // Append new notification to the top of the list
