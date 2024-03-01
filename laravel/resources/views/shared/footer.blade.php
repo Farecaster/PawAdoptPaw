@@ -6,18 +6,18 @@
                 <!-- Facebook Icon Button -->
                 <a href="https://www.facebook.com/profile.php?id=61556610571028"
                     class="no-text-decoration text-light ms-4">
-                    <i class="bi bi-facebook text-black" style="font-size: 35px;"></i> <!-- Facebook Icon -->
+                    <i class="bi bi-facebook text-white" style="font-size: 35px;"></i> <!-- Facebook Icon -->
                 </a>
                 <a href="https://www.facebook.com/profile.php?id=61556610571028"
-                    class="text-black font-weight-bold ms-2">Follow us on Facebook for updates!</a>
+                    class="text-white font-weight-bold ms-2">Follow us on Facebook for updates!</a>
             </div>
             <div
                 class="col-12 col-lg-6 text-lg-center d-flex align-items-center justify-content-center justify-content-lg-start">
                 <!-- Discord Icon Button -->
                 <a href="https://discord.gg/nSebqrYhgy" class="no-text-decoration text-light ms-4">
-                    <i class="bi bi-discord text-black" style="font-size: 35px;"></i> <!-- Discord Icon -->
+                    <i class="bi bi-discord text-white" style="font-size: 35px;"></i> <!-- Discord Icon -->
                 </a>
-                <a href="https://discord.gg/nSebqrYhgy" class="text-black font-weight-bold ms-2">Join our Discord
+                <a href="https://discord.gg/nSebqrYhgy" class="text-white font-weight-bold ms-2">Join our Discord
                     community!</a>
             </div>
         </div>

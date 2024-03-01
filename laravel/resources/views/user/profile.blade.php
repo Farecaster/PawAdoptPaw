@@ -30,10 +30,10 @@
                 <section class="text-center">
                     <ul class="nav justify-content-center">
                         <li class="nav-item mx-2">
-                            <a href="">Available Pets</a>
+                            <a href="" style="color: #272343";>Available Pets</a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a href="{{ route('post-for-adoption') }}">Post for Adoption</a>
+                            <a href="{{ route('history') }}" #272343;>History</a>
                         </li>
                     </ul>
 
@@ -59,7 +59,7 @@
                                             </p>
                                         </div>
                                         <div class="card-footer d-flex justify-content-center">
-                                            <button class="btn btn-primary">Click for more</button>
+                                            <button class="btn"  style="background-color: #bae8e8; color: #272343;">Click for more</button>
                                         </div>
                                     </div>
                                 </a>

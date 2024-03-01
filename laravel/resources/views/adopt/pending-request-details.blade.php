@@ -10,7 +10,7 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{ $onGoingRequest->pet->name }}</h5>
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled" style="color: white; margin-bottom: 100px;">
                             <li><strong>Breed:</strong> {{ $onGoingRequest->pet->breed }}</li>
                             <li><strong>User Name:</strong> {{ $onGoingRequest->name }}</li>
                             <li><strong>Address:</strong> {{ $onGoingRequest->address }}</li>
@@ -20,7 +20,7 @@
                         </ul>
                         <div>
                             <a href="{{ route('user.profile', ['id' => $onGoingRequest->pet->user_id]) }}"
-                                class="btn btn-primary">View Profile</a>
+                                class="btn" style="background-color: #bae8e8; color: #272343;">View Profile</a>
                         </div>
                     </div>
                 </div>

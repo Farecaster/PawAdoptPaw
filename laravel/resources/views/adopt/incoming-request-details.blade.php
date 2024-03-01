@@ -28,7 +28,7 @@
                                     <p><strong>City:</strong> {{ $incomingRequest->city }}</p>
                                     <p><strong>Contact Number:</strong> {{ $incomingRequest->contact_number }}</p>
                                     <p><strong>Additional Comment:</strong></p>
-                                    <div class="additional-comment overflow-auto" style="max-height: 150px;">
+                                    <div class="additional-comment overflow-auto" style="max-height: 150px; color: #fffffe;">
                                         {{ $incomingRequest->additional_comment }}
                                     </div>
                                 </div>

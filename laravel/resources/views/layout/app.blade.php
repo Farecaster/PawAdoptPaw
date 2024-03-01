@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('csss/style.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>@yield('title', 'PawAdoptPaw')</title>
     <link rel="icon" href="assets/logo.png" type="image/x-icon">
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>

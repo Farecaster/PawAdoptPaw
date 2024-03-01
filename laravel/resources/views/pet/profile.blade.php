@@ -11,12 +11,12 @@
                                 <img src="{{ asset($pet->img) }}" class="card-img-top mx-auto" alt=""
                                     style="width: 80%; height: auto;">
                                 <div class="card-body text-center">
-                                    <h1 class="card-title">{{ $pet->name }}</h1>
-                                    <h6 class="card-subtitle mb-2 text-muted">Breed: {{ $pet->breed }}</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Age: {{ $pet->age }} years old</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Gender: {{ $pet->gender }}</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Species: {{ $pet->species }}</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">Region: {{ $pet->region }}</h6>
+                                    <h1 class="card-title" style="color:#bae8e8;">{{ $pet->name }}</h1>
+                                    <h6 class="card-subtitle mb-2">Breed: {{ $pet->breed }}</h6>
+                                    <h6 class="card-subtitle mb-2">Age: {{ $pet->age }} years old</h6>
+                                    <h6 class="card-subtitle mb-2">Gender: {{ $pet->gender }}</h6>
+                                    <h6 class="card-subtitle mb-2">Species: {{ $pet->species }}</h6>
+                                    <h6 class="card-subtitle mb-2">Region: {{ $pet->region }}</h6>
                                     <p class="card-text">{{ $pet->description }}</p>
 
                                     @if ($pet->isAdopted())
@@ -26,7 +26,7 @@
                                             @if (Auth::id() !== $pet->user->id)
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <a href="{{ route('pet.adopt.create', ['pet' => $pet]) }}"
-                                                        class="btn btn-primary">Adopt Me</a>
+                                                        class="btn"class="btn" style="background-color: #bae8e8; color: #272343;">Adopt Me</a>
                                                     <button class="btn btn-danger" data-bs-toggle="modal"
                                                         data-bs-target="#reportModal">Report</button>
                                                 </div>

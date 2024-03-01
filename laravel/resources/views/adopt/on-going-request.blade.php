@@ -17,12 +17,12 @@
                                     style="height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}"
-                                            class="text-dark">{{ $request->pet->name }}</a></h5>
+                                            class="pet-name" style="color: #e3f6f5;">{{ $request->pet->name }}</a></h5>
                                     <p class="card-text"><strong>Requester Name:</strong> {{ $request->name }}</p>
                                     <p class="card-text"><strong>Address:</strong> {{ $request->address }}</p>
                                     <p class="card-text"><strong>City:</strong> {{ $request->city }}</p>
                                     <a href="{{ route('ongoing.requests.details', ['id' => $request->id]) }}"
-                                        class="btn btn-primary">View Details</a>
+                                        class="btn" style="background-color: #bae8e8; color: #272343;">View Details</a>
                                     <form action="{{ route('done.request', ['id' => $request->id]) }}" method="POST"
                                         class="d-inline">
                                         @csrf

@@ -14,7 +14,7 @@
                                     <img src="{{ $request->pet->img }}" alt="pet" width="100px" class="img-fluid">
                                 </div>
                                 <div class="col-md-6">
-                                    <span class="font-weight-bold">{{ $request->name }}</span>
+                                    <span class="font-weight-bold" style="color: white;">{{ $request->name }}</span>
                                     @if ($request->status == 'accepted')
                                         <span class="text-success">Successfully adopted</span>
                                     @elseif ($request->status == 'rejected')
@@ -22,10 +22,10 @@
                                     @elseif ($request->status == 'done')
                                         <span class="text-success">Successfully adopted</span>
                                     @endif
-                                    <p class="mb-0">Pet: <a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}">{{ $request->pet->name }}</a></p>
+                                    <p class="mb-0">Pet: <a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}" style="color: #fffffe">{{ $request->pet->name }}</a></p>
                                 </div>
                                 <div class="col-md-4 text-right">
-                                    <a href="{{ route('pending.requests.details', ['id' => $request->id]) }}" class="btn btn-primary">View Details</a>
+                                    <a href="{{ route('pending.requests.details', ['id' => $request->id]) }}" class="btn" style="background-color: #bae8e8; color: #272343;">View Details</a>
                                 </div>
                             </div>
                         </div>
