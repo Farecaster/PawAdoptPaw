@@ -10,37 +10,37 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AdoptionRequestEvent implements ShouldBroadcast
+class RejectRequestEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     */
-    public $pet_name;
+    public $owner_name;
     public $notification_url;
-    public $petOwnerId; // Add pet owner's ID property
+    public $requesterId; // Add pet owner's ID property
 
     /**
      * Create a new event instance.
      */
-    public function __construct($pet_name, $notification_url, $petOwnerId)
+    public function __construct($owner_name, $notification_url, $requesterId)
     {
-        $this->pet_name = $pet_name;
-        $this->petOwnerId = $petOwnerId;
+        $this->owner_name = $owner_name . " has rejected your request";
+        $this->requesterId = $requesterId;
         $this->notification_url = $notification_url;
     }
+
     /**
      * Get the channels the event should broadcast on.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
-        return new Channel('user');
+        return [
+            new Channel('user'),
+        ];
     }
     public function broadcastAs()
     {
-        return 'my-event' . $this->petOwnerId;
+        return 'reject-event' . $this->requesterId;
     }
 }

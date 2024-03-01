@@ -27,7 +27,7 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
         ]);
-
+        notify()->success('', 'Account Created Successfully');
         return redirect(route('login'));
     }
 
@@ -57,7 +57,7 @@ class AuthController extends Controller
             if (Auth::user()->is_admin) {
                 return redirect(route('admin.index'))->with('success', 'Logged in successfully as admin!');
             }
-
+            notify()->success('', 'Welcome Back ' . Auth::user()->name);
             return redirect(route('homepage'))->with('success', 'Logged in successfully!');
         }
 

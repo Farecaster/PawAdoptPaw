@@ -91,32 +91,41 @@
                         </li>
                     @endguest
                     @auth
-
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('history') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="{{ route('history') }}">HISTORY</a>
+                        </li>
 
                         <!-- Notification dropdown -->
-                            <li class="nav-item dropdown dropdown-notifications">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                                    <i class="bi bi-bell" data-count="{{ count(auth()->user()->notifications) }}">
+
+                        <ul class="nav navbar-nav navbar-right p-2">
+                            <li class="dropdown dropdown-notifications">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="bi bi-bell" data-count="{{ count(auth()->user()->unreadNotifications) }}">
+
                                         <span
                                             class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger count-badge">
-                                            {{ count(auth()->user()->notifications) }}
+                                            {{ count(auth()->user()->unreadNotifications) }}
                                             <span class="visually-hidden">unread messages</span>
                                         </span>
                                     </i>
                                 </a>
-                                <ul class="dropdown-menu dropdown-container dropdown-menu-end">
-                                    <li class="dropdown-toolbar">
+                                <ul class="dropdown-menu dropdown-container dropdown-menu-end notification-scrollable">
+                                    <li class="dropdown-toolbar text-center">
                                         <div class="dropdown-toolbar-actions">
-                                            <a href="#">Mark all as read</a>
+                                            <a href="{{ route('markAsRead') }}">Mark
+                                                all as read</a>
                                         </div>
                                         <h6 class="dropdown-toolbar-title">Notifications (<span
                                                 class="notif-count">{{ count(auth()->user()->notifications) }}</span>)</h6>
                                     </li>
                                     <li class="divider"></li>
-                                    <ul class="notification-dropdown-menu">
+                                    <ul class="notification-dropdown-menu me-4">
                                         @forelse (auth()->user()->unreadNotifications as $item)
-                                            <li> <strong>{{ $item->data['pet_name'] }}</strong> has receive and adoption
-                                                request</li>
+                                            <li> <a href="{{ $item->data['notification_url'] }}"><strong
+                                                        class="text-dark fst-italic fw-normal">{{ $item->data['message'] }}</strong>
+                                                </a></li>
+                                            <hr>
                                         @empty
                                         @endforelse
                                     </ul>
@@ -126,10 +135,12 @@
                                     </li>
                                 </ul>
                             </li>
+
                             
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle {{ Request::is('user*') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
                                 style="{{ Request::is('user*') ? 'background-color: #272343;' : '' }}"
+
                                 href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 @if (Auth::user()->img == null)
@@ -140,7 +151,8 @@
                                         style="width: 30px; height: 30px; border-radius: 40%;">
                                 @endif
                                 <!-- Bootstrap person icon -->
-                            </a>
+                            </a><span class="dropdown-toggle ms-2" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown"></span>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item"
                                         href="{{ route('user.profile', ['id' => Auth::user()->id]) }}">PROFILE</a>

@@ -114,6 +114,7 @@ class PetController extends Controller
         $data['img'] = 'storage/' . $path;
         $data['user_id'] = auth()->user()->id;
         Pet::create($data);
+        notify()->success('','Pet Posted Successfully');
         return redirect(route('pets'));
     }
 
@@ -187,6 +188,7 @@ class PetController extends Controller
             'description' => $request->description,
             'img' => 'storage/' . $path,
         ]);
+        notify()->success('', 'Updated Successfully');
         return redirect(route('pets'));
     }
 
@@ -202,10 +204,12 @@ class PetController extends Controller
             $pet->delete();
 
             if (Gate::allows('admin')) {
-                // Redirect to the admin dashboard for admins
+                // Redirect to the admin dashboard for admins\
+                notify()->success('Deleted Successfully','');
                 return redirect(route('admin.index'));
             } else {
                 // Redirect to the pets index page for non-admins
+                notify()->success('','Deleted Successfully');
                 return redirect(route('pets'));
             }
         }

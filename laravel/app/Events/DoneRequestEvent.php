@@ -10,37 +10,37 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class AdoptionRequestEvent implements ShouldBroadcast
+class DoneRequestEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     */
     public $pet_name;
     public $notification_url;
-    public $petOwnerId; // Add pet owner's ID property
+    public $requesterId; 
 
     /**
      * Create a new event instance.
      */
-    public function __construct($pet_name, $notification_url, $petOwnerId)
+    public function __construct($pet_name, $notification_url, $requesterId)
     {
-        $this->pet_name = $pet_name;
-        $this->petOwnerId = $petOwnerId;
+        $this->pet_name = "You Successfully Adopted " . $pet_name;
+        $this->requesterId = $requesterId;
         $this->notification_url = $notification_url;
     }
+
     /**
      * Get the channels the event should broadcast on.
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-    public function broadcastOn()
+    public function broadcastOn(): array
     {
-        return new Channel('user');
+        return [
+            new Channel('user'),
+        ];
     }
     public function broadcastAs()
     {
-        return 'my-event' . $this->petOwnerId;
+        return 'done-event' . $this->requesterId;
     }
 }

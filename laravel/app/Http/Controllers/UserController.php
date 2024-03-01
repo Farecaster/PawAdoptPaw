@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
@@ -78,6 +82,7 @@ class UserController extends Controller
 
         $data['img'] = 'storage/' . $path;
         $id->update($data);
+        notify()->success('', 'Profile Updated Successfully');
         return redirect()->back();
     }
 
@@ -87,5 +92,12 @@ class UserController extends Controller
     public function destroy(User $id)
     {
         //
+    }
+
+    public function markAsRead()
+    {
+        $user = User::find(auth()->id());
+        $user->notifications()->delete();
+        return redirect()->back();
     }
 }
