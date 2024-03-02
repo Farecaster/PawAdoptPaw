@@ -26,7 +26,8 @@
                                             @if (Auth::id() !== $pet->user->id)
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <a href="{{ route('pet.adopt.create', ['pet' => $pet]) }}"
-                                                        class="btn"class="btn" style="background-color: #bae8e8; color: #272343;">Adopt Me</a>
+                                                        class="btn"class="btn"
+                                                        style="background-color: #bae8e8; color: #272343;">Adopt Me</a>
                                                     <button class="btn btn-danger" data-bs-toggle="modal"
                                                         data-bs-target="#reportModal">Report</button>
                                                 </div>
@@ -65,7 +66,33 @@
             </div>
         </div>
     </section>
-
+    @if (Auth::id() !== $pet->user->id)
+        <div class="container">
+            <h5>Pets you may also like</h5>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-3">
+                @foreach ($pets as $pet)
+                    <div class="col">
+                        <a href="{{ route('pet.show', ['pet' => $pet]) }}" class="text-decoration-none">
+                            <div class="card" style="height: 100%;">
+                                <img src="{{ asset($pet->img) }}" class="card-img-top" alt="..."
+                                    style="height: 300px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $pet->name }}</h5>
+                                    <p class="card-text">
+                                        {{ \Illuminate\Support\Str::limit($pet->description, 100, $end = '...') }}</p>
+                                </div>
+                                <div class="card-footer d-flex justify-content-center">
+                                    <button class="btn" style="background-color: #bae8e8; color: #272343;">Click for
+                                        more</button>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="container">{{ $pets->links() }}</div>
+    @endif
     <!-- Modal -->
     <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">

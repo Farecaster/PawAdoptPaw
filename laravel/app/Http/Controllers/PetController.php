@@ -114,7 +114,7 @@ class PetController extends Controller
         $data['img'] = 'storage/' . $path;
         $data['user_id'] = auth()->user()->id;
         Pet::create($data);
-        notify()->success('','Pet Posted Successfully');
+        notify()->success('', 'Pet Posted Successfully');
         return redirect(route('pets'));
     }
 
@@ -125,8 +125,13 @@ class PetController extends Controller
     {
 
         $pet = Pet::with('user')->find($pet->id);
+        $pets = Pet::whereDoesntHave('adoptionRequests', function ($query) {
+            $query->whereIn('status', ['accepted', 'done']);
+        })->where('user_id', '!=', auth()->id())->paginate(12);
+
         return view('pet.profile', [
-            'pet' => $pet
+            'pet' => $pet,
+            'pets' => $pets
         ]);
     }
 
@@ -205,11 +210,11 @@ class PetController extends Controller
 
             if (Gate::allows('admin')) {
                 // Redirect to the admin dashboard for admins\
-                notify()->success('Deleted Successfully','');
+                notify()->success('Deleted Successfully', '');
                 return redirect(route('admin.index'));
             } else {
                 // Redirect to the pets index page for non-admins
-                notify()->success('','Deleted Successfully');
+                notify()->success('', 'Deleted Successfully');
                 return redirect(route('pets'));
             }
         }

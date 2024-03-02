@@ -128,9 +128,6 @@
                                         @endforelse
                                     </ul>
                                     <li class="divider"></li>
-                                    <li class="dropdown-footer text-center">
-                                        <a href="#">View All</a>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>
