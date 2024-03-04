@@ -1,4 +1,4 @@
-<footer class="text-light py-5 mt-5 flex">
+{{--<footer class="text-light py-5 mt-5 flex">
     <div class="container">
         <div class="row justify-content-center gy-3">
             <div
@@ -22,7 +22,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer>--}}
 
 
 
@@ -49,3 +49,24 @@
         </div>
     </div>
 </div> --}}
+
+<footer>
+    <div class="footerContainer">
+        <div class="socialIcons">
+            <a href="https://www.facebook.com/profile.php?id=61556610571028"><i class="bi bi-facebook"></i></a>
+            <a href="https://discord.gg/nSebqrYhgy"><i class="bi bi-discord"></i></a>
+        </div>
+
+        <div class="footerNav">
+            <ul>
+                <li><a href="{{ route('about') }}">About us</a></li>
+                <li><a href="">Our Team</a></li>
+                <li><a href="">FAQ</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="footerBottom">
+        <p>Copyright &copy; 2024 All rights reserved by: <span class="text-warning">P.A.W</span></p>
+    </div>
+</footer>

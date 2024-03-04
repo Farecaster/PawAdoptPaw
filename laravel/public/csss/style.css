@@ -1,23 +1,149 @@
-*{
-    font-family: sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800;900&display=swap');
 html {
     height: 100%;
 }
+h1,h2,h3,h4,h5,h6{
+    font-weight: 900 !important;
+}
+a{
+    text-decoration: none;
+    transition: all 0.4s ease;
+    font-weight: 800;
+}
+img{
+    width: 100%;
+}
+section{
+    padding-top: 80px;
+    padding-bottom: 80px;
+    z-index: 2;
+    position: relative;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(227, 246, 245,0.6),rgba(39, 35, 67, 0.9));
+    z-index: -1;
+}
+.bg-cover{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+.hero-section{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn{
+    padding: 14px 22px;
+    transition: all 0.3s ease;
+}
+.btn-main{
+    background: #272343;
+    border-radius: 100px;
+    border: none;
+    font-weight: 600;
+    color: #fffffe;
+}
+.btn:hover{
+    color: #ffd803;
+    transform: translateY(-5px);
+}
+
+.section-intro{
+    margin-bottom: 40px;
+}
+.section-intro .divider{
+    height: 4px;
+    width: 70px;
+    background: linear-gradient(to right,rgb(227, 246, 245),rgb(39, 35, 67));
+    margin: 16px auto;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
+    font-family: "Roboto" sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: space-between; /* Add this line */
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
     background-color: #f2f4f6;
      
 }
 footer {
-    justify-self: end;
-    flex-grow:1;
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 20px;
     
 }
+.footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a{
+    text-decoration: none;
+    padding: 8px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+.socialIcons a i{
+    font-size: 1.5em;
+    color: #272343;
+    opacity: 0.9;
+}
+.socialIcons a:hover{
+    background-color: #ffd803;
+    transition: 0.5s;
+}
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+.footerNav{
+    margin: 30px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+}
+.footerNav ul li a{
+    color: #fffffe;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: 0.5s;
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+    color: #ffd803;
+}
+.footerBottom{
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+
 a {
     text-decoration: none;
 }
@@ -152,6 +278,7 @@ input{
 }
 
 .navbar {
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
     background:	#fffffe;
     height: 70px;
     display: flex;
@@ -214,7 +341,7 @@ input{
 
 }
 
-.hero-section{
+/*.hero-section{
     background: url('{{ asset("assets/ss-bg.jpg") }}') no-repeat center;
     background-size: cover;
     width: 100%;
@@ -242,14 +369,14 @@ input{
 
 .hero-section h2 {
     font-size: 1.2em;
-}
+}*/
 
 .section-padding{
     padding: 100px 0;
 }
 .carousel-item{
     height: 100vh;
-    min-height: 300px;
+    min-height: calc(100vh - 70px);
 }
 .carousel-caption{
     bottom: 220px;
@@ -346,11 +473,6 @@ input{
     text-align: center;
     min-height: 65vh;
 } */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
 
 header, footer {
     background: #272343;
@@ -505,9 +627,9 @@ main {
 #about .about{
     padding-bottom: 40px;
 }
-.about section h1{
+/*.about section h1{
     color: #fffffe;
-}
+}*/
 .about-img img {
     margin-top: -15px; /* Adjust this value to move the image up or down */
 }
@@ -515,9 +637,9 @@ main {
 .about-img1 img {
     margin-top: px; /* Adjust this value to move the image up or down */
 }
-.about h1, h2{
+/*.about h1, h2{
     color: #272343;
-}
+}*/
 
 
 /* LOGIN FORM BACKGROUND */
@@ -653,4 +775,25 @@ main {
   
 .notify{
  margin-top: 49px;
+}
+
+@media only screen and (min-width: 375px) and (min-height: 667px) {
+    .carousel-item {
+        height: auto;
+        min-height: 200px;
+    }
+    .carousel-caption {
+        bottom: 10px; 
+    }
+}
+
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    }
+    .footerNav ul li{
+        width: 100%;
+        text-align: center;
+        margin: 10px;
+    }
 }
