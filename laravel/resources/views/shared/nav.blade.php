@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
     <div class="container">
         <a href="#" class="navbar-brand">
             <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
@@ -8,17 +8,12 @@
                 <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="offcanvas-body">
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto d-flex align-items-center">
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('/') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
                             style="{{ Request::is('/') ? 'background-color: #272343;' : '' }}" aria-current="page"
                             href="{{ route('homepage') }}">HOME</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ Request::is('about') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"
-                            style="{{ Request::is('about') ? 'background-color: #272343;' : '' }}"
-                            href="{{ route('about') }}">ABOUT US</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('hta') ? 'rounded px-3 text-light' : 'mx-lg-2' }}"

@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('content')
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    {{--<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -12,7 +12,7 @@
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Transform Lives: Adopt a Pet Today!</h5>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
-                    <p><a href="pet-profile.html" class="btn mt3" style="background-color: #ffd803; color: #272343;">Browse Adoptable Pets</a></p>
+                    <p><a href="{{ route('pets') }}" class="btn mt3" style="background-color: #ffd803; color: #272343;">Browse Adoptable Pets</a></p>
                 </div>
             </div>
             <div class="carousel-item">
@@ -40,61 +40,40 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-    </div>
-    <section id="petprofile" class="profile section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-header text-center pb-5">
-                        <h2>Available Pets For Adoption</h2>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus, libero.</p>
+    </div>--}}
 
-                    </div>
+    <!--hero-->
+    <section id="home" class="bg-cover hero-section" style="background-image: url('{{ asset('assets/img1.jpg') }}');">
+        <div class="overlay"></div>
+        <div class="container text-white text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="display-4">Transform Lives: Adopt a Pet Today!</h1>
+                    <p class="my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, consequuntur.</p>
+                    <a href="{{ route('pets') }}" class="btn btn-main">Browse Adoptable Pets</a>
                 </div>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/boxer.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Duke</h5>
-                            <p class="card-text">Meet Duke, a playful and friendly Boxer.
-                                He's great with children and enjoys socializing with other dogs at the park.
-                                Duke is energetic and needs regular exercise. He's house-trained and loves to
-                                be the center of attention.</p>
-                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
-                                data-bs-target="#adoptModal">Adopt Me</button>
+        </div>
+    </section>
+
+    <!--featured-->
+    <section id="featured">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 section-intro text-center">
+                    <h1> Featured Pages</h1>
+                    <div class="divider"></div>
+                    <p>Explore More About Paw-Adopt-Paw</p>
+                <div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="featured">
+                        <div class="featured-img">
+                            <img src="{{ asset('assets/uno.jpg') }}" alt="...">
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/shihtzu.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Bella</h5>
-                            <p class="card-text">Meet Bella, a sweet and affectionate Shih Tzu.
-                                She enjoys cuddling on the couch and is great with families.
-                                Bella is low-energy and prefers short walks. She's house-trained and
-                                has a calm demeanor, making her a great companion.</p>
-                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
-                                data-bs-target="#adoptModal">Adopt Me</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{{ asset('assets/siamese.jpg') }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Chloe</h5>
-                            <p class="card-text">Meet Chloe, a vocal and affectionate Siamese cat.
-                                She loves to be the center of attention and enjoys sitting on laps.
-                                Chloe is litter-trained and has a beautiful coat with striking blue eyes.
-                                She's social and enjoys interactive play.</p>
-                            <button class="btn" style="background-color: #bae8e8; color: #272343; data-bs-toggle="modal"
-                                data-bs-target="#adoptModal">Adopt Me</button>
-                        </div>
-                    </div>
-                </div>
+                </div>  
             </div>
         </div>
     </section>
