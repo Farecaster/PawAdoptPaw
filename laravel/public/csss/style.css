@@ -25,7 +25,7 @@ section{
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(227, 246, 245,0.6),rgba(39, 35, 67, 0.9));
+    background: linear-gradient(rgba(58, 59, 59, 0.6),rgba(39, 35, 67, 0.611));
     z-index: -1;
 }
 .bg-cover{
@@ -45,7 +45,7 @@ section{
     transition: all 0.3s ease;
 }
 .btn-main{
-    background: #272343;
+    background: #605a85;
     border-radius: 100px;
     border: none;
     font-weight: 600;
@@ -65,6 +65,31 @@ section{
     background: linear-gradient(to right,rgb(227, 246, 245),rgb(39, 35, 67));
     margin: 16px auto;
 }
+.featured .featured-img{
+    position: relative;
+}
+.featured .featured-img .icon{
+    width: 70px;
+    height: 70px;
+    background: #272343;
+    color: #fffeff;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.featured .featured-img .icon a{
+    color: #fffffe;
+}
+.featured .featured-img .icon i{
+    font-size: 36px;
+}
+
+
 
 body {
     font-family: "Roboto" sans-serif;
@@ -499,9 +524,29 @@ main {
     height: auto;
 }
 
+.shadow{
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1)!important;
+}
+.profile-tab-nav{
+    min-width: 250px;
+}
+.tab-content{
+    flex: 1;
+}
+.nav-pills a.nav-link{
+    padding: 15px 20px;
+    border-bottom: 1px solid #fffffe;
+    border-radius: 0;
+    color: #272343;
+}
+.profile-image {
+    width: 100px; 
+    height: 100px;
+    border-radius: 50%;
+}
 .header-wrapper header {
     width: 100%;
-    background-image: url('../assets/uno.jpg');
+    background-color: #e3f6f5;
     min-height: calc(100px + 9vw);
     background-repeat: no-repeat;
     background-size: cover;
@@ -563,7 +608,6 @@ main {
 }
 .header-wrapper .cols-container .right-col nav ul {
     display: flex;
-    gap: 20px;
     flex-direction: column;
 }
 

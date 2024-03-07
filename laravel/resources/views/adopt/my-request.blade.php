@@ -4,7 +4,7 @@
     <section id="petprofile" class="myrequest section-padding">
         <div class="container user-profile">
             @if ($adoptionRequests->isNotEmpty())
-                <h1 class="text-center">Adoption Request</h1>
+                <h1 class="text-center" style="font-weight: 600;">Adoption Request</h1>
 
                 <div class="row">
                     @foreach ($adoptionRequests as $request)

@@ -57,13 +57,13 @@
             <a href="https://discord.gg/nSebqrYhgy"><i class="bi bi-discord"></i></a>
         </div>
 
-        <div class="footerNav">
+        {{--<div class="footerNav">
             <ul>
                 <li><a href="{{ route('about') }}">About us</a></li>
                 <li><a href="">Our Team</a></li>
                 <li><a href="">FAQ</a></li>
             </ul>
-        </div>
+        </div>--}}
 
     </div>
     <div class="footerBottom">

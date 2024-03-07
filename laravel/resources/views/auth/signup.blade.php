@@ -2,12 +2,12 @@
 @section('content')
     <section id="login" class="login section-padding">
         <div class="doggy">
-            <img src="assets/cutepussy.jpg" class="img-fluid" alt="cutepussy Image">
+            <img src="assets/img4.jpg" class="img-fluid" alt="cutepussy Image">
         </div>
 
         <div class="login-content">
-            <h1 class="h2-content text-black">Paw-Adopt-Paw</h1>
-            <h2 class="login-quote">Connect Pets Around the World!</h2>
+            <h1 class="h2-content" style="color: #272343;">Paw-Adopt-Paw</h1>
+            <h2 class="login-quote" style="color: #2d334a;">Connect Pets Around the World!</h2>
         </div>
 
         <div class="login-container">
@@ -43,11 +43,11 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <button type="submit" class="btn-login">Sign Up</button>
+                <button type="submit" class="btn-login" style="background-color: #272343;">Sign Up</button>
             </form>
             <div class="signup-link">
                 <a href="{{ route('login') }}">
-                    <p>Already have an account?</p>
+                    <p style="font-weight: 600;  text-align: center;">Already have an account? LogIn</p>
                 </a>
             </div>
         </div>
