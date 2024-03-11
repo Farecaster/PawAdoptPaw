@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdoptionRequestController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PetController;
+use App\Http\Controllers\PetSocialController;
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Notifications\DoneRequest;
@@ -79,6 +80,17 @@ Route::group(['middleware' => ['auth', 'not_banned']], function () {
     Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
 
     Route::get('/mark-all-as-read', [UserController::class, 'markAsRead'])->name('markAsRead');
+
+    //social
+    Route::get('/pet-social', [PetSocialController::class, 'index'])->name('social.index');
+    Route::get('/pet-social/user/{id}', [PetSocialController::class, 'show'])->name('social.user');
+    Route::post('/pet-social/post', [PetSocialController::class, 'store'])->name('social.post');
+    Route::get('/pet-social/{id}/edit', [PetSocialController::class, 'edit'])->name('social.edit');
+    Route::put('/pet-social/{id}/update', [PetSocialController::class, 'update'])->name('social.update');
+    Route::post('/pet-social/{id}/like', [PetSocialController::class, 'like']);
+    Route::post('/pet-social/{id}/unlike', [PetSocialController::class, 'unlike']);
+    Route::post('/pet-social/{id}', [PetSocialController::class, 'reports'])->name('pet-social.report');
+    Route::delete('/pet-social/{id}', [PetSocialController::class, 'destroy'])->name('pet-social.delete');
 });
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/signup', [AuthController::class, 'signup'])->name('signup');

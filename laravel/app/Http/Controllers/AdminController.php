@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pet;
 use App\Models\Report;
+use App\Models\ReportedPetSocialPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -35,6 +36,13 @@ class AdminController extends Controller
                 $quer->where('is_admin', '0');
             });
         })->get();
+        $reportsPetSocial = ReportedPetSocialPost::whereHas('user', function ($query) {
+            $query->where('is_admin', '0');
+        })->whereHas('petSocial', function ($query) {
+            $query->whereHas('user', function ($query) {
+                $query->where('is_admin', '0');
+            });
+        })->get();
 
         $banned = User::where('is_banned', '1')->count();
 
@@ -44,6 +52,7 @@ class AdminController extends Controller
             'adoptedPetCount' => $adoptedPetCount,
             'reports' => $reports,
             'banned' => $banned,
+            'reportsPetSocial' => $reportsPetSocial
         ]);
     }
 

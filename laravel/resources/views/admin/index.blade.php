@@ -4,7 +4,7 @@
     <div class="container-fluid px-4">
         <h1 class="mt-4" style="color: #fffffe;">Dashboard</h1>
         <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item active">PawAdoptPaw</li>
         </ol>
         <div class="row">
             <div class="col-xl-3 col-md-6">
@@ -64,7 +64,7 @@
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
-                Reported post
+                Reported Pets
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -111,6 +111,47 @@
                 </div>
             </div>
         </div>
+
+        {{-- For Reported PetSocial Posts --}}
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Reported PetSocial Posts
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTablePetSocial" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Post ID</th>
+                                <th>Caption</th>
+                                <th>Reason</th>
+                                <th>User</th>
+                                <th>Delete Post</th>
+                                <th>Ban User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Your data here -->
+                            @foreach ($reportsPetSocial as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->petSocial->caption }}</td>
+                                    <td>{{ $item->reason }}</td>
+                                    <td>{{ $item->reason }}</td>
+                                    <td>{{ $item->reason }}</td>
+
+                                    <td><a href="{{ route('admin.user-profile', ['id' => $item->user->name]) }}">{{ $item->user->name }}<i
+                                                class="bi bi-arrow-up-right"></i></a></td>
+
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
 
     </div>
 </main>
