@@ -113,4 +113,8 @@ Route::group(['middleware' => 'auth', 'middleware' => 'admin'], function () {
     Route::put('/admin/user/{id}', [AdminController::class, 'ban'])->name('admin.ban');
     Route::put('/admin/user/{id}/unban', [AdminController::class, 'unban'])->name('admin.unban');
     Route::get('/admin/user/pet/{id}', [AdminController::class, 'showPost'])->name('admin.post');
+
+    //pet socail
+    Route::get('/admin/pet-social/user/{id}', [AdminController::class, 'showUserSocial'])->name('admin.user-social');
+    Route::delete('/admin/pet-social/{id}/delete', [AdminController::class, 'petSocialDelete'])->name('admin.pet-social.delete');
 });

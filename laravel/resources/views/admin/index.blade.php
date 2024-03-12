@@ -97,12 +97,10 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form action="{{ route('admin.ban', ['id' => $report->pet->user->id]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('put')
-                                            <input type="submit" class="btn btn-danger" value="Ban this User">
-                                        </form>
+
+                                        <input type="submit" class="btn btn-danger ban-user" value="Ban this User"
+                                            data-user-id="{{ $report->pet->user->id }}">
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -135,14 +133,24 @@
                             <!-- Your data here -->
                             @foreach ($reportsPetSocial as $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->petSocial->id }}</td>
                                     <td>{{ $item->petSocial->caption }}</td>
                                     <td>{{ $item->reason }}</td>
-                                    <td>{{ $item->reason }}</td>
-                                    <td>{{ $item->reason }}</td>
-
-                                    <td><a href="{{ route('admin.user-profile', ['id' => $item->user->name]) }}">{{ $item->user->name }}<i
+                                    <td><a
+                                            href="{{ route('admin.user-social', ['id' => $item->petSocial->user->id]) }}">{{ $item->petSocial->user->name }}<i
                                                 class="bi bi-arrow-up-right"></i></a></td>
+                                    <td>
+
+                                        <input type="submit" class="btn btn-white delete-social"
+                                            value="Delete this post" data-post-id="{{ $item->petSocial->id }}">
+
+                                    </td>
+                                    <td>
+
+                                        <input type="submit" class="btn btn-danger ban-user-social"
+                                            value="Ban this User" data-user-id="{{ $item->petSocial->user->id }}">
+
+                                    </td>
 
                                 </tr>
                             @endforeach
@@ -156,3 +164,63 @@
     </div>
 </main>
 @include('admin.shared.footer')
+<script>
+    $(document).ready(function() {
+        $(document).on('click', '.delete-social', function(e) {
+            e.preventDefault();
+            var postId = $(this).data('post-id');
+
+            console.log(postId);
+            var confirmation = confirm("Are you sure you want to delete this?");
+            if (confirmation) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "DELETE",
+                    url: "/admin/pet-social/" + postId + "/delete",
+                    success: function(response) {
+                        console.log(response);
+                        window.location.href = "/admin";
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error deleting post:', error);
+                        // Handle the error here, such as displaying an alert or logging the error
+                    }
+                });
+            }
+
+
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+
+        $(document).on('click', '.ban-user-social, .ban-user', function() {
+
+            var userId = $(this).data('user-id');
+            console.log(userId);
+
+            var confirmation = confirm("Are you sure you want to ban this user?");
+            if (confirmation) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "PUT",
+                    url: "/admin/user/" + userId,
+                    success: function(response) {
+                        console.log(response);
+                        window.location.href = "/admin";
+                    }
+                });
+            }
+        });
+
+    });
+</script>

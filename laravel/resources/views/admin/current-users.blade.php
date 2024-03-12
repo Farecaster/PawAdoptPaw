@@ -14,6 +14,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Profile</th>
+                        <th>Pet Social Profile</th>
                         <th>Ban</th>
 
                     </tr>
@@ -26,12 +27,14 @@
                             <td>{{ $user->email }}</td>
                             <td><a href="{{ route('admin.user-profile', ['id' => $user->id]) }}">{{ $user->name }}<i
                                         class="bi bi-arrow-up-right"></i></a></td>
+                            <td><a href="{{ route('admin.user-social', ['id' => $user->id]) }}">{{ $user->name }}<i
+                                        class="bi bi-arrow-up-right"></i></a></td>
                             <td>
-                                <form action="{{ route('admin.ban', ['id' => $user->id]) }}" method="POST">
-                                    @csrf
-                                    @method('put')
-                                    <input type="submit" class="btn btn-danger" value="Ban this User">
-                                </form>
+
+
+                                <input type="submit" class="btn btn-danger ban-user" value="Ban this User"
+                                    data-user-id="{{ $user->id }}">
+
                             </td>
                         </tr>
                     @endforeach
@@ -41,3 +44,31 @@
     </div>
 </div>
 @include('admin.shared.footer')
+<script>
+    $(document).ready(function() {
+
+        $(document).on('click', '.ban-user-social, .ban-user', function(e) {
+            e.preventDefault();
+            var userId = $(this).data('user-id');
+            console.log(userId);
+
+            var confirmation = confirm("Are you sure you want to ban this user?");
+            if (confirmation) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    type: "PUT",
+                    url: "/admin/user/" + userId,
+                    success: function(response) {
+                        console.log(response);
+                        window.location.href = "/admin/users";
+                    }
+                });
+            }
+        });
+
+    });
+</script>

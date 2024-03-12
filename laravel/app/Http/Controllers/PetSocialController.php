@@ -146,6 +146,9 @@ class PetSocialController extends Controller
      */
     public function destroy(PetSocial $id)
     {
+        if (File::exists($id->img)) {
+            File::delete($id->img);
+        }
         $id->delete();
         return response()->json('success');
     }
