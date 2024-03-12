@@ -58,4 +58,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Report::class);
     }
+    public function PetSocials(){
+        return $this->hasMany(PetSocial::class);
+    }
+    public function likes()
+    {
+        return $this->belongsToMany(PetSocial::class,'likes')->withTimestamps();
+    }
+    public function petsocialReports(){
+        return $this->hasMany(ReportedPetSocialPost::class);
+    }
 }

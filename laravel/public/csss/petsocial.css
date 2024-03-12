@@ -1,0 +1,70 @@
+.main-content{
+    margin: 100px 0 25px;
+    max-width: 700px;
+    background-color: beige;
+}
+.card-content{
+    max-width: 700px;
+    background-color: beige;
+}
+.user-content{
+    margin: 100px 0 25px;
+}
+/* .scrollable-content
+{
+    height: 114vh;
+    overflow-y: auto;
+} */
+.scrollable-content{
+margin: 0 auto;
+}
+.img{
+    margin: 5px auto;
+}
+.left{
+    margin: 100px 0 0 100px;
+    max-width: 200px;
+    position: sticky;
+    top: 90px;
+}
+.btn{
+    background-color: #272343;
+    color: white;
+}
+.caption {
+    border: 0px;
+    padding: 0 0 100px;
+}
+.caption-modal {
+    border: 0px;
+    padding: 0 0 100px;
+}
+#heart:hover{
+    cursor: pointer;
+
+   color: red;
+   
+}
+#label {
+    display: block;
+    text-align: center;
+    background-color: beige;
+    color: black;
+}
+.report-btn:hover {
+    cursor: pointer;
+    color: rgb(34, 211, 28);
+}
+.bi-pencil-square{
+    cursor: pointer;
+}
+.edit-content{
+    min-height: 100vh;
+}
+.bi-trash{
+    cursor: pointer;
+}
+.bi-check2-square{
+    cursor: pointer;
+}
+

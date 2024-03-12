@@ -3,7 +3,9 @@
 use App\Http\Controllers\Api\AdoptionRequestController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PetController;
+use App\Http\Controllers\Api\PetSocialController as ApiPetSocialController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\PetSocialController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +64,16 @@ Route::group(['middleware' => ['auth:sanctum', 'not_banned']], function () {
     Route::get('/users/current', [UserController::class, 'getCurrentUserId']);
     Route::get('/users/{id}', [UserController::class, 'show'])->name('user.profile');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
+
+    Route::get('/pet-social', [ApiPetSocialController::class, 'index']);
+    Route::get('/pet-social/user/{id}', [ApiPetSocialController::class, 'show']);
+    Route::post('/pet-social/post', [ApiPetSocialController::class, 'store']);
+    Route::get('/pet-social/{id}/edit', [ApiPetSocialController::class, 'edit']);
+    Route::put('/pet-social/{id}/update', [ApiPetSocialController::class, 'update']);
+    Route::post('/pet-social/{id}/like', [ApiPetSocialController::class, 'like']);
+    Route::post('/pet-social/{id}/unlike', [ApiPetSocialController::class, 'unlike']);
+    Route::post('/pet-social/{id}', [ApiPetSocialController::class, 'reports']);
+    Route::delete('/pet-social/{id}', [ApiPetSocialController::class, 'destroy']);
 });
 
 

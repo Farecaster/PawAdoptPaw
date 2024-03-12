@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pet;
+use App\Models\PetSocial;
 use App\Models\Report;
+use App\Models\ReportedPetSocialPost;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -35,6 +37,13 @@ class AdminController extends Controller
                 $quer->where('is_admin', '0');
             });
         })->get();
+        $reportsPetSocial = ReportedPetSocialPost::whereHas('user', function ($query) {
+            $query->where('is_admin', '0');
+        })->whereHas('petSocial', function ($query) {
+            $query->whereHas('user', function ($query) {
+                $query->where('is_admin', '0');
+            });
+        })->get();
 
         $banned = User::where('is_banned', '1')->count();
 
@@ -44,6 +53,7 @@ class AdminController extends Controller
             'adoptedPetCount' => $adoptedPetCount,
             'reports' => $reports,
             'banned' => $banned,
+            'reportsPetSocial' => $reportsPetSocial
         ]);
     }
 
@@ -123,11 +133,50 @@ class AdminController extends Controller
             // Delete the pet
             $pet->delete();
         });
+        $id->PetSocials->each(function ($post) {
+            // Log a message for each pet to check if this part is reached
+            Log::info('Deleting post ID: ' . $post->id);
+
+            // Delete associated adoption requests
+            $post->report->each(function ($report) {
+                Log::info('Deleting report ID: ' . $report->id);
+                $report->delete();
+            });
+
+            // Delete pet image from storage
+            if (File::exists($post->img)) {
+                File::delete($post->img);
+            }
+
+            // Delete the pet
+            $post->delete();
+        });
 
         // Log a message to check if the user's is_banned status is updated
         Log::info('Updating user is_banned status for user ID: ' . $id->id);
         $id->update(['is_banned' => true]);
         notify()->success('', 'User successfully banned');
-        return redirect()->back();
+        return response()->json('success');
+    }
+
+    public function showUserSocial(User $id)
+    {
+        $posts = $id->PetSocials;
+
+        return view('admin.user-social', [
+            'user' => $id,
+            'posts' => $posts
+        ]);
+    }
+    public function petSocialDelete(PetSocial $id)
+    {
+        Log::info('hello');
+        // Delete pet image from storage
+        if (File::exists($id->img)) {
+            File::delete($id->img);
+        }
+        $id->delete();
+        Log::info('successfully deleted');
+        return response()->json('success');
     }
 }
