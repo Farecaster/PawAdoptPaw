@@ -31,6 +31,10 @@ Route::get('/hta',  function () {
     return view('hta');
 })->name('hta');
 
+Route::get('/team',  function () {
+    return view('team');
+})->name('team');
+
 Route::get('/about',  function () {
     return view('about');
 })->name('about');

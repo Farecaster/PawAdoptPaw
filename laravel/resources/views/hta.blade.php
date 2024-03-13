@@ -6,13 +6,12 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-header text-center pb-5">
-                        <br><br><br><br>
-                        <h1><b>HOW TO ADOPT</b></h1>
+                        <h1 style="color: #272343;"><b>HOW TO ADOPT</b></h1>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12 col-12">
                     <div class="about-img1">
-                        <img src="assets/two.png" class="img-fluid" alt="...">
+                        <img src="assets/img3.jpg" class="img-fluid" alt="...">
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 col-12 ps-lg-5 mt-md-5">

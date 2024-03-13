@@ -23,7 +23,7 @@
                                         </p>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <button class="btn btn-primary">Click for more</button>
+                                        <button class="btn" style="background-color: #bae8e8; color: #272343;">Click for more</button>
                                     </div>
                                 </div>
                             </a>

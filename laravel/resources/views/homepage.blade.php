@@ -57,28 +57,87 @@
     </section>
 
     <!--featured-->
-    <section id="featured">
+    <section id="featured" class="text-center">
         <div class="container">
             <div class="row">
                 <div class="col-12 section-intro text-center">
-                    <h1> Featured Pages</h1>
+                    <h1>Why Adopt?</h1>
                     <div class="divider"></div>
-                    <p>Explore More About Paw-Adopt-Paw</p>
-                <div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="featured">
-                        <div class="featured-img">
-                            <img src="{{ asset('assets/uno.jpg') }}" alt="...">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="featured">
+                                <div class="featured-img">
+                                    <img src="{{ asset('assets/img4.jpg') }}" alt="...">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>  
+                        <div class="col-md-6">
+                            <div class="featured">
+                                <div class="container">
+                                    <p><br><br><br>When you open your doors to welcome a rescue dog as part of your family,
+                                        you're saving more than just one life. By adopting, you’re helping make
+                                        space for another animal in need and helping to give them the opportunity 
+                                        to become beloved pets.
+                                    </p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>  
+                <div>
             </div>
         </div>
     </section>
+
+    <!--hero-->
+    <section id="about" class="bg-cover" style="background-image: url('{{ asset('assets/img1.jpg') }}');">
+        <div class="overlay"></div>
+        <div class="container text-white text-center">
+            <div class="row">
+                <div class="col-12 section-intro text-center">
+                    <h1>Explore P.A.P</h1>
+                    <div class="divider"></div>
+                    <p>Explore More About Paw-Adopt-Paw</p>
+                <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="featured">
+                            <div class="featured-img">
+                                <img src="{{ asset('assets/uno.jpg') }}" alt="...">
+                                <div class="icon"><a href="{{ route('about') }}"><i class="bi bi-info"></i></a></div>
+                            </div>
+                            <h5 class="mt-5">About Us</h5>
+                            <p>Learn more about Paw-Adopt-Paw</p>
+                        </div>
+                    </div>  
+                    <div class="col-md-4">
+                        <div class="featured">
+                            <div class="featured-img">
+                                <img src="{{ asset('assets/img1.jpg') }}" alt="...">
+                                <div class="icon"><a href="{{ route('hta') }}"><i class="bi bi-question"></i></a></div>
+                            </div>
+                            <h5 class="mt-5">FAQs</h5>
+                            <p>Learn more about Paw-Adopt-Paw</p>
+                        </div>
+                    </div>  
+                    <div class="col-md-4">
+                        <div class="featured">
+                            <div class="featured-img">
+                                <img src="{{ asset('assets/img2.jpg') }}" alt="...">
+                                <div class="icon"><a href="{{ route('about') }}"><i class="bi bi-lightbulb"></i></a></div>
+                            </div>
+                            <h5 class="mt-5">Tips</h5>
+                            <p>Tips on how to take care of your loving pets</p>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
     <!--How to adopt section-->
-    <section id="htp" class="htp">
+    <!--<section id="htp" class="htp">
         <div class="container shadow">
             <div class="row">
                 <div class="col-md-12">
@@ -94,9 +153,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--Pet profile section-->
-    <section id="about" class="about" style="background-color: #f2f4f6">
+    <!--<section id="about" class="about" style="background-color: #f2f4f6">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -127,18 +186,18 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--end pp section-->
-    <div class="modal fade" id="adoptModal" tabindex="-1" aria-labelledby="adoptModalLabel" aria-hidden="true">
+    <!--<div class="modal fade" id="adoptModal" tabindex="-1" aria-labelledby="adoptModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="adoptModalLabel">Adopt Me</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body">-->
                     <!-- Adoption Form -->
-                    <form>
+                    <!--<form>
                         <div class="mb-3">
                             <label for="adopterName" class="form-label">Full Name</label>
                             <input type="text" class="form-control" id="adopterName" placeholder="Enter your name"
@@ -201,5 +260,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 @endsection
