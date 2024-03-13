@@ -20,9 +20,21 @@ class PetSocialController extends Controller
         // Retrieve posts along with information about whether the authenticated user has liked each post
         $posts = PetSocial::with(['likes' => function ($query) use ($userId) {
             $query->where('user_id', $userId);
-        }])->get();
+        }])->with('user')->inRandomOrder()->get();
 
-        return response()->json(['posts' => $posts]);
+        $posts->transform(function ($post) {
+            $post->like_count = $post->likes->count();
+            if (Auth::user()->likes->contains($post->id)) {
+                $post->is_Liked = 1;
+            } else {
+                $post->is_Liked = 0;
+            }
+            unset($post->likes); // Remove the likes collection from the response
+            return $post;
+        });
+
+
+        return response()->json($posts);
     }
     public function store(Request $request)
     {

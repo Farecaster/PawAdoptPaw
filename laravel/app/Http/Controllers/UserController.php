@@ -41,7 +41,10 @@ class UserController extends Controller
      */
     public function show(User $id)
     {
-        $pets = $id->pets()->paginate(12); // Fix: Call paginate() before get()
+        $pets = $id->pets()->whereDoesntHave('adoptionRequests', function ($query) {
+            $query->whereIn('status', ['accepted', 'done']);
+        })->paginate(12);
+        // $pets = $id->pets()->paginate(12); // Fix: Call paginate() before get()
 
         return view('user.profile', [
             'user' => $id,
