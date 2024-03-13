@@ -152,7 +152,7 @@
                                         href="{{ route('post-for-adoption') }}">Post</a>
                         @auth
                         <li
-                            class="nav-LINK dropdown {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests') ? 'active' : '' }}">
+                            class="nav-link dropdown {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">Requests</a>
