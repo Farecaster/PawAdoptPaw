@@ -127,7 +127,7 @@
                                                         @if (Auth::id() === $user->id)
                                                             <div>
                                                                 <a class="btn text-white" data-bs-toggle="modal" data-bs-target="#reportModal"><i
-                                                                class="bi bi-pencil-square text-primary"></i></a>
+                                                                        class="bi bi-pencil-square text-primary"></i></a>
                                                             </div>
                                                         @endif
                                                     @endauth
@@ -148,6 +148,23 @@
                         <a class="nav-link" href="{{ route('history') }}" id="history-link"
                         role="tab" aria-controls="pets" aria-selected="false">History
                         </a>
+                        <a class="nav-link {{ Request::is('post-for-adoption*') ? 'active' : '' }}"
+                                        href="{{ route('post-for-adoption') }}">Post</a>
+                        @auth
+                        <li
+                            class="nav-LINK dropdown {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests') ? 'active' : '' }}">
+                            <a class="nav-link dropdown-toggle {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
+                                href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Requests</a>
+                            <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
+                                <li><a class="dropdown-item {{ Request::is('incoming-requests*') ? 'active' : '' }}"
+                                        href="{{ route('incoming.requests') }}">INCOMING REQUESTS</a></li>
+                                <li><a class="dropdown-item {{ Request::is('on-going-requests') ? 'active' : '' }}"
+                                        href="{{ route('on-going.requests') }}">YOUR ACCEPTED REQUESTS</a></li>
+                            </ul>
+                        </li>
+
+                    @endauth
                     </div>
                 </div>
             </div>

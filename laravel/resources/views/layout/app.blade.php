@@ -13,7 +13,7 @@
     <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 </head>
 
-<body data-bs-spy="scroll" data-bs-target=".navbar">>
+<body data-bs-spy="scroll" data-bs-target=".navbar">
 
     <!--Navbar-->
     @include('shared.nav')

@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a href="#" class="navbar-brand">
-            <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
+            <img src="{{ asset('assets/paw.png') }}" alt="" class="d-inline-block align-top custom-logo" />
         </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
-                <img src="{{ asset('assets/logo.png') }}" alt="" class="d-inline-block align-top" />
+                <img src="{{ asset('assets/paw.png') }}" alt="" class="d-inline-block align-top" style="max-width: 80px; max-height: 80px;" />
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -27,7 +27,7 @@
                             class="nav-item dropdown {{ Request::is('my-requests*') || Request::is('pending-request*') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle {{ Request::is('my-requests*') || Request::is('pending-request*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="#" id="requestsDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">FIND A PET</a>
+                                aria-expanded="false">TRACK</a>
                             <ul class="dropdown-menu" aria-labelledby="requestsDropdown">
                                 <li><a class="dropdown-item {{ Request::is('my-requests*') ? 'active' : '' }}"
                                         href="{{ route('my.requests') }}">MY REQUESTS</a></li>
@@ -36,7 +36,7 @@
                             </ul>
                         </li>
                     @endauth
-                    @auth
+                    {{--@auth
                         <li
                             class="nav-item dropdown {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests') ? 'active' : '' }}">
                             <a class="nav-link dropdown-toggle {{ Request::is('post-for-adoption*') || Request::is('incoming-requests*') || Request::is('on-going-requests*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
@@ -52,12 +52,12 @@
                             </ul>
                         </li>
 
-                    @endauth
+                    @endauth--}}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ Request::is('pets*') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                             href="#" id="petsDropdown" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            PETS
+                            FIND A PET
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ route('dogs') }}">DOGS</a></li>

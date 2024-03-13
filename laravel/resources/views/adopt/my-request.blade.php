@@ -13,7 +13,7 @@
                                 <img src="{{ $request->pet->img }}" class="card-img-top" alt="pet">
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{{ route('pet.show', ['pet' => $request->pet->id]) }}" style="color: #e3f6f5;">{{ $request->pet->name }}</a></h5>
-                                    <p class="card-text"><strong>Name:</strong> {{ $request->name }}</p>
+                                    <p class="card-text">Name:</strong> {{ $request->name }}</p>
                                     <p class="card-text"><strong>Address:</strong> {{ $request->address }}</p>
                                     <div class="text-center">
                                         <a href="{{ route('my.requests.edit', ['id' => $request->id]) }}" class="btn" style="background-color: #e3f6f5; color: #272343;" >Edit</a>
