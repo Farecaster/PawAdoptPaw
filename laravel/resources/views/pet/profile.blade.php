@@ -50,13 +50,14 @@
                                                     pet</a>
                                             </div>
                                         @endguest
-
-                                        <div class="mt-3">
-                                            <a href="{{ route('user.profile', ['id' => $pet->user->id]) }}"
-                                                class="btn btn-secondary">
-                                                <i class="bi bi-person"></i> {{ $pet->user->name }}
-                                            </a>
-                                        </div>
+                                        @if (Auth::id() != $pet->user->id)
+                                            <div class="mt-3">
+                                                <a href="{{ route('user.profile', ['id' => $pet->user->id]) }}"
+                                                    class="btn btn-secondary">
+                                                    <i class="bi bi-person"></i> {{ $pet->user->name }}
+                                                </a>
+                                            </div>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
