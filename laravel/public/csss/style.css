@@ -90,6 +90,30 @@ section{
 }
 
 
+.tip .tip-img{
+    position: relative;
+}
+.tip .tip-img .icon{
+    width: 70px;
+    height: 70px;
+    background: #272343;
+    color: #fffeff;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -45px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tip .tip-img .icon a{
+    color: #fffeff;
+}
+.tip .tip-img .icon i{
+    font-size: 36px;
+}
+
 
 body {
     font-family: "Roboto" sans-serif;
@@ -137,6 +161,36 @@ footer {
     color: white;
     transition: 0.5s;
 }
+/*teams*/
+.socias{
+    display: flex;
+    justify-content: center;
+}
+.socials a{
+    text-decoration: none;
+    padding: 7px;
+    padding-bottom: 5px;
+    padding-right: 6px;
+    padding-left: 6px;
+    background-color: #272343;
+    margin: 10px;
+    border-radius: 50%;
+}
+.socials a i{
+    font-size: 1.5em;
+    color: #fffffe;
+    opacity: 0.9;
+    justify-content: center;
+}
+.socials a:hover{
+    background-color: #ffd803;
+    transition: 0.5s;
+}
+.socials a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+
 .footerNav{
     margin: 30px 0;
 }
@@ -450,16 +504,18 @@ input{
 }
 .card {
     border-radius: 20px;
-    /* height: 100%; */
+    height: 100%; 
     display: flex;
     flex-direction: column;
     background-color: #272343;
 }
 .card h5{
     color: #bae8e8;
+    font-weight: 500;
 }
 .card p{
     color: #fffffe;
+    font-weight: 500;
 }
 .pet .card-body h6.white-text {
     color: white;
@@ -595,6 +651,7 @@ main {
     border-radius: 50%;
     display: block;
     box-shadow: 1px 3px 12px rgba(0, 0, 0, 0.18);
+    margin-left: 0 auto;
 }
 
 .header-wrapper .cols-container .left-col .h1 {
@@ -696,6 +753,96 @@ main {
     color: #272343;
 }*/
 
+.team{
+    margin: px 0;
+}
+.team h1{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #272343;
+    padding-bottom: 10px;
+}
+.team p{
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #272343;
+    padding-bottom: 10px;
+}
+.team h1:after{
+    content: '';
+    background-color: #272343;
+    display: block;
+    height: 3px;
+    width: 500px;
+    margin: 10px auto;
+}
+.profile{
+    margin-top: 25px;
+}
+.profile .img-box{
+    opacity: 1;
+    display: block;
+    position: relative;
+}
+.profile h2{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.profile h3{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.img-box::after{
+    content: '';
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+.img-box ul{
+    margin: 0;
+    padding: 20px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+.img-box ul li{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #272343;
+    border-radius: 50%;
+    margin: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-box a{
+    color: #fff;
+}
+.img-box:hover::after{
+    opacity: 1;
+}
+.img-box:hover ul{
+    opacity: 1;
+}
+.img-box:hover li{
+    color: #fffffe;
+    border: 1px solid #fffffe;
+}
+.img-box::after, .img-box ul, .img-box ul li{
+    transition: all 0.5s ease-in-out 0s;
+}
 
 /* LOGIN FORM BACKGROUND */
 
@@ -850,5 +997,78 @@ main {
         width: 100%;
         text-align: center;
         margin: 10px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .profile-tab-nav {
+        padding-top: 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .profile-tab-nav .nav-link {
+        padding: 10px 15px;
+    }
+}
+
+/* Large desktop and larger screens */
+@media (min-width: 1200px) {
+    .container {
+        padding: 40px;
+    }
+}
+
+/* Mobile-first styles */
+@media(max-width: 411) {
+    .container {
+        padding: 10px;
+    }
+    
+    .row {
+        margin-right: -10px;
+        margin-left: -10px;
+    }
+    
+    .col-4,
+    .col {
+        flex-basis: 100%;
+    }
+    
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+}   
+
+/*about page*/
+/* For tablets and larger devices */
+@media (min-width: 768px) {
+    .about-img img {
+        max-width: 100%;
+        height: auto;
+        justify-content: center;
+    }
+    .profile-text {
+        padding-top: 20px;
+    }
+}
+
+/* For smaller devices */
+@media (max-width: 375px)and(max-width: 667px) {
+    .about-img {
+        text-align: center;
+    }
+    .profile-text {
+        margin-top: 20px;
+    }
+    .img-box ul {
+        bottom: -20px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .custom-logo {
+        left: 5px; /* Adjust the left position for smaller screens */
     }
 }

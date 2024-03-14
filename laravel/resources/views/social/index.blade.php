@@ -3,8 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="d-none d-lg-block col-lg-4 col-xl-3 d-flex align-items-end justify-content-end text-center">
-
-                    <div class="card main-content left">
+                    <div class="card main-content left" style="background-color: #e3f6f5">
                         <div class="card-title">
                             <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
                                 @if (Auth::user()->img == null)
@@ -14,17 +13,14 @@
                                     <img src="{{ asset(Auth::user()->img) }}" alt="User Image"
                                         style="width: 60px; height: 60px; border-radius: 50%;" class="img-fluid img">
                                 @endif
-                                <h6 class="text-black ms-2">{{ Auth::user()->name }}</h6>
+                                <h6 class="ms-2" style="color: #2d334a">{{ Auth::user()->name }}</h6>
                             </a>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Create Post
-                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-8 col-xl-9 scrollable-content">
                     <div class="card main-content">
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #e3f6f5">
                             <div class="card-title d-flex align-items-center">
                                 <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
                                     @if (Auth::user()->img == null)
@@ -36,7 +32,7 @@
                                     @endif
                                 </a>
                                 <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
-                                    <h6 class="text-black ms-2">{{ Auth::user()->name }}</h6>
+                                    <h6 class="ms-2" style="color: #2d334a">{{ Auth::user()->name }}</h6>
                                 </a>
 
                             </div>
@@ -66,7 +62,7 @@
                     </div>
                     @foreach ($posts as $post)
                         <div class="card card-content mb-4">
-                            <div class="card-body">
+                            <div class="card-body" style="background-color: #e3f6f5">
                                 <div class="card-title d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <a href="{{ route('social.user', ['id' => $post->user->id]) }}">
@@ -80,7 +76,7 @@
                                             @endif
                                         </a>
                                         <a href="{{ route('social.user', ['id' => $post->user->id]) }}">
-                                            <h6 class="text-black ms-2">{{ $post->user->name }}</h6>
+                                            <h6 class="ms-2" style="color: #2d334a;">{{ $post->user->name }}</h6>
                                         </a>
                                     </div>
                                     @if ($post->user->id != auth()->id())

@@ -39,7 +39,68 @@
             </div>
         </div>
     </section>
-    <!--end pp section-->
+    <section id="about" class="about section-padding">
+        <h1 class="text-center">FAQs</h1>
+        <div class="container">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                What is your website/app about?
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Welcome to our pet adoption platform!.</strong>Our website and app are dedicated to making pet adoption 
+                    a breeze. We connect users with shelters, rescue organizations, and adorable animals in need of forever homes. 
+                    Browse profiles, set preferences, and embark on a journey of companionship and love with your new furry friend!
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Is there a mobile version or app available?
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Absolutely! </strong> You can access our services conveniently through our mobile app. Whether you're on the go or relaxing at home, our app makes it easy to find your perfect pet match right from your smartphone.
+                </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                There are stray cats in my area. Can Paw-Adopt-Paw help?
+                </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Absolutely!</strong> At Paw-Adopt-Paw, we're passionate about helping all animals in need, 
+                    including stray cats.Here's how you can post about the stray cats in your area on our platform:
+                    <br>1. Create an Account: To get started, you'll need to create an account on Paw-Adopt-Paw. 
+                    Simply click on the "Sign Up" or "Register" button on our website or app, and follow the prompts 
+                    to create your account.<br><br>
+                    2. Access Your Profile: Once you've created your account, you can access your profile by clicking 
+                    on your username or profile picture in the upper right corner of the screen. This will take you to
+                     your profile dashboard.<br><br>
+                    3. Post a Stray Cat Listing: On your profile dashboard, look for the option to "Post" or "Create Listing." 
+                    Click on this button, and you'll be directed to a form where you can provide details about the stray cats
+                     in your area. Make sure to fill out all the required fields accurately, including the cat's description, 
+                     location, and any relevant information about their health or behavior.<br><br>
+                    4. Review and Submit: Before submitting your post, take a moment to review all the details you've entered 
+                    to ensure they are correct. Once you're satisfied with the information provided, click the "Post" or "Submit" 
+                    button to publish your listing.<br><br>
+                    By following these steps, you can effectively post about the stray cats in your area on Paw-Adopt-Paw's platform. 
+                    Thank you for your compassion and willingness to help stray animals find loving homes!
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
 @endsection
 
 

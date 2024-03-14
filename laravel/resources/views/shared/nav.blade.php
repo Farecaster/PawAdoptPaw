@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a href="#" class="navbar-brand">
-            <img src="{{ asset('assets/paw.png') }}" alt="" class="d-inline-block align-top custom-logo" />
+            <img src="{{ asset('assets/paw.png') }}" alt="" class="d-inline-block align-top custom-logo">
         </a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -15,6 +15,10 @@
                             aria-current="page" href="{{ route('homepage') }}">HOME</a>
                     </li>
                     {{--<li class="nav-item">
+                        <a class="nav-link {{ Request::is('pet-social') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
+                            href="{{ route('social.index') }}">TIMELINE</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ Request::is('about') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                             href="{{ route('about') }}">ABOUT US</a>
                     </li>
@@ -78,10 +82,10 @@
                         </li>
                     @endguest
                     @auth
-                        <li class="nav-item">
+                        {{--<li class="nav-item">
                             <a class="nav-link {{ Request::is('history') ? 'bg-black rounded px-3 text-light' : 'mx-lg-2' }}"
                                 href="{{ route('history') }}">HISTORY</a>
-                        </li>
+                        </li>--}}
 
                         <!-- Notification dropdown -->
                         <ul class="nav navbar-nav navbar-right p-2">

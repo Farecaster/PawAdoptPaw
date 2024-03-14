@@ -6,9 +6,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">Edit Pet</div>
-
-                        <div class="card-body">
+                        <div class="card-header" style="background-color: #2d334a;">Edit Pet</div>
+                        <div class="card-body" style="background-color: #2d334a;">
                             @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -251,7 +250,7 @@
                                 <div class="form-group1">
                                     <label for="img">Image:</label>
                                     <input type="file" class="form-control-file" id="img" name="img" required>
-                                </div>
+                                </div><br>
 
                                 <button type="submit" class="btn" class="btn btn-lg mt-3" style="background-color: #e3f6f5; color: #272343;">Update</button>
                             </form>
@@ -260,8 +259,8 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-header">Preview</div>
-                        <div class="card-body">
+                        <div class="card-header"  style="background-color: #2d334a;">Preview</div>
+                        <div class="card-body"  style="background-color: #2d334a;">
                             <img src="{{ asset($pet->img) }}" alt="" class="img-thumbnail">
                         </div>
                     </div>
