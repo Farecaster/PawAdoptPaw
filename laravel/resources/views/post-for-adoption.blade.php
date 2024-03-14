@@ -243,13 +243,27 @@
                                 cols="50"></textarea required
                                             value="{{ old('description') }}">
                                         </div>
-
-                                        <button type="submit" class="btn btn-dark btn-block">Post</button>
+                                        <br>
+                                        <button id="postButton" type="submit" class="btn btn-dark btn-block" onclick="this.disabled=true;this.innerHTML='Posting...';this.form.submit();">Post</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const form = document.getElementById('adoptionForm');
+                            const postButton = document.getElementById('postButton');
+
+                            form.addEventListener('input', function () {
+                                if (form.checkValidity()) {
+                                    postButton.removeAttribute('disabled');
+                                } else {
+                                    postButton.setAttribute('disabled', 'disabled');
+                                }
+                            });
+                        });
+                    </script>
 @endsection
 
 

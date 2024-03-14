@@ -31,9 +31,12 @@ Route::get('/hta',  function () {
     return view('hta');
 })->name('hta');
 
-Route::get('/team',  function () {
-    return view('team');
-})->name('team');
+Route::get('/tips',  function () {
+    return view('tips');
+})->name('tips');
+Route::get('/faqs',  function () {
+    return view('faqs');
+})->name('faqs');
 
 Route::get('/about',  function () {
     return view('about');

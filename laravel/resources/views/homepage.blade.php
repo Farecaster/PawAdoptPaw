@@ -64,20 +64,12 @@
                     <h1>Why Adopt?</h1>
                     <div class="divider"></div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="featured">
-                                <div class="featured-img">
-                                    <img src="{{ asset('assets/img4.jpg') }}" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
+                        <div class="col align-self-center">
                             <div class="featured">
                                 <div class="container">
-                                    <p><br><br><br>When you open your doors to welcome a rescue dog as part of your family,
-                                        you're saving more than just one life. By adopting, you’re helping make
-                                        space for another animal in need and helping to give them the opportunity 
-                                        to become beloved pets.
+                                    <p style="font-size: 20px;">When you embrace a rescue dog into your home, 
+                                    you're not only saving a single life but also making room for another animal in need, 
+                                    offering them the chance to find a loving home and become cherished companions.
                                     </p>
                                 </div>
                                 
@@ -95,39 +87,36 @@
         <div class="container text-white text-center">
             <div class="row">
                 <div class="col-12 section-intro text-center">
-                    <h1>Explore P.A.P</h1>
+                    <h1>Find out more about Paw-Adopt-Paw</h1>
                     <div class="divider"></div>
-                    <p>Explore More About Paw-Adopt-Paw</p>
+                    <p style="font-size: 20px;">Explore More About Paw-Adopt-Paw</p>
                 <div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="featured">
                             <div class="featured-img">
-                                <img src="{{ asset('assets/uno.jpg') }}" alt="...">
+                                <img src="{{ asset('assets/img1.jpg') }}" alt="...">
                                 <div class="icon"><a href="{{ route('about') }}"><i class="bi bi-info"></i></a></div>
                             </div>
                             <h5 class="mt-5">About Us</h5>
-                            <p>Learn more about Paw-Adopt-Paw</p>
                         </div>
                     </div>  
                     <div class="col-md-4">
                         <div class="featured">
                             <div class="featured-img">
-                                <img src="{{ asset('assets/img1.jpg') }}" alt="...">
+                                <img src="{{ asset('assets/uno.jpg') }}" alt="...">
                                 <div class="icon"><a href="{{ route('hta') }}"><i class="bi bi-question"></i></a></div>
                             </div>
                             <h5 class="mt-5">FAQs</h5>
-                            <p>Learn more about Paw-Adopt-Paw</p>
                         </div>
                     </div>  
                     <div class="col-md-4">
                         <div class="featured">
                             <div class="featured-img">
                                 <img src="{{ asset('assets/img2.jpg') }}" alt="...">
-                                <div class="icon"><a href="{{ route('about') }}"><i class="bi bi-lightbulb"></i></a></div>
+                                <div class="icon"><a href="{{ route('tips') }}"><i class="bi bi-lightbulb"></i></a></div>
                             </div>
                             <h5 class="mt-5">Tips</h5>
-                            <p>Tips on how to take care of your loving pets</p>
                         </div>
                     </div>   
                 </div>

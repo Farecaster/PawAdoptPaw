@@ -3,10 +3,9 @@
     <div class="container">
         <div class="row">
             <div class="d-none d-lg-block col-lg-4 col-xl-3 d-flex align-items-end justify-content-end text-center">
-
-                <div class="card main-content left">
+                <div class="card main-content left" style="background-color: #e3f6f5">
                     <div class="card-title">
-                        <a href="{{ route('social.user', ['id' => $user->id]) }}">
+                        <a href="{{ route('social.index', ['id' => $user->id]) }}">
                             @if ($user->img == null)
                                 <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
                                     style="width: 60px; height: 60px; border-radius: 50%;"class="img-fluid img">
@@ -14,21 +13,60 @@
                                 <img src="{{ asset($user->img) }}" alt="User Image"
                                     style="width: 60px; height: 60px; border-radius: 50%;" class="img-fluid img">
                             @endif
-                            <h6 class="text-black ms-2">{{ $user->name }}</h6>
+                            <h6 class="text-black ms-2">News Feed</h6>
                         </a>
                         @if ($user->id == Auth::id())
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Create Post
-                            </button>
+                            
                         @endif
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-8 col-xl-9 scrollable-content user-content">
-                <div class=" user-content"></div>
+            <div class="card main-content">
+                        <div class="card-body" style="background-color: #e3f6f5">
+                            <div class="card-title d-flex align-items-center">
+                                <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
+                                    @if (Auth::user()->img == null)
+                                        <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
+                                            style="width: 60px; height: 60px; border-radius: 50%;"class="img-fluid">
+                                    @else
+                                        <img src="{{ asset(Auth::user()->img) }}" alt="User Image"
+                                            style="width: 60px; height: 60px; border-radius: 50%;">
+                                    @endif
+                                </a>
+                                <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
+                                    <h6 class="ms-2" style="color: #2d334a">{{ Auth::user()->name }}</h6>
+                                </a>
+
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+
+                                        @csrf
+                                        @method('post')
+                                        <ul id="errorList"></ul>
+                                        <ul id="successList"></ul>
+                                        <input type="text" class="form-control caption" name="caption"
+                                            placeholder="Write something you want">
+                                        @error('caption')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <input type="file" class="form-control" name="img" id="file">
+                                        @error('img')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                        <br>
+                                        <button id="postButton" type="submit" class="btn btn-dark btn-block" onclick="this.disabled=true;this.innerHTML='Posting...';this.form.submit();">Post</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @foreach ($posts as $post)
                     <div class="card card-content mb-4">
-                        <div class="card-body">
+                        <div class="card-body" style="background-color: #e3f6f5">
                             <div class="card-title d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
                                     <a href="{{ route('social.user', ['id' => $post->user->id]) }}">
