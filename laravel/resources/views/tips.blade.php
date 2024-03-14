@@ -18,7 +18,7 @@
                                 <img src="{{ asset('assets/bengal.jpg') }}" alt="...">
                                 <div class="icon"><a href="https://www.thesprucepets.com/first-time-dog-owners-tips-1117335"><i class="bi bi-lightbulb"></i></a></div>
                             </div>
-                            <h5 class="mt-5"></h5>
+                            
                             
                         </div>
                     </div>  
@@ -28,7 +28,7 @@
                                 <img src="{{ asset('assets/tre.jpg') }}" alt="...">
                                 <div class="icon"><a href="https://www.wikihow.pet/Take-Care-of-a-Dog"><i class="bi bi-lightbulb"></i></a></div>
                             </div>
-                            <h5 class="mt-5">FAQs</h5>
+                         
                         </div>
                     </div>  
                     <div class="col-md-4">
@@ -37,7 +37,7 @@
                                 <img src="{{ asset('assets/german.jpg') }}" alt="...">
                                 <div class="icon"><a href="https://www.pawlicy.com/blog/dog-care-tips/"><i class="bi bi-lightbulb"></i></a></div>
                             </div>
-                            <h5 class="mt-5">Tips</h5>
+                            
                         </div>
                     </div>   
                 </div>
