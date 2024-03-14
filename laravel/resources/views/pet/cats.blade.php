@@ -4,7 +4,7 @@
 
     <section id="pet" class="pet section-padding">
 
-        {{--@include('shared.search-bar')--}}
+        @include('shared.search-bar')
 
         <div class="container">
             @if ($cats->isEmpty())

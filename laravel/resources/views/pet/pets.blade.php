@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
     <section id="pet" class="pet section-padding">
-        {{--@include('shared.search-bar')--}}
+        @include('shared.search-bar')
 
         <div class="container">
             @if ($pets->isEmpty())

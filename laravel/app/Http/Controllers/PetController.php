@@ -20,7 +20,10 @@ class PetController extends Controller
         $pets = Pet::query();
 
         if (request()->has('search')) {
-            $pets = $pets->where('breed', 'like', '%' . request()->get('search', '') . '%');
+            $pets = $pets->where('breed', 'like', '%' . request()->get('search', '') . '%')
+                ->orWhere('region', 'like', '%' . request()->get('search', '') . '%')
+                ->orWhere('name', 'like', '%' . request()->get('search', '') . '%')
+                ->orWhere('gender', 'like', '%' . request()->get('search', '') . '%');
         }
 
         // Exclude pets with accepted adoption requests
