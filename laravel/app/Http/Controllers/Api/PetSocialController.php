@@ -20,7 +20,34 @@ class PetSocialController extends Controller
         // Retrieve posts along with information about whether the authenticated user has liked each post
         $posts = PetSocial::with(['likes' => function ($query) use ($userId) {
             $query->where('user_id', $userId);
-        }])->with('user')->inRandomOrder()->get();
+        }])->with('user')->whereDoesntHave('user', function ($query) {
+            $query->where('id', Auth::id());
+        })->inRandomOrder()->get();
+
+        $posts->transform(function ($post) {
+            $post->like_count = $post->likes->count();
+            if (Auth::user()->likes->contains($post->id)) {
+                $post->is_Liked = 1;
+            } else {
+                $post->is_Liked = 0;
+            }
+            unset($post->likes); // Remove the likes collection from the response
+            return $post;
+        });
+
+
+        return response()->json($posts);
+    }
+    public function ownposts()
+    {
+        $userId = Auth::id();
+
+        // Retrieve posts along with information about whether the authenticated user has liked each post
+        $posts = PetSocial::with(['likes' => function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        }])->with('user')->whereHas('user', function ($query) {
+            $query->where('id', auth()->id());
+        })->orderBy('id', 'DESC')->get();
 
         $posts->transform(function ($post) {
             $post->like_count = $post->likes->count();
@@ -75,10 +102,13 @@ class PetSocialController extends Controller
 
     public function reports(Request $request, PetSocial $id)
     {
+        if ($id->user->id == auth()->id()) {
+            abort(404);
+        }
         $data = $request->validate([
             'reason' => 'required|string|min:1|max:255',
         ]);
-        dd($data);
+
         $data['user_id'] = auth()->user()->id;
         $data['pet_social_id'] = $id->id;
 
@@ -96,7 +126,7 @@ class PetSocialController extends Controller
         if (auth()->id() != $id->user_id) {
             abort(404);
         }
-        return response()->json(['id' => $id]);
+        return response()->json($id);
     }
     public function update(Request $request, PetSocial $id)
     {

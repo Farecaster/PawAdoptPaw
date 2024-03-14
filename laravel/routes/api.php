@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth:sanctum', 'not_banned']], function () {
     Route::put('/users/{id}', [UserController::class, 'update'])->name('user.update');
 
     Route::get('/pet-social', [ApiPetSocialController::class, 'index']);
+    Route::get('/pet-social/ownposts', [ApiPetSocialController::class, 'ownposts']);
     Route::get('/pet-social/user/{id}', [ApiPetSocialController::class, 'show']);
     Route::post('/pet-social/post', [ApiPetSocialController::class, 'store']);
     Route::get('/pet-social/{id}/edit', [ApiPetSocialController::class, 'edit']);
