@@ -81,6 +81,7 @@ class PetController extends Controller
         $data['user_id'] = auth()->id();
         $data['pet_id'] = $pet->id;
         Report::create($data);
+        notify()->success('', 'Reported Successfully');
         return redirect(route('pets'));
     }
 
