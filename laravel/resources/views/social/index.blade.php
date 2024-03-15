@@ -363,7 +363,9 @@
                         dataType: "json",
                         success: function(response) {
                             console.log(response);
+                            $('#successListReport').html("");
                             $('#errorListReport').html("");
+                            $('#errorListReport').removeClass('alert alert-danger');
                             $('#successListReport').addClass('alert alert-success');
                             $('#successListReport').append('<li> Reported Successfully! </li>');
                             $('#reportModal').find('input').val("");
@@ -378,6 +380,8 @@
                         error: function(xhr, status, error) {
                             console.error('Error:', error);
                             console.log(postId);
+                            $('#successListReport').html("");
+                            $('#successListReport').removeClass('alert alert-success');
                             $('#errorListReport').html("");
                             $('#errorListReport').addClass('alert alert-danger');
                             var errorMessage = xhr.responseJSON && xhr.responseJSON.message ? xhr
