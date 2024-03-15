@@ -15,11 +15,11 @@
                 @csrf
                 <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required />
                 @error('email')
-                    <span>{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
                 <input type="password" name="password" placeholder="Password" required />
                 @error('password')
-                    <span>{{ $message }}</span>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
 
                 <button type="submit" class="btn-login" style="background-color: #272343;">Log In</button>

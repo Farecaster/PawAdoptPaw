@@ -57,7 +57,7 @@ class AuthController extends Controller
             if (Auth::user()->is_admin) {
                 return redirect(route('admin.index'))->with('success', 'Logged in successfully as admin!');
             }
-            notify()->success('', 'Welcome Back ' . Auth::user()->name);
+            notify()->success('', 'Welcome ' . Auth::user()->name);
             return redirect(route('homepage'))->with('success', 'Logged in successfully!');
         }
 
