@@ -3,7 +3,11 @@
     max-width: 700px;
     background-color: beige;
 }
-.card-content{
+.cards-body {
+    flex: 1;
+    padding: 25px;
+}
+.cards-content{
     max-width: 700px;
     background-color: beige;
 }
