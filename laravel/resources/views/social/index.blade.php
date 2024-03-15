@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row">
                 <div class="d-none d-lg-block col-lg-4 col-xl-3 d-flex align-items-end justify-content-end text-center">
-                    <div class="card main-content left" style="background-color: #e3f6f5">
-                        <div class="card-title">
+                    <div class="cards main-content left" style="background-color: #e3f6f5">
+                        <div class="cards-title">
                             <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
                                 @if (Auth::user()->img == null)
                                     <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
@@ -19,9 +19,9 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-8 col-xl-9 scrollable-content">
-                    <div class="card main-content">
-                        <div class="card-body" style="background-color: #e3f6f5">
-                            <div class="card-title d-flex align-items-center">
+                    <div class="cards main-content">
+                        <div class="cards-body" style="background-color: #e3f6f5">
+                            <div class="cards-title d-flex align-items-center">
                                 <a href="{{ route('social.user', ['id' => Auth::id()]) }}">
                                     @if (Auth::user()->img == null)
                                         <img src="{{ asset('assets/no_img.jpg') }}" alt="User Image"
@@ -61,9 +61,9 @@
                         </div>
                     </div>
                     @foreach ($posts as $post)
-                        <div class="card card-content mb-4">
-                            <div class="card-body" style="background-color: #e3f6f5">
-                                <div class="card-title d-flex align-items-center justify-content-between">
+                        <div class="cards cards-content mb-4">
+                            <div class="cards-body" style="background-color: #e3f6f5">
+                                <div class="cards-title d-flex align-items-center justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <a href="{{ route('social.user', ['id' => $post->user->id]) }}">
                                             @if (!$post->user->img)
@@ -91,7 +91,7 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="card-text text-black">{{ $post->caption }}
+                                            <div class="cards-text text-black">{{ $post->caption }}
                                             </div>
                                         </div>
                                     </div>
