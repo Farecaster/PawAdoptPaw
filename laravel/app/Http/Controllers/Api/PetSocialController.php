@@ -25,7 +25,7 @@ class PetSocialController extends Controller
         })->inRandomOrder()->get();
 
         $posts->transform(function ($post) {
-            $post->like_count = $post->likes->count();
+            $post->like_count = $post->likes()->count();
             if (Auth::user()->likes->contains($post->id)) {
                 $post->is_Liked = 1;
             } else {
@@ -50,7 +50,7 @@ class PetSocialController extends Controller
         })->orderBy('id', 'DESC')->get();
 
         $posts->transform(function ($post) {
-            $post->like_count = $post->likes->count();
+            $post->like_count = $post->likes()->count();
             if (Auth::user()->likes->contains($post->id)) {
                 $post->is_Liked = 1;
             } else {
